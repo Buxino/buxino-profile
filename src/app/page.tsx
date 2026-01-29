@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import OurStorySection from '@/components/OurStorySection';
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <main className="bg-white min-h-screen font-sans">
       {/* 1. Transparent Navbar with Home Button */}
-      <Navbar />
 
       {/* 2. Hero Section: Image First, Typography Below */}
       <div className="pt-24 lg:pt-32">

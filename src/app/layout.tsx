@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Asap } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const asap = Asap({
@@ -21,9 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      {/* ADDED 'bg-black' to the body class below */}
-      <body className={`${inter.variable} ${asap.variable} font-asap antialiased bg-black text-white`}>
-        {children}
+      <body className={`${inter.variable} ${asap.variable} font-asap antialiased bg-black text-white relative`}>
+        {/* The Navbar is now a Global Parent */}
+        <Navbar />
+        
+        <main className="relative z-0">
+          {children}
+        </main>
       </body>
     </html>
   );

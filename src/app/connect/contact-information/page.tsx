@@ -2,14 +2,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Send, MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
-import Navbar from '@/components/Navbar';
+import { Send, MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react'
 import Footer from '@/components/Footer';
 
 export default function ContactInformationPage() {
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
 
       {/* 1. REFINED EDITORIAL HERO */}
       <section className="relative h-[65vh] flex items-center bg-navy-blue overflow-hidden">

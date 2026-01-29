@@ -1,12 +1,10 @@
 "use client";
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const BuxinoWinesPage = () => {
   return (
     <div className="bg-black text-white min-h-screen w-full overflow-x-hidden">
-      <Navbar />
       
       {/* SECTION 1: LUXURY HERO */}
       <section 

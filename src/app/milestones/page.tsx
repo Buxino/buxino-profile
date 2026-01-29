@@ -1,12 +1,10 @@
 "use client";
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const VisionPage = () => {
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
       
       {/* Reduced padding from pt-48 to pt-32 for a tighter look */}
       <section className="pt-32 pb-12 bg-white">

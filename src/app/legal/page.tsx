@@ -1,7 +1,6 @@
 "use client"; // Required for the print function
 import React from 'react';
 import { Printer, FileText } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const LegalPage = () => {
@@ -12,7 +11,6 @@ const LegalPage = () => {
   return (
     <main className="bg-white min-h-screen">
       <div className="print:hidden">
-        <Navbar />
       </div>
 
       <div className="text-navy-blue pt-24 pb-20">

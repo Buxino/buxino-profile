@@ -54,7 +54,6 @@ const Navbar = () => {
     setActiveMobileSection(activeMobileSection === name ? null : name);
   };
 
-  // Lock scroll for mobile
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -81,19 +80,26 @@ const Navbar = () => {
         }`}
         style={{ 
           zIndex: 9999, 
-          transform: 'translateZ(0)', // GPU acceleration for iOS
-          WebkitTransform: 'translateZ(0)'
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          // DIAGNOSIS: The nav bar itself is now "transparent" to touches
+          pointerEvents: 'none' 
         }}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           
-          {/* Logo */}
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="relative z-[10001]">
+          {/* Re-enable touch for Logo */}
+          <Link 
+            href="/" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="relative z-[10001]"
+            style={{ pointerEvents: 'auto' }}
+          >
             <Image src="/BW_logo.png" alt="Buxino" width={55} height={75} priority className="object-contain" />
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex gap-8">
+          {/* Desktop Nav - Re-enable touch */}
+          <div className="hidden md:flex gap-8" style={{ pointerEvents: 'auto' }}>
             {navItems.map((item) => (
               <div key={item.name} className="relative group pt-2">
                 <button className="text-white text-[11px] uppercase tracking-widest flex items-center gap-1">
@@ -110,17 +116,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Button - Absolute Top Layer */}
+          {/* Mobile Button - Re-enable touch & High Priority */}
           <button 
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setMobileMenuOpen(!mobileMenuOpen);
             }} 
-            className="md:hidden flex items-center justify-center text-white relative z-[10001]"
+            className="md:hidden flex items-center justify-center text-white relative z-[10001] p-2"
             style={{ 
-              width: '44px', 
-              height: '44px',
+              width: '50px', 
+              height: '50px',
+              pointerEvents: 'auto',
               WebkitTapHighlightColor: 'transparent' 
             }}
           >
@@ -129,12 +136,15 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Full Screen Mobile Overlay */}
+      {/* Full Screen Mobile Overlay - Enabled pointer events when open */}
       <div 
         className={`fixed inset-0 bg-black md:hidden transition-all duration-500 ${
           mobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
         }`}
-        style={{ zIndex: 9990 }}
+        style={{ 
+          zIndex: 9990,
+          pointerEvents: mobileMenuOpen ? 'auto' : 'none'
+        }}
       >
         <div className="flex flex-col h-full pt-32 px-10 overflow-y-auto pb-20">
           {navItems.map((item) => (

@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ChevronRight, ChevronLeft, CheckCircle2, Send } from 'lucide-react';
 
@@ -33,7 +32,6 @@ export default function CustomerSurvey() {
 
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
       
       {/* 1. EDITORIAL HERO SECTION */}
       <section className="relative h-[45vh] flex items-center bg-navy-blue overflow-hidden">

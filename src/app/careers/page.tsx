@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Briefcase, Lightbulb, Target, Send } from 'lucide-react';
 
@@ -26,7 +25,6 @@ const coreValues = [
 export default function CareersPage() {
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
       
       {/* 1. EDITORIAL HERO SECTION */}
       <section className="relative h-[60vh] flex items-center bg-navy-blue overflow-hidden">

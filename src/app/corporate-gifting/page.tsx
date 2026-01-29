@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { ExternalLink, CheckCircle, Package, Truck, ShieldCheck } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 interface ServiceCardProps {
@@ -24,7 +23,6 @@ const ServiceCard = ({ icon, title, desc }: ServiceCardProps) => (
 const CorporateGifting = () => {
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-[75vh] flex items-center bg-navy-blue overflow-hidden">

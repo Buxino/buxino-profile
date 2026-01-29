@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const ValuesPage = () => {
@@ -13,7 +12,6 @@ const ValuesPage = () => {
 
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
       
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">

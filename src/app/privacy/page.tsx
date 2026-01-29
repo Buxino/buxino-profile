@@ -1,13 +1,11 @@
 "use client";
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PrintButton from '@/components/PrintButton'; // Using the component we created
 
 const PrivacyPage = () => {
   return (
     <main className="bg-white min-h-screen">
-      <Navbar />
 
       {/* 1. HERO HEADER - Hidden on Print */}
       <section className="bg-navy-blue pt-32 pb-20 print:hidden">
