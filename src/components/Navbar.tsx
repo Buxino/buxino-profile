@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { ChevronDown, Home, Menu, X } from "lucide-react"; // Added Menu and X icons
+import { ChevronDown, Home, Menu, X } from "lucide-react";
 
 const navItems = [
   {
@@ -53,39 +53,53 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // NEW: State for mobile menu
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 20);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+      // Don't hide navbar if mobile menu is open
+      if (!mobileMenuOpen) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
       }
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, mobileMenuOpen]);
 
   return (
     <>
       <div
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
-          isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        className={`fixed top-0 left-0 w-full transition-all duration-500 ease-in-out ${
+          // Ensure navbar stays visible if menu is open
+          (isVisible || mobileMenuOpen) ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         } ${
-          isScrolled
-            ? "bg-black/90 backdrop-blur-md border-b border-gold/10 py-2"
+          isScrolled || mobileMenuOpen
+            ? "bg-black/95 backdrop-blur-md border-b border-gold/10 py-2"
             : "bg-gradient-to-b from-black/80 to-transparent py-4"
         }`}
+        // Higher Z-index to stay above the overlay
+        style={{ zIndex: 100 }}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           
-          {/* Logo & Home */}
           <div className="flex items-center gap-4">
             <Link href="/" className="group flex items-center gap-2 text-white hover:text-gold transition-colors">
                <div className="p-1.5 rounded-full border border-white/10 group-hover:border-gold/30 transition-all">
@@ -96,14 +110,13 @@ const Navbar = () => {
                </span>
             </Link>
             
-            <Link href="/">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
               <div className="flex items-center cursor-pointer">
                 <Image src="/BW_logo.png" alt="Logo" width={60} height={80} priority className="object-contain" />
               </div>
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item, i) => (
               <div key={i} className="relative group">
@@ -125,24 +138,37 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Toggle (THE FIX) */}
-          <div className="md:hidden">
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white p-2">
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {/* IMPROVED Mobile Toggle */}
+          <div className="md:hidden flex items-center">
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+              className="text-white p-2 relative z-[110] touch-manipulation"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <X size={32} className="text-gold" /> : <Menu size={32} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay (THE MISSING PIECE) */}
-      <div className={`fixed inset-0 z-[40] bg-black transition-transform duration-500 md:hidden ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
-        <div className="flex flex-col pt-24 px-8 space-y-6">
+      {/* IMPROVED Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black z-[90] transition-all duration-500 ease-in-out md:hidden ${
+          mobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col pt-32 px-8 space-y-8 overflow-y-auto h-full pb-10">
           {navItems.map((item, i) => (
             <div key={i} className="border-b border-white/10 pb-4">
               <p className="text-gold text-[10px] uppercase tracking-[0.3em] mb-4 font-bold">{item.name}</p>
-              <div className="flex flex-col space-y-3 pl-2">
+              <div className="flex flex-col space-y-4 pl-2">
                 {item.dropdown.map((drop, j) => (
-                  <Link key={j} href={drop.link} onClick={() => setMobileMenuOpen(false)} className="text-white text-sm uppercase tracking-wider hover:text-gold">
+                  <Link 
+                    key={j} 
+                    href={drop.link} 
+                    onClick={() => setMobileMenuOpen(false)} 
+                    className="text-white text-base uppercase tracking-wider active:text-gold"
+                  >
                     {drop.name}
                   </Link>
                 ))}
