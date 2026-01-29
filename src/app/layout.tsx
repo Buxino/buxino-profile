@@ -23,10 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${asap.variable} font-asap antialiased bg-black text-white relative`}>
-        {/* The Navbar is now a Global Parent */}
         <Navbar />
         
-        <main className="relative z-0">
+        {/* Added pt-20 to pt-24 depending on your navbar height – adjust after testing */}
+        <main className="relative z-0 pt-24 md:pt-28">
           {children}
         </main>
       </body>

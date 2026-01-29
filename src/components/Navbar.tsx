@@ -123,24 +123,27 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Toggle Button */}
-          <button
-            type="button"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex items-center justify-center text-white relative z-[10001] p-2"
-            style={{
-              width: "50px",
-              height: "50px",
-              WebkitTapHighlightColor: "transparent",
-            }}
-          >
-            {mobileMenuOpen ? (
-              <X size={32} className="text-gold" />
-            ) : (
-              <Menu size={32} />
-            )}
-          </button>
+          {/* Mobile Toggle Button - Enhanced for iOS reliability */}
+          <div className="md:hidden z-[10002] relative">
+            <button
+              type="button"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex items-center justify-center text-white p-2 cursor-pointer touch-manipulation"
+              style={{
+                width: "50px",
+                height: "50px",
+                WebkitTapHighlightColor: "transparent",
+                touchAction: "manipulation",
+              }}
+            >
+              {mobileMenuOpen ? (
+                <X size={32} className="text-gold" />
+              ) : (
+                <Menu size={32} />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
