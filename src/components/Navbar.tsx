@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { ChevronDown, Home, Menu, X, ChevronRight } from "lucide-react";
+import { ChevronDown, Menu, X, ChevronRight } from "lucide-react";
 
 const navItems = [
   {
@@ -46,7 +46,6 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileSection, setActiveMobileSection] = useState<string | null>(null);
@@ -55,43 +54,43 @@ const Navbar = () => {
     setActiveMobileSection(activeMobileSection === name ? null : name);
   };
 
-  // Prevent background scroll when menu is open
+  // Lock scroll for mobile
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
     }
   }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-      // Stay visible if menu is open
-      if (!mobileMenuOpen) {
-        setIsVisible(window.scrollY <= 100 || window.scrollY < 20);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [mobileMenuOpen]);
+  }, []);
 
   return (
     <>
       <nav 
         className={`fixed top-0 left-0 w-full transition-all duration-300 ${
-          isScrolled || mobileMenuOpen ? "bg-black/95 py-2" : "bg-transparent py-4"
-        } ${isVisible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
-        style={{ zIndex: 9999 }} // Forced to the very top
+          isScrolled || mobileMenuOpen ? "bg-black/95 py-3 shadow-xl" : "bg-transparent py-5"
+        }`}
+        style={{ 
+          zIndex: 9999, 
+          transform: 'translateZ(0)', // GPU acceleration for iOS
+          WebkitTransform: 'translateZ(0)'
+        }}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center relative">
+        <div className="container mx-auto px-6 flex justify-between items-center">
           
-          {/* Logo Section */}
-          <div className="flex items-center gap-4">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-              <Image src="/BW_logo.png" alt="Buxino" width={50} height={70} priority className="object-contain" />
-            </Link>
-          </div>
+          {/* Logo */}
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="relative z-[10001]">
+            <Image src="/BW_logo.png" alt="Buxino" width={55} height={75} priority className="object-contain" />
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex gap-8">
@@ -100,9 +99,9 @@ const Navbar = () => {
                 <button className="text-white text-[11px] uppercase tracking-widest flex items-center gap-1">
                   {item.name} <ChevronDown size={12} />
                 </button>
-                <div className="absolute top-full left-0 hidden group-hover:block bg-black border border-white/10 min-w-[200px] mt-2">
+                <div className="absolute top-full left-0 hidden group-hover:block bg-black border border-white/10 min-w-[220px] mt-2 shadow-2xl">
                   {item.dropdown.map((sub) => (
-                    <Link key={sub.name} href={sub.link} className="block p-4 text-[10px] text-white hover:bg-white/5 uppercase tracking-tighter">
+                    <Link key={sub.name} href={sub.link} className="block p-4 text-[10px] text-white hover:bg-white/5 uppercase tracking-widest">
                       {sub.name}
                     </Link>
                   ))}
@@ -111,49 +110,52 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Toggle Button - EXTREME PRIORITY */}
+          {/* Mobile Button - Absolute Top Layer */}
           <button 
+            type="button"
             onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation(); // Stops the Hero section from stealing the click
+              e.stopPropagation();
               setMobileMenuOpen(!mobileMenuOpen);
             }} 
-            className="md:hidden text-white p-4 -mr-4 relative"
-            style={{ zIndex: 10000, touchAction: 'manipulation' }}
-            aria-label="Toggle Menu"
+            className="md:hidden flex items-center justify-center text-white relative z-[10001]"
+            style={{ 
+              width: '44px', 
+              height: '44px',
+              WebkitTapHighlightColor: 'transparent' 
+            }}
           >
             {mobileMenuOpen ? <X size={32} className="text-gold" /> : <Menu size={32} />}
           </button>
         </div>
       </nav>
 
-      {/* Full Screen Mobile Menu Overlay */}
+      {/* Full Screen Mobile Overlay */}
       <div 
-        className={`fixed inset-0 bg-black md:hidden transition-transform duration-500 ease-in-out ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 bg-black md:hidden transition-all duration-500 ${
+          mobileMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
         }`}
         style={{ zIndex: 9990 }}
       >
-        <div className="flex flex-col h-full pt-32 px-8 overflow-y-auto pb-10">
+        <div className="flex flex-col h-full pt-32 px-10 overflow-y-auto pb-20">
           {navItems.map((item) => (
-            <div key={item.name} className="border-b border-white/5 py-5">
+            <div key={item.name} className="border-b border-white/10 py-6">
               <button 
                 onClick={() => toggleSection(item.name)}
-                className="w-full flex justify-between items-center text-white text-xl font-light uppercase tracking-[0.2em]"
+                className="w-full flex justify-between items-center text-white text-xl font-light uppercase tracking-[0.25em]"
               >
                 {item.name}
                 <ChevronRight className={`transition-transform duration-300 ${activeMobileSection === item.name ? "rotate-90 text-gold" : ""}`} />
               </button>
               
-              <div className={`mt-6 space-y-5 overflow-hidden transition-all duration-300 ${
-                activeMobileSection === item.name ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+              <div className={`mt-6 space-y-6 overflow-hidden transition-all duration-500 ${
+                activeMobileSection === item.name ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
               }`}>
                 {item.dropdown.map((sub) => (
                   <Link 
                     key={sub.name} 
                     href={sub.link}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-white/70 text-sm uppercase tracking-widest pl-4 active:text-gold"
+                    className="block text-white/60 text-sm uppercase tracking-[0.2em] pl-4 active:text-gold"
                   >
                     {sub.name}
                   </Link>
