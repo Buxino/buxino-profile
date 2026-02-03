@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /static/
+
+# Host
+Host: https://buxino.co.za
+
+# Sitemap Location
+Sitemap: https://buxino.co.za/sitemap.xml
