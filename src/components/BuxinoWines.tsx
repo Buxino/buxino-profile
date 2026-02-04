@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { Award } from "lucide-react";
@@ -29,8 +28,7 @@ const giftingTiers = [
 
 const BuxinoWinesPage = () => {
   return (
-    <main className="bg-black text-white min-h-screen w-full overflow-x-hidden font-sans">
-      <Navbar />
+    <main className="bg-black text-white min-h-screen w-full overflow-x-hidden font-asap">
       
       {/* SECTION 1: LUXURY HERO */}
       <section 

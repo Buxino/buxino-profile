@@ -12,7 +12,7 @@ const asap = Asap({
 
 export const metadata: Metadata = {
   title: "Buxino Consulting",
-  description: "Buxino Consulting",
+  description: "The Art of the Ascent",
 };
 
 export default function RootLayout({
@@ -23,10 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${asap.variable} font-asap antialiased bg-black text-white relative`}>
+        {/* Navbar must have the highest z-index */}
         <Navbar />
         
-        {/* Added pt-20 to pt-24 depending on your navbar height – adjust after testing */}
-        <main className="relative z-0 pt-24 md:pt-28">
+        {/* main container handles the spacing for all pages */}
+        <main className="relative z-0 min-h-screen">
           {children}
         </main>
       </body>
