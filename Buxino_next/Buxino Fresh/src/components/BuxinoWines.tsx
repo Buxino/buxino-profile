@@ -3,7 +3,29 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Award, ShieldCheck, Globe } from "lucide-react";
+import { ChevronRight, Award, ShieldCheck, Globe, Send } from "lucide-react";
+
+// Institutional Gifting Data
+const giftingTiers = [
+  {
+    tier: 'Bronze',
+    title: 'The Executive Pulse',
+    description: 'Calibrated for professional continuity and project milestones. Features subtle laser-etched branding for a modern executive aesthetic.',
+    cta: 'Inquire Bronze'
+  },
+  {
+    tier: 'Silver',
+    title: 'The Strategic Alliance',
+    description: 'Raised metallic finishes and hand-applied monograms for high-stakes account management and partnership anniversaries.',
+    cta: 'Secure Silver'
+  },
+  {
+    tier: 'Gold',
+    title: 'The Institutional Signature',
+    description: 'Deep-engraved legacy pieces with 24k gold leaf inscriptions. Reserved for board-level diplomacy and M&A celebrations.',
+    cta: 'Request Gold Allocation'
+  }
+];
 
 const BuxinoWinesPage = () => {
   return (
@@ -19,7 +41,6 @@ const BuxinoWinesPage = () => {
           backgroundAttachment: 'fixed'
         }}
       >
-        {/* pt-24 ensures content sits below the fixed navbar while the background remains full-screen */}
         <div className="relative z-10 max-w-5xl pt-24">
           <span className="text-gold font-black tracking-[0.6em] text-[10px] md:text-[12px] uppercase mb-6 block animate-fade-in">
             The Art of the Ascent
@@ -39,7 +60,7 @@ const BuxinoWinesPage = () => {
         </div>
       </section>
 
-      {/* SECTION 2: THE PHILOSOPHY (FMCG Narrative) */}
+      {/* SECTION 2: THE PHILOSOPHY */}
       <section className="py-32 bg-[#0a0a0a] relative">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
@@ -64,7 +85,7 @@ const BuxinoWinesPage = () => {
               </div>
               <p className="text-gray-400 text-lg leading-relaxed font-light">
                 Leveraging a granular understanding of market dynamics from the FMCG space, Buxino Wines is a deliberate pivot by 
-                <span className="text-white"> Bakang Matjila</span>. We bridge the gap between mass-market premium 
+                <span className="text-white font-medium"> Bakang Matjila</span>. We bridge the gap between mass-market premium 
                 and exclusive heritage brands with a contemporary aesthetic designed for the professional class.
               </p>
               <div className="flex items-center gap-6 pt-4 border-t border-white/10">
@@ -78,7 +99,7 @@ const BuxinoWinesPage = () => {
         </div>
       </section>
 
-      {/* SECTION 3: THE COLLECTION (Product Cards) */}
+      {/* SECTION 3: THE COLLECTION */}
       <section id="collection" className="py-32 bg-black border-y border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="mb-20">
@@ -87,7 +108,6 @@ const BuxinoWinesPage = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-16">
-            {/* Red Wine Card */}
             <div className="group">
               <div className="relative h-[600px] overflow-hidden bg-zinc-900 mb-8 border border-white/5">
                 <img 
@@ -102,10 +122,9 @@ const BuxinoWinesPage = () => {
                 </div>
               </div>
               <p className="text-gray-500 text-sm mb-6 leading-relaxed uppercase tracking-wider">Bold • Structured • Meticulous Oak Integration</p>
-              <button className="w-full border border-white/20 py-4 text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">Acquire Allocation</button>
+              <Link href="/connect?tier=dtc" className="w-full block text-center border border-white/20 py-4 text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">Acquire Allocation</Link>
             </div>
 
-            {/* White Wine Card */}
             <div className="group">
               <div className="relative h-[600px] overflow-hidden bg-zinc-900 mb-8 border border-white/5">
                 <img 
@@ -120,7 +139,7 @@ const BuxinoWinesPage = () => {
                 </div>
               </div>
               <p className="text-gray-500 text-sm mb-6 leading-relaxed uppercase tracking-wider">Vibrant • Crisp • Contemporary Elegance</p>
-              <button className="w-full border border-white/20 py-4 text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">Acquire Allocation</button>
+              <Link href="/connect?tier=dtc" className="w-full block text-center border border-white/20 py-4 text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">Acquire Allocation</Link>
             </div>
           </div>
         </div>
@@ -128,25 +147,28 @@ const BuxinoWinesPage = () => {
 
       {/* SECTION 4: CORPORATE STRATEGY (The Gifting Tiers) */}
       <section className="py-32 bg-[#050505]">
-        <div className="container mx-auto px-6 text-center max-w-4xl">
+        <div className="container mx-auto px-6 text-center max-w-6xl">
           <Award className="mx-auto text-gold mb-8" size={48} />
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">
             Corporate <span className="text-gold italic font-serif lowercase font-light">Gifting</span> Solutions
           </h2>
-          <p className="text-gray-400 text-xl font-light mb-16 leading-relaxed">
-            From custom metallic monograms to the "Silent Sales Pitch" packaging, our tiered solutions are crafted to elevate client retention and signal executive excellence.
+          <p className="text-gray-400 text-xl font-light mb-16 max-w-3xl mx-auto leading-relaxed">
+            Tiered solutions crafted to signal executive excellence and cement institutional partnerships.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-1px bg-white/10 border border-white/10">
-            {['Bronze', 'Silver', 'Gold'].map((tier) => (
-              <div key={tier} className="bg-black p-10 hover:bg-zinc-900 transition-all group">
-                <h3 className="text-gold uppercase tracking-[0.3em] text-sm mb-4 font-black">{tier} Tier</h3>
-                <p className="text-[10px] text-gray-500 mb-8 uppercase">Bespoke Executive Packages</p>
+          <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+            {giftingTiers.map((item) => (
+              <div key={item.tier} className="bg-black p-10 hover:bg-zinc-900 transition-all group flex flex-col h-full">
+                <h3 className="text-gold uppercase tracking-[0.3em] text-[10px] mb-2 font-black">{item.tier} Tier</h3>
+                <h4 className="text-white text-xl font-serif italic mb-6">{item.title}</h4>
+                <p className="text-gray-500 text-[11px] leading-relaxed uppercase tracking-widest mb-10 flex-grow">
+                  {item.description}
+                </p>
                 <Link 
-                  href="/connect" 
-                  className="text-white text-[10px] border-b border-gold pb-2 uppercase tracking-widest group-hover:text-gold transition-colors"
+                  href={`/connect?tier=${item.tier.toLowerCase()}`} 
+                  className="text-white text-[10px] border-b border-gold pb-2 uppercase tracking-[0.2em] group-hover:text-gold transition-colors inline-block self-center"
                 >
-                  Inquire Now
+                  {item.cta}
                 </Link>
               </div>
             ))}
@@ -157,7 +179,7 @@ const BuxinoWinesPage = () => {
       {/* FINAL CTA */}
       <section className="py-40 bg-black text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-           <div className="text-[20vw] font-black text-white leading-none">BUXINO</div>
+           <div className="text-[20vw] font-black text-white leading-none select-none">BUXINO</div>
         </div>
         <div className="relative z-10">
           <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-10">Join the <span className="text-gold italic font-serif lowercase font-light">Ascent</span></h2>
