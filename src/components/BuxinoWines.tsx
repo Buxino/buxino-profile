@@ -215,7 +215,7 @@ const BuxinoWinesPage = () => {
             {/* LEFT: THE VISUAL PROOF */}
             <div className="relative h-[800px] hidden lg:block border border-white/5 group overflow-hidden">
                <img 
-                src="/corporate_gifting.png" 
+                src="/corporate_gifting.jpg" 
                 alt="Buxino Corporate Gifting Box" 
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-1000" 
               />
