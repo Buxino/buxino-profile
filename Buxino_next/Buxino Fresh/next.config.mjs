@@ -4,10 +4,9 @@ const nextConfig = {
   distDir: 'out',
   trailingSlash: true,
   images: {
+    // Required for static export sites
     unoptimized: true,
-    domains: [
-      "ext.same-assets.com",
-    ],
+    // Replaced deprecated 'domains' with the modern remotePatterns
     remotePatterns: [
       {
         protocol: "https",

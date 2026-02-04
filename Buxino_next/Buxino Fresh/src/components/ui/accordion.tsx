@@ -14,7 +14,8 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-b", className)}
+    // min-w-full and block ensure the border-b stretches 100% on production builds
+    className={cn("border-b border-white/10 w-full min-w-full block", className)}
     {...props}
   />
 ))
@@ -34,7 +35,8 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+      {/* pointer-events-none ensures the icon doesn't block the click event */}
+      <ChevronDown className="h-4 w-4 shrink-0 text-white/50 transition-transform duration-200 pointer-events-none" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -46,6 +48,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
+    // These animation classes sync with your tailwind.config.ts keyframes
     className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
