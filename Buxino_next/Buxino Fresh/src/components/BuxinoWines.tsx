@@ -11,15 +11,16 @@ const BuxinoWinesPage = () => {
       
       {/* SECTION 1: LUXURY HERO */}
       <section 
-        className="h-screen w-full flex flex-col items-center justify-center text-center px-4 relative"
+        className="min-h-screen w-full flex flex-col items-center justify-center text-center px-4 relative"
         style={{ 
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('/BW_WineFarm.png'), url('https://images.unsplash.com/photo-1504275107627-0c2ba7a43dba?q=80&w=2000')`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('/BW_WineFarm.png'), url('https://images.unsplash.com/photo-1504275107627-0c2ba7a43dba?q=80&w=2000')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
         }}
       >
-        <div className="relative z-10 max-w-5xl">
+        {/* pt-24 ensures content sits below the fixed navbar while the background remains full-screen */}
+        <div className="relative z-10 max-w-5xl pt-24">
           <span className="text-gold font-black tracking-[0.6em] text-[10px] md:text-[12px] uppercase mb-6 block animate-fade-in">
             The Art of the Ascent
           </span>
