@@ -1,9 +1,10 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { ChevronRight, Award, ShieldCheck, Globe, Send } from "lucide-react";
+import { Award } from "lucide-react";
 
 // Institutional Gifting Data
 const giftingTiers = [
@@ -29,13 +30,15 @@ const giftingTiers = [
 
 const BuxinoWinesPage = () => {
   return (
-    <div className="bg-black text-white min-h-screen w-full overflow-x-hidden font-sans">
+    <main className="bg-black text-white min-h-screen w-full overflow-x-hidden font-sans">
+      {/* 1. Global Navigation */}
+      <Navbar />
       
       {/* SECTION 1: LUXURY HERO */}
       <section 
         className="min-h-screen w-full flex flex-col items-center justify-center text-center px-4 relative"
         style={{ 
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('/BW_WineFarm.png'), url('https://images.unsplash.com/photo-1504275107627-0c2ba7a43dba?q=80&w=2000')`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('/BW_WineFarm.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
@@ -145,18 +148,15 @@ const BuxinoWinesPage = () => {
         </div>
       </section>
 
-      {/* SECTION 4: CORPORATE STRATEGY (The Gifting Tiers) */}
+      {/* SECTION 4: CORPORATE STRATEGY */}
       <section className="py-32 bg-[#050505]">
         <div className="container mx-auto px-6 text-center max-w-6xl">
           <Award className="mx-auto text-gold mb-8" size={48} />
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">
             Corporate <span className="text-gold italic font-serif lowercase font-light">Gifting</span> Solutions
           </h2>
-          <p className="text-gray-400 text-xl font-light mb-16 max-w-3xl mx-auto leading-relaxed">
-            Tiered solutions crafted to signal executive excellence and cement institutional partnerships.
-          </p>
           
-          <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+          <div className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10 mt-12">
             {giftingTiers.map((item) => (
               <div key={item.tier} className="bg-black p-10 hover:bg-zinc-900 transition-all group flex flex-col h-full">
                 <h3 className="text-gold uppercase tracking-[0.3em] text-[10px] mb-2 font-black">{item.tier} Tier</h3>
@@ -177,7 +177,7 @@ const BuxinoWinesPage = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-40 bg-black text-center relative overflow-hidden">
+      <section className="py-40 bg-black text-center relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 opacity-5">
            <div className="text-[20vw] font-black text-white leading-none select-none">BUXINO</div>
         </div>
@@ -187,13 +187,13 @@ const BuxinoWinesPage = () => {
             <Link href="/connect" className="bg-gold text-black px-12 py-5 uppercase font-black tracking-widest text-[11px] hover:bg-white transition-colors">
               Request Gifting Catalog
             </Link>
-            <Link href="#collection" className="border border-white/20 text-white px-12 py-5 uppercase font-black tracking-widest text-[11px] hover:bg-white/10 transition-colors">
-              Direct-to-Consumer Shop
-            </Link>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* 4. Global Footer */}
+      <Footer />
+    </main>
   );
 };
 
