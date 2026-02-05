@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import OurStorySection from '@/components/OurStorySection';
-import SocialInvestmentsSection from '@/components/SocialInvestmentsSection';
+import SocialInvestmentsSection from '@/components/ServicesAndPhilosophy';
 import CompanyStatsSection from '@/components/CompanyStatsSection';
 
 /** * CRITICAL FIX: Using a relative path for MilestonesSection 

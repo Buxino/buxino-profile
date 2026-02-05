@@ -15,54 +15,56 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage,
   buttonText,
   buttonLink,
-  height = 'h-[65vh]', // Using a fixed height for a cleaner "Gallery" look
+  height = 'h-[75vh]', 
 }) => {
   return (
-    <section className="w-full bg-white relative z-0"> {/* Changed to z-0 – safe and common */}
-      <div className="container mx-auto px-6">
+    <section className="w-full bg-white relative z-0 pt-24 md:pt-0"> {/* Adjusted PT for navbar clearance */}
+      <div className="container mx-auto px-10">
         
         {/* 1. THE IMAGE BOX */}
-        <div className={`relative ${height} w-full overflow-hidden shadow-sm group`}>
+        <div className={`relative ${height} w-full overflow-hidden group border border-gray-50 shadow-sm`}>
           <img 
             src={`/${backgroundImage}`} 
             alt="Buxino Consulting Hero" 
-            className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+            className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[2000ms] ease-in-out scale-105 group-hover:scale-100"
           />
           
           {/* Subtle Watermark */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
             <img 
               src="/BuxinoConsultingGemini.png" 
               alt="" 
-              className="max-w-[50%] object-contain"
+              className="max-w-[40%] object-contain"
             />
           </div>
         </div>
 
-        {/* 2. THE TYPOGRAPHY (Below the picture) */}
-        <div className="py-16 md:py-24 max-w-5xl">
-          <h4 className="gold-accent mb-6">Established 2021</h4>
+        {/* 2. THE TYPOGRAPHY (Editorial Layout) */}
+        <div className="py-20 md:py-28 max-w-6xl">
+          <h4 className="text-[#c5a059] uppercase tracking-[0.5em] text-[10px] font-bold mb-8 block">
+            Established 2021
+          </h4>
           
-          <h1 className="text-navy-blue text-4xl md:text-6xl font-light leading-[1.1] tracking-tighter mb-10">
+          <h1 className="text-[#001f3f] text-4xl md:text-6xl font-light leading-[1.15] tracking-tight mb-12">
             {title}. <br/>
-            <span className="italic font-serif opacity-80 text-3xl md:text-5xl lowercase">
-              {/* Add subtitle here if needed */}
+            <span className="italic font-serif text-[#c5a059] text-3xl md:text-5xl lowercase opacity-90">
+              Institutional Excellence.
             </span>
           </h1>
           
           {buttonText && buttonLink && (
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-10">
               <Link href={buttonLink}>
-                <button className="bg-navy-blue text-white px-12 py-4 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-gold transition-all duration-500 shadow-xl hover:shadow-gold/20">
+                <button className="bg-[#001f3f] text-white px-10 py-4 text-[9px] uppercase tracking-[0.4em] font-light hover:bg-[#c5a059] transition-all duration-700">
                   {buttonText}
                 </button>
               </Link>
               
-              <div className="h-[1px] flex-grow bg-gray-100 hidden sm:block"></div>
+              {/* Decorative line to pull the eye across the page */}
+              <div className="h-[1px] flex-grow bg-gray-100 hidden sm:block max-w-xs"></div>
             </div>
           )}
         </div>
-
       </div>
     </section>
   );
