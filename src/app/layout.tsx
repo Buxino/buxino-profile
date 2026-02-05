@@ -13,6 +13,9 @@ const asap = Asap({
 export const metadata: Metadata = {
   title: "Buxino Consulting",
   description: "The Art of the Ascent",
+  icons: {
+    icon: "/icon.png", // This points to public/icon.png or app/icon.png
+  },
 };
 
 export default function RootLayout({
