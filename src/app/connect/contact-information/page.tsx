@@ -1,15 +1,61 @@
 "use client";
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Send, MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react'
+import { Send, MapPin, Phone, Mail, Clock, CheckCircle, Loader2 } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export default function ContactInformationPage() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    
+    // Web3Forms Configuration
+    formData.append("access_key", "d6c6bf82-1c1d-437d-87b1-8d0fdf43dc05"); 
+    formData.append("from_name", "Buxino Strategic Inquiry");
+    
+    // Matches your Zoho Filter exactly
+    formData.append("subject", "New Strategic Inquiry - Buxino Consulting");
+
+    // ENSURES MANUAL REPLIES WORK: Sets the destination for when you hit 'Reply' in Zoho
+    formData.append("replyto", formData.get("email") as string); 
+
+    // THE FREE-TIER WORKAROUND: Sends a copy of the inquiry to the client immediately.
+    // This acts as an instant receipt since automation is locked on free plans.
+    formData.append("cc", formData.get("email") as string); 
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        if (formRef.current) formRef.current.reset();
+        console.log("Buxino Lead Captured. Receipt CC'd to client.");
+      } else {
+        alert("Transmission error. Please contact consulting@buxino.co.za directly.");
+      }
+    } catch (error) {
+      console.error("Submission Error:", error);
+      alert("Network error. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="bg-white min-h-screen">
-
-      {/* 1. REFINED EDITORIAL HERO */}
+      {/* HERO SECTION */}
       <section className="relative h-[65vh] flex items-center bg-navy-blue overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <Image 
@@ -54,39 +100,72 @@ export default function ContactInformationPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             
-            {/* INQUIRY FORM - HIGH VISIBILITY DARK BOX */}
-            <div className="bg-navy-blue p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden">
+            {/* INQUIRY FORM */}
+            <div className="bg-navy-blue p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden min-h-[550px] flex flex-col justify-center">
               <div className="absolute top-0 left-0 w-full h-1 bg-gold"></div>
               
-              <h2 className="text-3xl font-black text-white uppercase mb-2 tracking-tighter">Strategic Inquiry</h2>
-              <p className="text-gold font-serif italic text-sm mb-10">Formalize your engagement with Buxino.</p>
-              
-              <form className="space-y-6 relative z-10">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Identity</label>
-                    <input type="text" placeholder="Full Name" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all placeholder:text-gray-600" />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Electronic Mail</label>
-                    <input type="email" placeholder="Business Email" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all placeholder:text-gray-600" />
-                  </div>
-                </div>
-                
-                <div className="space-y-1">
-                  <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Subject Matter</label>
-                  <input type="text" placeholder="Sector (e.g. Retail Branding)" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all placeholder:text-gray-600" />
-                </div>
+              {!isSubmitted ? (
+                <>
+                  <h2 className="text-3xl font-black text-white uppercase mb-2 tracking-tighter">Strategic Inquiry</h2>
+                  <p className="text-gold font-serif italic text-sm mb-10">Formalize your engagement with Buxino.</p>
+                  
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-1">
+                        <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Identity</label>
+                        <input required name="name" type="text" placeholder="Full Name" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all placeholder:text-gray-600" />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Electronic Mail</label>
+                        <input required name="email" type="email" placeholder="Business Email" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all placeholder:text-gray-600" />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Subject Matter</label>
+                      <input required name="sector" type="text" placeholder="Sector (e.g. Retail Branding)" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all placeholder:text-gray-600" />
+                    </div>
 
-                <div className="space-y-1">
-                  <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Narrative Details</label>
-                  <textarea rows={5} placeholder="How can Buxino assist?" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all resize-none placeholder:text-gray-600"></textarea>
-                </div>
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-gray-400 font-bold ml-1">Narrative Details</label>
+                      <textarea required name="message" rows={5} placeholder="How can Buxino assist?" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold focus:bg-white/10 outline-none text-xs uppercase tracking-widest transition-all resize-none placeholder:text-gray-600"></textarea>
+                    </div>
 
-                <button type="submit" className="bg-gold text-navy-blue w-full py-5 flex items-center justify-center gap-3 transition-all duration-500 uppercase font-black tracking-[0.5em] text-[11px] hover:bg-white">
-                  Transmit Message <Send size={14} />
-                </button>
-              </form>
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="bg-gold text-navy-blue w-full py-5 flex items-center justify-center gap-3 transition-all duration-500 uppercase font-black tracking-[0.5em] text-[11px] hover:bg-white disabled:opacity-50"
+                    >
+                      {isSubmitting ? (
+                        <>Processing <Loader2 size={14} className="animate-spin" /></>
+                      ) : (
+                        <>Transmit Message <Send size={14} /></>
+                      )}
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <div className="text-center space-y-6 animate-in fade-in zoom-in duration-700">
+                  <div className="flex justify-center">
+                    <CheckCircle size={64} className="text-gold mb-4" />
+                  </div>
+                  <h2 className="text-3xl font-black text-white uppercase tracking-tighter">Inquiry Received</h2>
+                  <div className="space-y-4 px-4">
+                    <p className="text-gray-300 font-light italic font-serif text-lg">
+                      Thank you for formalizing your engagement with Buxino Consulting. 
+                    </p>
+                    <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold">
+                      Strategic Response Guaranteed within 2 Business Days.
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="mt-8 text-white/40 text-[9px] uppercase tracking-[0.4em] hover:text-gold transition-colors"
+                  >
+                    New Submission
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* MAP & LOCATION DETAILS */}
@@ -97,10 +176,9 @@ export default function ContactInformationPage() {
                      <MapPin size={18} className="text-gold" /> Global Headquarters
                   </h3>
                   
-                  {/* MAP IMAGE / EMBED COMPONENT */}
                   <div className="relative w-full h-[300px] bg-gray-100 border border-gray-200 group overflow-hidden mb-8">
                     <Image 
-                      src="/MapCoordinates.png" // Ensure this asset is in your public folder
+                      src="/MapCoordinates.png" 
                       alt="Buxino HQ Coordinates"
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
