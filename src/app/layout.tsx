@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Asap } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import SuppressHydration from "@/components/SuppressHydration";  // ← new import
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const asap = Asap({
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   title: "Buxino Consulting",
   description: "The Art of the Ascent",
   icons: {
-    icon: "/icon.png", // This points to public/icon.png or app/icon.png
+    icon: "/icon.png",
   },
 };
 
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${asap.variable} font-asap antialiased bg-black text-white relative`}>
-        {/* Navbar must have the highest z-index */}
-        <Navbar />
-        
+        {/* Suppress hydration warnings only around Navbar */}
+        <SuppressHydration>
+          <Navbar />
+        </SuppressHydration>
+
         {/* main container handles the spacing for all pages */}
         <main className="relative z-0 min-h-screen">
           {children}

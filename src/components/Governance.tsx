@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
-import { Minus } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const GovernancePage = () => {
   const accolades = [
@@ -16,7 +17,9 @@ const GovernancePage = () => {
       {/* 1. CLEAN HEADER - No Navbar overlap, starts fresh */}
       <section className="pt-20 pb-16 bg-white border-b border-gray-50">
         <div className="container mx-auto px-6 max-w-6xl text-center">
-          <h4 className="gold-accent mb-2">Executive Leadership</h4>
+          <h4 className="text-gold mb-2 uppercase tracking-widest text-sm font-semibold">
+            Executive Leadership
+          </h4>
           <h1 className="text-navy-blue text-4xl md:text-6xl font-light uppercase tracking-tighter">
             Governance & <span className="italic font-serif text-gold">Perspective</span>
           </h1>
@@ -70,7 +73,9 @@ const GovernancePage = () => {
 
               {/* Accolades */}
               <div className="mt-16">
-                <h4 className="gold-accent mb-8 block border-b border-gray-50 pb-4">Executive Competencies</h4>
+                <h4 className="text-gold mb-8 block border-b border-gray-50 pb-4 uppercase tracking-widest text-sm font-semibold">
+                  Executive Competencies
+                </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   {accolades.map((text, i) => (
                     <div key={i} className="flex items-center gap-4 group">
@@ -97,6 +102,31 @@ const GovernancePage = () => {
             <div className="w-12 h-[1px] bg-gold mx-auto mb-6"></div>
             <span className="text-[10px] uppercase tracking-[0.5em] text-white font-bold opacity-60 text-pretty">B. Matjila</span>
           </div>
+        </div>
+      </section>
+
+      {/* 4. COMPLIANCE HUB CTA – Added at the bottom */}
+      <section className="py-20 bg-gray-50 border-t border-gold/20">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <h3 className="text-3xl md:text-4xl font-bold text-navy-blue mb-6 tracking-tight">
+            Institutional Governance & Compliance
+          </h3>
+          
+          <p className="text-lg text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Full legal, regulatory and compliance frameworks — including PAIA Manual, POPIA Policy, Terms of Use, Corporate Email Disclaimer, and Quality Policy — are maintained in our dedicated hub. All documents are current, publicly accessible, and updated for transparency and due diligence.
+          </p>
+
+          <Link
+            href="/compliance"  // Change to "/governance/compliance" if you prefer the nested route
+            className="group inline-flex items-center gap-4 bg-navy-blue text-white px-10 py-5 rounded-xl font-bold text-lg uppercase tracking-widest hover:bg-gold hover:text-navy-blue transition-all duration-300 shadow-xl hover:shadow-2xl"
+          >
+            Access Full Compliance Hub
+            <ArrowRight className="group-hover:translate-x-2 transition-transform duration-300" size={24} />
+          </Link>
+
+          <p className="text-sm text-gray-500 mt-8">
+            All governance documentation is current as of February 2026 • Reg: 2021/965486/07 • Level 1 B-BBEE
+          </p>
         </div>
       </section>
     </main>
