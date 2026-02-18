@@ -3,6 +3,7 @@ import { Inter, Asap } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SuppressHydration from "@/components/SuppressHydration";  // ← new import
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const asap = Asap({
@@ -36,6 +37,7 @@ export default function RootLayout({
         <main className="relative z-0 min-h-screen">
           {children}
         </main>
+        <SpeedInsights />
       </body>
     </html>
   );
