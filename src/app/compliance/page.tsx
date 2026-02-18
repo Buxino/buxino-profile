@@ -273,7 +273,7 @@ export default function ComplianceHub() {
 
       {/* Footer note */}
       <footer className="text-center py-12 text-sm text-gray-500 print:hidden">
-        © 2026 Buxino Consulting (Pty) Ltd | Reg: 2021/965486/07 | All governance documents current as of February 2026
+        Information Officer Reg. No. 2026-002370 • © 2026 Buxino Consulting (Pty) Ltd | Reg: 2021/965486/07 | All governance documents current as of February 2026
       </footer>
     </div>
   );

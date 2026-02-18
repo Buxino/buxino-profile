@@ -394,7 +394,7 @@ export default function ComplianceHub() {
 
       {/* Screen-only footer */}
       <footer className="mt-32 py-16 text-center text-lg text-gray-600 border-t print:hidden">
-        © 2026 Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE<br />
+        Information Officer Reg. No. 2026-002370 • © 2026 Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE<br />
         All governance documentation is current as of February 2026
       </footer>
     </div>
