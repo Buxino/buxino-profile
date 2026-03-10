@@ -20,7 +20,17 @@ const navItems = [
       { name: "Our Values", link: "/values" },
       { name: "Investments", link: "/investments" },
       { name: "Company Profile", link: "/profile" },
-      { name: "Buxino Wines", link: "/buxino_wines" },
+      { name: "Buxino Wines", link: "/wines" },
+    ],
+  },
+  {
+    name: "Services",
+    dropdown: [
+      { name: "Corporate Gifting", link: "/corporate-gifting" }, // Moved here
+      { name: "Registrations & Strategy", link: "/registrations" },
+      { name: "Atmospheric Events", link: "/events" },
+      { name: "Strategic Consulting", link: "/retainers" },
+      { name: "View Catalog", link: "https://promoafrica.com/Buxino" },
     ],
   },
   {
@@ -28,13 +38,6 @@ const navItems = [
     dropdown: [
       { name: "Founder: Bakang Matjila", link: "/governance" },
       { name: "Corporate Credentials", link: "/profile" },
-    ],
-  },
-  {
-    name: "Corporate Gifting",
-    dropdown: [
-      { name: "Amrod Partnership", link: "/corporate-gifting" },
-      { name: "View Catalog", link: "https://promoafrica.com/Buxino" },
     ],
   },
   {
@@ -79,7 +82,7 @@ const Navbar = () => {
                 width={40} 
                 height={53} 
                 priority 
-                className="w-auto h-10 md:h-12" /* Reduced height slightly to pull UI up */
+                className="w-auto h-10 md:h-12" 
               />
             </Link>
             

@@ -1,220 +1,221 @@
 "use client";
+
 import React from 'react';
 import { 
   Wine, Music, Utensils, ShieldCheck, Mail, Phone, MapPin, 
-  Globe, Award, Briefcase, BarChart3, PieChart, ArrowUpRight, 
-  Download, Landmark, TrendingUp, Info, Scale, Users, Leaf, 
-  Landmark as PoliticalIcon 
+  Award, Briefcase, ArrowUpRight, 
+  Download, Landmark, TrendingUp, Info, Users, 
+  Target, GraduationCap, BarChart3, ShieldAlert
 } from 'lucide-react';
 
 const CompanyProfile = () => {
   return (
-    <div className="bg-white text-navy-blue p-8 md:p-20 max-w-6xl mx-auto border shadow-2xl my-10 font-sans print:shadow-none print:my-0 print:border-none">
-      
-      {/* 1. INSTITUTIONAL HEADER */}
-      <header className="border-b-[6px] border-navy-blue pb-10 mb-16 flex justify-between items-end">
-        <div>
-          <h4 className="text-gold font-black uppercase tracking-[0.5em] text-[12px] mb-4 italic opacity-80">Corporate Identity</h4>
-          <h1 className="text-6xl md:text-[7.5rem] font-black uppercase tracking-tighter leading-[0.75]">
-            Buxino<br/>Consulting
+    <main className="bg-[#020617] min-h-screen font-sans selection:bg-[#C5A059] selection:text-[#020617]">
+      {/* 1. HERO SECTION: INSTITUTIONAL IDENTITY */}
+      <header className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 border-b border-[#C5A059]/20 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070')] bg-cover bg-center opacity-10" />
+        
+        <div className="relative z-10 mb-12">
+          <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-white mb-2 font-serif uppercase">
+            BUXINO
           </h1>
-          <p className="text-gold font-bold uppercase tracking-[0.3em] mt-8 flex items-center gap-3 text-sm">
-            <Landmark size={20}/> Institutional Strategic Holdings
+          <p className="text-[#C5A059] tracking-[0.8em] font-bold text-sm md:text-xl uppercase">
+            Consulting (Pty) Ltd
           </p>
         </div>
-        <div className="text-right hidden md:block border-l border-gray-100 pl-8">
-          <p className="text-[10px] font-black uppercase tracking-widest text-navy-blue/40 leading-loose">
-            Profile: BX-2026-CP<br/>
-            Cycle: 2026 — 2028<br/>
-            Jurisdiction: Gauteng, RSA
+        
+        <div className="relative z-10 w-32 h-[1px] bg-[#C5A059] mb-12" />
+        
+        <div className="relative z-10 space-y-4">
+          <h2 className="text-2xl md:text-4xl font-light text-white uppercase tracking-[0.3em] font-serif italic">
+            Architecting Execution
+          </h2>
+          <p className="text-[#94a3b8] uppercase tracking-[0.5em] text-[10px] font-bold">
+            Level 1 B-BBEE • 100% Black Owned • Institutional Excellence
           </p>
+        </div>
+
+        <div className="absolute bottom-10 flex gap-8 opacity-40 text-[9px] tracking-[0.4em] text-white uppercase font-bold">
+          <span>Reg: 2021/965486/07</span>
+          <span>SARS Compliant</span>
+          <span>POPIA Registered</span>
         </div>
       </header>
 
-      {/* 2. EXECUTIVE VISION */}
-      <section className="grid md:grid-cols-3 gap-16 mb-24">
-        <div className="md:col-span-1">
-          <h2 className="text-gold font-black uppercase tracking-widest text-xs mb-6 underline decoration-navy-blue decoration-2 underline-offset-8">The Mandate</h2>
-          <p className="text-sm text-gray-600 leading-relaxed font-serif italic">
-            "Architecting enterprise value through fifteen years of multinational exposure. We transition operational potential into sovereign market dominance."
-          </p>
-        </div>
-        <div className="md:col-span-2">
-           <h3 className="text-5xl font-black uppercase tracking-tighter mb-8 leading-none italic font-serif text-navy-blue/90">Institutional Execution</h3>
-           <p className="text-navy-blue/70 text-lg mb-6 leading-relaxed font-medium">
-             Buxino Consulting translates a decade and a half of FMCG and advertising management into a streamlined holding structure. Our 2026—2028 roadmap focuses on the aggressive scale of high-margin vertical service ecosystems.
-           </p>
-        </div>
-      </section>
-
-      {/* 3. CORE SERVICE HIGHLIGHT: CORPORATE GIFTING */}
-      <section className="mb-24 bg-navy-blue text-white p-16 rounded-sm relative overflow-hidden shadow-2xl">
-        <div className="relative z-10 max-w-3xl">
-          <h4 className="text-gold font-black uppercase tracking-widest text-[10px] mb-4">Strategic Revenue Pillar</h4>
-          <h2 className="text-5xl font-black uppercase tracking-tighter mb-8 leading-tight">Corporate Gifting & Branding</h2>
-          <p className="text-xl text-white/80 font-serif italic mb-10 leading-relaxed">
-            As a premier Amrod Affiliate, Buxino commands the primary value chain for corporate identity. This division serves as a high-volume engine, delivering bespoke branding solutions to multinational firms across Africa.
-          </p>
-          <div className="flex flex-wrap gap-6">
-            <a href="https://promoafrica.com/Buxino" target="_blank" rel="noopener noreferrer" className="bg-gold text-navy-blue px-10 py-4 font-black uppercase text-[11px] tracking-widest hover:bg-white transition-all flex items-center gap-2">
-              Access Institutional Catalogue <ArrowUpRight size={16}/>
-            </a>
-          </div>
-        </div>
-        <Briefcase className="absolute -right-20 -bottom-20 text-white/5" size={400} />
-      </section>
-
-      {/* 4. STRATEGIC FINANCIAL FORECAST (PESTEL INTEGRATED) */}
-      <section className="mb-24">
-        <div className="mb-12">
-          <h2 className="text-navy-blue font-black uppercase tracking-tighter text-5xl">Strategic Outlook</h2>
-          <p className="text-gold font-bold text-[10px] uppercase tracking-[0.3em] mt-2 italic">Growth Trajectory & Market Resilience</p>
-        </div>
-
-        {/* VISUAL GROWTH CHART */}
-        <div className="relative h-64 w-full flex items-end gap-4 px-4 border-b-2 border-navy-blue mb-12">
-          <div className="flex-1 group relative">
-             <div className="bg-gray-200 h-24 w-full transition-all duration-700 group-hover:bg-navy-blue relative">
-                <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-[10px] font-black opacity-0 group-hover:opacity-100 transition-all uppercase whitespace-nowrap">Service Baseline</span>
-             </div>
-             <p className="text-center mt-4 font-black text-[10px] uppercase tracking-widest">2026</p>
-          </div>
-          <div className="flex-1 group relative">
-             <div className="bg-gray-300 h-44 w-full transition-all duration-700 group-hover:bg-gold relative">
-                <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-[10px] font-black opacity-0 group-hover:opacity-100 transition-all uppercase whitespace-nowrap">+40% Market Expansion</span>
-             </div>
-             <p className="text-center mt-4 font-black text-[10px] uppercase tracking-widest">2027</p>
-          </div>
-          <div className="flex-1 group relative">
-             <div className="bg-navy-blue h-64 w-full relative">
-                <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase text-gold whitespace-nowrap">Market Dominance</span>
-             </div>
-             <p className="text-center mt-4 font-black text-[10px] uppercase tracking-widest">2028</p>
-          </div>
-        </div>
-
-        {/* PESTEL STRATEGY MATRIX */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="p-8 border border-gray-100 bg-gray-50">
-            <div className="flex items-center gap-3 mb-4 text-gold">
-               <PoliticalIcon size={20}/>
-               <h4 className="font-black uppercase text-[10px] tracking-[0.2em] text-navy-blue">Political & Legal</h4>
-            </div>
-            <p className="text-[11px] text-gray-500 leading-relaxed italic">
-              <strong>Context:</strong> Evolving B-BBEE and trade regulations.<br/>
-              <strong>Approach:</strong> Agile compliance management to ensure seamless multinational partnership standards.
+      {/* 2. THE MANDATE: 2026 STRATEGY OVERVIEW */}
+      <section className="py-32 px-6 max-w-7xl mx-auto border-x border-white/5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          <div className="text-left">
+            <h3 className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-8 flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#C5A059]" /> The 2026 Mandate
+            </h3>
+            <h2 className="text-5xl text-white mb-10 font-serif uppercase leading-tight">
+              Bridging Blue-Chip <br />Strategy & Compliance
+            </h2>
+            <p className="text-[#94a3b8] text-xl leading-relaxed mb-8 font-serif italic border-l-2 border-[#C5A059] pl-8">
+              "We help blue-chip companies meet their 3% Net Profit After Tax (NPAT) ESD targets faster and more cost-effectively while building a scalable knowledge business."
+            </p>
+            <p className="text-[#94a3b8] text-base leading-relaxed mb-6 opacity-80">
+              Buxino leverages a hybrid engine that combines a lean strategic core with SETA-funded support wings. This enables us to deliver premium-tier execution at high-margin efficiency, addressing South Africa's 44% youth unemployment crisis.
             </p>
           </div>
-          <div className="p-8 border-y-4 md:border-y-0 md:border-x-4 border-gold bg-navy-blue text-white shadow-xl">
-            <div className="flex items-center gap-3 mb-4 text-gold">
-               <TrendingUp size={20}/>
-               <h4 className="font-black uppercase text-[10px] tracking-[0.2em] text-white">Economic</h4>
-            </div>
-            <p className="text-[11px] text-white/70 leading-relaxed italic">
-              <strong>Context:</strong> Currency volatility affecting procurement.<br/>
-              <strong>Approach:</strong> High-liquidity "war chests" used to hedge against price spikes and secure fixed-rate supply.
-            </p>
-          </div>
-          <div className="p-8 border border-gray-100 bg-gray-50">
-            <div className="flex items-center gap-3 mb-4 text-gold">
-               <Users size={20}/>
-               <h4 className="font-black uppercase text-[10px] tracking-[0.2em] text-navy-blue">Social & Enviro</h4>
-            </div>
-            <p className="text-[11px] text-gray-500 leading-relaxed italic">
-              <strong>Context:</strong> Shift toward ESG-conscious branding.<br/>
-              <strong>Approach:</strong> Transitioning to sustainable material catalogs and local supply chain empowerment.
-            </p>
-          </div>
-        </div>
-
-        {/* LAYMAN JUSTIFICATION */}
-        <div className="p-10 bg-navy-blue text-white rounded-sm flex flex-col md:flex-row gap-10 items-center">
-          <div className="flex-shrink-0"><Info size={40} className="text-gold opacity-50"/></div>
-          <div>
-            <h4 className="font-black uppercase text-xs tracking-widest mb-2 text-gold">Strategic Growth Model</h4>
-            <p className="text-sm italic font-serif leading-relaxed opacity-80">
-              Buxino separates Market Activity from Operational Stability. While our projects generate multi-million rand turnover, we prioritize the growth of **Liquid Reserves**. This debt-free approach allows us to scale rapidly while maintaining the financial health required to service Africa's largest institutions.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. VERTICALS & STRATEGIC NETWORK */}
-      <section className="mb-24 grid md:grid-cols-2 gap-20">
-        <div>
-          <h2 className="text-4xl font-black uppercase mb-10 tracking-tighter">Business Verticals</h2>
-          <div className="space-y-8">
-            <div className="flex gap-6 items-start">
-              <Wine size={36} className="text-gold shrink-0 mt-1" strokeWidth={1.5}/>
-              <div>
-                <h4 className="font-black uppercase text-sm mb-1 tracking-widest">Buxino Wines</h4>
-                <p className="text-xs text-gray-500 italic leading-relaxed">Luxury viticulture integrated with corporate networking assets and elite cellar procurement.</p>
+          
+          <div className="grid grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-sm overflow-hidden">
+            {[
+              { label: "B-BBEE Recognition", val: "135%" },
+              { label: "Projected Margin (2029)", val: "90%" },
+              { label: "Annual ESD Spend Focus", val: "R30B" },
+              { label: "Procurement Advantage", val: "Level 1" }
+            ].map((stat, i) => (
+              <div key={i} className="bg-[#020617] p-10 text-center group hover:bg-white/5 transition-colors">
+                <span className="block text-4xl font-bold text-white mb-2 group-hover:text-[#C5A059] transition-colors">{stat.val}</span>
+                <span className="text-[9px] text-[#C5A059] tracking-widest uppercase font-black">{stat.label}</span>
               </div>
-            </div>
-            <div className="flex gap-6 items-start">
-              <Music size={36} className="text-gold shrink-0 mt-1" strokeWidth={1.5}/>
-              <div>
-                <h4 className="font-black uppercase text-sm mb-1 tracking-widest">In The Mino</h4>
-                <p className="text-xs text-gray-500 italic leading-relaxed">Management agency for creative IP, applying professional business frameworks to entertainment logistics.</p>
-              </div>
-            </div>
-            <div className="flex gap-6 items-start">
-              <Utensils size={36} className="text-gold shrink-0 mt-1" strokeWidth={1.5}/>
-              <div>
-                <h4 className="font-black uppercase text-sm mb-1 tracking-widest">BuxRamsy</h4>
-                <p className="text-xs text-gray-500 italic leading-relaxed">Executive culinary services tailored for boardroom hospitality and high-stakes corporate gala events.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-[#FAFAFA] p-10 border border-gray-100 shadow-sm">
-          <h2 className="text-4xl font-black uppercase mb-10 tracking-tighter">Strategic Footprint</h2>
-          <p className="text-sm text-gray-600 mb-8 font-serif italic">Buxino has delivered strategic branding and consulting for partners in:</p>
-          <div className="grid grid-cols-2 gap-4">
-             <div className="p-4 bg-white border border-gray-100 flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-navy-blue shadow-sm">
-                <ShieldCheck size={14} className="text-gold"/> Multinational Retail
-             </div>
-             <div className="p-4 bg-white border border-gray-100 flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-navy-blue shadow-sm">
-                <ShieldCheck size={14} className="text-gold"/> TMT Infrastructure
-             </div>
-             <div className="p-4 bg-white border border-gray-100 flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-navy-blue shadow-sm">
-                <ShieldCheck size={14} className="text-gold"/> Private Viticulture
-             </div>
-             <div className="p-4 bg-white border border-gray-100 flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-navy-blue shadow-sm">
-                <ShieldCheck size={14} className="text-gold"/> Advertising Media
-             </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 6. AUTHORIZED REGISTRY */}
-      <footer className="border-t-8 border-navy-blue pt-16 grid md:grid-cols-2 gap-16">
-        <div className="space-y-6">
-          <h4 className="font-black uppercase text-[11px] tracking-[0.5em] text-gold">Official Registry</h4>
-          <div className="space-y-3 text-[11px] font-bold uppercase tracking-widest">
-            <p className="flex items-center gap-4 hover:text-gold transition-colors cursor-pointer"><Phone size={16} className="text-gold"/> +27 79 264 4869</p>
-            <p className="flex items-center gap-4 hover:text-gold transition-colors cursor-pointer"><Mail size={16} className="text-gold"/> consulting@buxino.com</p>
-            <p className="flex items-center gap-4 hover:text-gold transition-colors cursor-pointer"><MapPin size={16} className="text-gold"/> 6159 Matlaisane St, Pretoria, 0208</p>
+      {/* 3. EXECUTION ECOSYSTEM: CORE REVENUE PILLARS */}
+      <section className="py-32 bg-white/[0.02] border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-24">
+            <h2 className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.6em] mb-4">The Execution Ecosystem</h2>
+            <p className="text-white text-3xl font-serif uppercase tracking-widest">Revenue Scaling Framework</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                id: "01",
+                title: "Corporate Gifting",
+                desc: "Premium executive kits sourced via Amrod affiliate network. The 'Trojan Horse' entry wedge for blue-chip accounts.",
+                icon: <Briefcase size={20} />,
+                tags: ["Automotive Incentive Kits", "Mining SLP Gifts", "FMCG Launch Kits"]
+              },
+              {
+                id: "02",
+                title: "Strategy Consulting",
+                desc: "Retainer-based sales optimization and ESD compliance navigation. Our core recurring revenue engine.",
+                icon: <Target size={20} />,
+                tags: ["R35k - R75k+ Retainers", "Procurement Infiltration", "TMT Market Entry"]
+              },
+              {
+                id: "03",
+                title: "Buxino Academy",
+                desc: "Knowledge monetization through digital toolkits and mentorship. Turning execution IP into a digital flywheel.",
+                icon: <GraduationCap size={20} />,
+                tags: ["Self-Serve Toolkits", "Done-With-You Mentorship", "Licensing Systems"]
+              }
+            ].map((pillar, i) => (
+              <div key={i} className="group p-12 border border-white/5 bg-black/40 hover:border-[#C5A059]/30 transition-all relative">
+                <span className="absolute top-8 right-8 text-[#C5A059]/20 text-4xl font-black italic">{pillar.id}</span>
+                <div className="text-[#C5A059] mb-8">{pillar.icon}</div>
+                <h3 className="text-white text-2xl mb-6 font-serif uppercase tracking-wider">{pillar.title}</h3>
+                <p className="text-xs text-[#94a3b8] leading-loose mb-10 opacity-70">{pillar.desc}</p>
+                <ul className="space-y-3">
+                  {pillar.tags.map((tag, j) => (
+                    <li key={j} className="text-[9px] text-[#C5A059] flex items-center gap-3 tracking-[0.2em] font-bold uppercase italic">
+                      <span className="w-1.5 h-1.5 bg-[#C5A059]/30 rounded-full" /> {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="text-right">
-          <p className="text-[10px] uppercase font-black tracking-[0.4em] text-navy-blue/40 mb-2">Managing Director</p>
-          <p className="font-serif italic text-6xl text-navy-blue">Bakang Matjila</p>
-          <p className="text-[10px] uppercase font-black tracking-[0.4em] text-gold mt-6 border-t border-gray-100 pt-4 inline-block">Revision 2026.01 | Established 2022</p>
+      </section>
+
+      {/* 4. STRATEGIC OUTLOOK: PESTLE ANALYSIS */}
+      <section className="py-32 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-24">
+            <h2 className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.6em] mb-4 text-center">Macro Positioning</h2>
+            <p className="text-white text-3xl font-serif uppercase tracking-widest">2026 PESTLE Matrix</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+          {[
+            { cat: "Political", detail: "B-BBEE reforms & 3% NPAT fund favor Level 1 firms." },
+            { cat: "Economic", detail: "TMT 3.12% CAGR; Mining +2.5% production growth." },
+            { cat: "Social", detail: "Addressing 44% youth unemployment via SETA training." },
+            { cat: "Technological", detail: "Leveraging 5G/IoT growth for branding & logistics." },
+            { cat: "Legal", detail: "EEA & POPIA compliance mandatory for corporate tenders." },
+            { cat: "Environmental", detail: "Eco-friendly gifting aligning with green procurement." }
+          ].map((item, i) => (
+            <div key={i} className="bg-[#020617] p-10 group hover:bg-[#C5A059]/5 transition-all">
+              <h4 className="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <ShieldAlert size={14} className="text-[#C5A059]" /> {item.cat}
+              </h4>
+              <p className="text-[11px] text-[#94a3b8] leading-relaxed opacity-60 italic">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. THE ARCHITECT & GOVERNANCE */}
+      <section className="py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          <div className="border-l border-[#C5A059]/30 pl-12">
+            <h3 className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-8 italic">The Architect</h3>
+            <h2 className="text-4xl text-white mb-8 font-serif uppercase tracking-tighter">Bakang Matjila</h2>
+            <p className="text-[#94a3b8] text-sm leading-loose mb-8 opacity-80">
+              Managing Director with a BCom in Economic Management Sciences. A multi-disciplinary strategist synthesizing Marketing Management and Financial Accounting to create structural freedom for African brands.
+            </p>
+            <div className="flex gap-4">
+              <div className="h-10 w-10 border border-[#C5A059]/30 rounded-full flex items-center justify-center text-[10px] text-[#C5A059] font-black cursor-pointer hover:bg-[#C5A059] hover:text-[#020617] transition-all">LI</div>
+              <div className="h-10 w-10 border border-[#C5A059]/30 rounded-full flex items-center justify-center text-[10px] text-[#C5A059] font-black cursor-pointer hover:bg-[#C5A059] hover:text-[#020617] transition-all">IG</div>
+            </div>
+          </div>
+          
+          <div className="bg-white/[0.03] p-12 rounded-sm border border-white/5">
+            <h3 className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-10 italic">Institutional Governance</h3>
+            <div className="space-y-8">
+              {[
+                { title: "B-BBEE Level 1", desc: "135% Procurement Recognition. 100% Black Owned." },
+                { title: "Compliance", desc: "SARS Tax Compliant, POPIA Registered, SETA-Aligned." },
+                { title: "Vision 2027", desc: "Strategic HQ expansion into Hatfield financial hub." }
+              ].map((g, i) => (
+                <div key={i} className="flex items-start gap-6">
+                  <div className="h-2 w-2 bg-[#C5A059] mt-2 rotate-45" />
+                  <div>
+                    <p className="text-white text-xs font-black uppercase tracking-widest mb-1">{g.title}</p>
+                    <p className="text-[10px] text-[#94a3b8] opacity-60 font-medium">{g.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-24 border-t border-white/5 bg-black">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl text-white font-serif uppercase mb-6 italic tracking-widest">"Architecting Execution."</h2>
+          <p className="text-[10px] text-[#94a3b8] tracking-[0.8em] uppercase mb-16 font-bold opacity-50 italic">Out of the night, into prosperity.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-[10px] text-[#C5A059] tracking-[0.4em] font-black uppercase italic mb-20">
+            <a href="tel:0792644869" className="hover:text-white transition-colors">079 264 4869</a>
+            <a href="mailto:consulting@buxino.co.za" className="hover:text-white transition-colors">CONSULTING@BUXINO.CO.ZA</a>
+            <a href="https://www.buxino.co.za" className="hover:text-white transition-colors">WWW.BUXINO.CO.ZA</a>
+          </div>
+          
+          <div className="opacity-20 text-[8px] tracking-[1.2em] text-white font-black uppercase">
+            BUXINO CONSULTING (PTY) LTD • 2021/965486/07 • LEVEL 1 B-BBEE
+          </div>
         </div>
       </footer>
 
-      {/* DOWNLOAD CTA */}
-      <div className="mt-24 text-center print:hidden border-t border-gray-100 pt-16">
+      {/* PDF EXPORT TRIGGER */}
+      <div className="fixed bottom-8 right-8 z-50">
         <button 
           onClick={() => window.print()}
-          className="group flex items-center gap-6 mx-auto bg-navy-blue text-white px-16 py-6 font-black uppercase text-[12px] tracking-[0.3em] hover:bg-gold transition-all duration-700 shadow-2xl active:scale-95"
+          className="group flex items-center gap-4 bg-[#C5A059] text-[#020617] px-8 py-4 text-[10px] font-black tracking-[0.4em] uppercase hover:bg-white hover:scale-105 transition-all shadow-2xl active:scale-95"
         >
-          Download Company Profile <Download size={20} className="group-hover:translate-y-1 transition-transform duration-500"/>
+          Institutional Profile <Download size={14} className="group-hover:translate-y-1 transition-transform" />
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 
