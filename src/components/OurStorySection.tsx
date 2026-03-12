@@ -24,7 +24,7 @@ const OurStorySection = () => {
             
             <div className="space-y-4 text-gray-500 font-light leading-relaxed">
               <p>
-                Buxino Consulting was founded by a team of experienced branding professionals passionate about unlocking business potential through strategy. With expertise spanning marketing, design, and consumer psychology, we deliver results that resonate.
+                Buxino Consulting was founded by Bakang Matjila, an experienced branding professional passionate about unlocking business potential through strategy. With expertise spanning marketing, design, and consumer psychology, we deliver results that resonate.
               </p>
               <p>
                 Our commitment to high-quality content and personalized service sets us apart. We serve small and medium-sized enterprises across various industries, providing the resources and expertise needed to drive meaningful customer engagement.

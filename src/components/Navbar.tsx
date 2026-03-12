@@ -18,19 +18,25 @@ const navItems = [
       { name: "Our Business", link: "/business" },
       { name: "Our Vision", link: "/milestones" },
       { name: "Our Values", link: "/values" },
-      { name: "Investments", link: "/investments" },
       { name: "Company Profile", link: "/profile" },
-      { name: "Buxino Wines", link: "/wines" },
     ],
   },
   {
     name: "Services",
     dropdown: [
-      { name: "Corporate Gifting", link: "/corporate-gifting" }, // Moved here
+      { name: "Corporate Gifting", link: "/corporate-gifting" },
+      { name: "Event Architecture", link: "/events" },
       { name: "Registrations & Strategy", link: "/registrations" },
-      { name: "Atmospheric Events", link: "/events" },
       { name: "Strategic Consulting", link: "/retainers" },
       { name: "View Catalog", link: "https://promoafrica.com/Buxino" },
+    ],
+  },
+  {
+    name: "Investments",
+    dropdown: [
+      { name: "Buxino Wines", link: "/wines" },
+      { name: "In The Mino", link: "/in-the-mino" },
+      { name: "BuxRamsey", link: "/buxramsey" },
     ],
   },
   {
@@ -73,7 +79,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-10 flex justify-between items-center">
           
-          {/* LEFT SIDE: Logo & Home Button Pair */}
+          {/* LEFT SIDE: Logo & Home Pair */}
           <div className="flex items-center gap-8">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="relative z-[10001] transition-opacity hover:opacity-80">
               <Image 
@@ -101,16 +107,17 @@ const Navbar = () => {
                 key={item.name}
                 onMouseEnter={() => setOpenDropdown(item.name)}
                 onMouseLeave={() => setOpenDropdown(null)}
-                className="relative"
+                className="relative py-2" // Ensures hover stability
               >
                 <DropdownMenu open={openDropdown === item.name}>
-                  <DropdownMenuTrigger className="text-[#c5a059] text-[9px] uppercase tracking-[0.45em] font-light flex items-center gap-1.5 outline-none transition-all hover:text-white">
+                  <DropdownMenuTrigger className="text-[#c5a059] text-[9px] uppercase tracking-[0.45em] font-light flex items-center gap-1.5 outline-none transition-all hover:text-white data-[state=open]:text-white">
                     <span>{item.name}</span>
-                    <ChevronDown size={7} className="opacity-30" />
+                    <ChevronDown size={7} className={`transition-transform duration-300 ${openDropdown === item.name ? "rotate-180 opacity-100" : "opacity-30"}`} />
                   </DropdownMenuTrigger>
                   
                   <DropdownMenuContent 
-                    className="bg-[#001f3f] border border-[#c5a059]/20 min-w-[190px] rounded-none shadow-2xl p-0 z-[10000] animate-in fade-in zoom-in-95 duration-200"
+                    sideOffset={0} // Forces the menu to touch the trigger
+                    className="bg-[#001f3f] border border-[#c5a059]/20 min-w-[210px] rounded-none shadow-2xl p-0 z-[10000] animate-in fade-in zoom-in-95 duration-200"
                     align="end"
                   >
                     <div className="h-[1px] w-full bg-[#c5a059]/30"></div>
@@ -144,7 +151,7 @@ const Navbar = () => {
           mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="flex flex-col h-full pt-32 px-12">
+        <div className="flex flex-col h-full pt-32 px-12 overflow-y-auto">
           <Link 
             href="/" 
             onClick={() => setMobileMenuOpen(false)}
@@ -164,7 +171,7 @@ const Navbar = () => {
               {activeMobileSection === item.name && (
                 <div className="mt-4 space-y-4 flex flex-col border-l border-[#c5a059]/20 ml-1">
                   {item.dropdown.map((sub) => (
-                    <Link key={sub.name} href={sub.link} onClick={() => setMobileMenuOpen(false)} className="text-white/40 text-[10px] uppercase tracking-[0.2em] pl-6">
+                    <Link key={sub.name} href={sub.link} onClick={() => setMobileMenuOpen(false)} className="text-white/40 text-[10px] uppercase tracking-[0.2em] pl-6 py-1">
                       {sub.name}
                     </Link>
                   ))}
