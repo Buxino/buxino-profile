@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUXINO Consulting (Pty) Ltd | Comprehensive Business Plan 2026–2029 (Revised)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap');
+
+        :root {
+            --bx-navy: #1a2a6c;
+            --bx-gold: #D4AF37;
+            --bx-slate: #334155;
+            --bx-white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--bx-navy);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, var(--bx-navy) 0%, #003366 100%);
+            border-bottom: 10px solid var(--bx-gold);
+        }
+
+        .corporate-font { font-family: 'Montserrat', sans-serif; }
+        .text-gold { color: var(--bx-gold); }
+        .bg-gold { background-color: var(--bx-gold); }
+        .border-gold { border-color: var(--bx-gold); }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .pillar-card {
+            border-left: 5px solid var(--bx-gold);
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-bottom: 1.5rem; 
+            font-size: 0.9rem; 
+        }
+        th { 
+            background: var(--bx-navy); 
+            color: white; 
+            padding: 1rem; 
+            text-align: left; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 0.05em; 
+        }
+        td { 
+            padding: 1rem; 
+            border-bottom: 1px solid var(--border-color); 
+            text-align: left; 
+        }
+        .section-header { 
+            background: #f1f5f9; 
+            font-weight: 900; 
+            color: var(--bx-navy); 
+            border-left: 4px solid var(--bx-gold); 
+        }
+        .row-total { 
+            background: #f8fafc; 
+            font-weight: 800; 
+            border-top: 2px solid var(--bx-navy); 
+        }
+        .row-grand-total { 
+            background: var(--bx-navy); 
+            color: white; 
+            font-weight: 900; 
+        }
+
+        .badge {
+            background: var(--bx-gold);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 9999px;
+        }
+
+        .swot-box { 
+            padding: 1.5rem; 
+            border: 1px solid var(--border-color); 
+            border-radius: 4px; 
+        }
+        .swot-s { border-top: 4px solid #10b981; background: #ecfdf5; }
+        .swot-w { border-top: 4px solid #f59e0b; background: #fffbeb; }
+        .swot-o { border-top: 4px solid #3b82f6; background: #eff6ff; }
+        .swot-t { border-top: 4px solid #ef4444; background: #fef2f2; }
+
+        .doc-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 20mm 80px 20mm; /* Extra bottom padding for footer clearance */
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-footer {
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 8px;
+            margin-top: 40px;
+            clear: both;
+        }
+
+        .page-break { 
+            page-break-before: always; 
+            margin-top: 40px; 
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; margin: 0; }
+            .doc-container { 
+                margin: 0; 
+                padding: 20mm 15mm 50mm 15mm; 
+                box-shadow: none; 
+            }
+            .page-header { margin-bottom: 15mm; }
+            .page-footer { 
+                margin-top: 20mm; 
+                position: static; 
+            }
+            @page { 
+                size: A4 portrait; 
+                margin: 15mm; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="no-print sticky top-0 bg-white border-b border-gray-200 z-50 p-4 flex justify-between items-center px-12">
+    <div>
+        <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Internal & Funding Use</span>
+        <h2 class="text-xs font-bold text-[#001F3F]">Buxino Comprehensive Business Plan 2026–2029 (Revised)</h2>
+    </div>
+    <button onclick="window.print()" class="bg-[#D4AF37] text-white px-6 py-2 text-[10px] font-black uppercase rounded hover:brightness-110 transition shadow-md">
+        Print / Export PDF
+    </button>
+</div>
+
+<div class="doc-container">
+
+    <!-- Page 1 – Cover -->
+    <div class="text-center py-40 border-b-8 border-gold">
+        <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Consulting Logo" class="h-40 mx-auto mb-12">
+
+        <h1 class="corporate-font font-black text-6xl leading-none mb-4">BUXINO CONSULTING (PTY) LTD</h1>
+        <p class="text-gold font-bold tracking-[0.5em] text-xl uppercase mb-12">Comprehensive Business Plan 2026–2029 (Revised)</p>
+        
+        <div class="flex justify-center gap-8 text-lg mb-16">
+            <span class="badge">Level 1 B-BBEE</span>
+            <span class="badge">100% Black Owned</span>
+        </div>
+
+        <p class="text-2xl font-bold mb-4">The Art of the Ascent</p>
+        <p class="text-lg text-gray-600 italic">"Architecting Execution – From Ground Zero to Tier-1 Strategic Asset"</p>
+
+        <div class="mt-24 text-sm text-gray-500">
+            Prepared by: Bakang Matjila, Founder & Managing Director<br>
+            Date: February 2026<br>
+            Version: 3.1 – Revised to Align with Audited Financials
+        </div>
+    </div>
+
+    <div class="page-footer">
+        Buxino Consulting (Pty) Ltd | Confidential | Page 1 of 14
+    </div>
+
+    <!-- Page 2 – Executive Summary -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">Executive Summary</h2>
+        </div>
+        
+        <p class="text-lg leading-relaxed mb-6">
+            Buxino Consulting (Pty) Ltd is a Level 1 B-BBEE, 100% black-owned strategic services firm founded in October 2021 by Bakang Matjila. We specialize in corporate gifting & branding, retainer-based consulting, strategic business plans, and premium event logistics — targeting blue-chip clients in TMT (25%), FMCG/logistics (25%), automotive (30%), and mining (20%). Buxino operates at the nexus of TMT connectivity and FMCG logistics, delivering Institutional Excellence through strategic branding and execution.
+        </p>
+        <p class="text-lg leading-relaxed mb-6">
+            Our <strong>Superior Logic</strong> model leverages two structural advantages:
+        </p>
+        <ul class="list-disc pl-8 space-y-4 text-lg mb-8">
+            <li><strong>SETA Force Multiplier</strong>: 5–10 merSETA-funded learners handle execution at near-zero direct labor cost, allowing senior leadership to focus on closing high-value retainers.</li>
+            <li><strong>Subscription Retainer Architecture</strong>: Quarterly "Season Concepts" convert transactional spend into recurring revenue, targeting R200,000+ lifetime value per anchor client (revised for conservatism).</li>
+        </ul>
+
+        <div class="glass-panel">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <p class="text-4xl font-black text-gold">R 1.98M</p>
+                    <p class="text-sm uppercase tracking-wider mt-2">Projected 2029 Revenue (Revised)</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black text-gold">74–85%</p>
+                    <p class="text-sm uppercase tracking-wider mt-2">Gross Margin Target (2027+ Revised)</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black text-gold">R2M Loan</p>
+                    <p class="text-sm uppercase tracking-wider mt-2">Deployed Aug 2026 – Fully Repaid by 2030</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-6 text-base italic">
+            Revisions based on audited financials reflect a challenging 2025 with low traction (R5,362 revenue, -R3,466 PBT) and 2026 YTD losses/overdraft (-R3,938 cash). Projections toned for realism, assuming loan enables modest ramp.
+        </p>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 2 of 14
+        </div>
+    </div>
+
+    <!-- Page 3 – Company Description -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">1. Company Description</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="font-black text-xl mb-4 text-gold">Legal & Ownership</h3>
+                <ul class="space-y-3">
+                    <li><strong>Entity</strong>: Buxino Consulting (Pty) Ltd</li>
+                    <li><strong>Ownership</strong>: 100% Black Owned | Bakang Matjila (Founder & MD)</li>
+                    <li><strong>B-BBEE</strong>: Level 1 (135% procurement recognition)</li>
+                    <li><strong>Location</strong>: Pretoria (Hatfield target 2027)</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-black text-xl mb-4 text-gold">Mission & Vision</h3>
+                <p class="italic mb-4">"We believe that marketing & sales are the crucial elements in building a successful brand."</p>
+                <p><strong>Mission</strong>: Unlock business potential through strategy, delivering high-quality content and personalized service while transforming society with proudly African solutions.</p>
+                <p class="mt-4"><strong>Vision</strong>: Redefine narratives in TMT and FMCG sectors, becoming the preferred Level 1 B-BBEE partner for macro enterprises by 2029.</p>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Core Values</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="pillar-card">
+                    <h4 class="font-bold text-lg mb-3">Agility</h4>
+                    <p>Speed and adaptability without compromising precision.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4 class="font-bold text-lg mb-3">Transformation</h4>
+                    <p>Uplifting communities around the businesses we serve.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4 class="font-bold text-lg mb-3">Integrity</h4>
+                    <p>Transparency as baseline, governance-first mindset.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4 class="font-bold text-lg mb-3">Innovation</h4>
+                    <p>Global tech solving uniquely African challenges.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Governance Overview</h3>
+            <p>Our governance-first approach ensures transparency and compliance, as detailed in our framework at www.buxino.co.za/governance/. This includes POPIA compliance and a focus on ethical, intentional growth.</p>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 3 of 14
+        </div>
+    </div>
+
+    <!-- Page 4–5 – Market Analysis -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">2. Market Analysis</h2>
+        </div>
+        
+        <div class="glass-panel mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Target Sectors & Prioritization</h3>
+            <p class="mb-4">While automotive and mining remain key verticals, our fastest growth opportunity lies in the TMT/FMCG nexus as highlighted on our platform. Revised for audited historicals showing slower traction.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-white rounded shadow-sm">
+                    <p class="text-4xl font-black text-gold">30%</p>
+                    <p class="font-bold mt-2">Automotive</p>
+                    <p class="text-sm text-gray-600">Dealer branding, CSI, excellence programs</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded shadow-sm">
+                    <p class="text-4xl font-black text-gold">25%</p>
+                    <p class="font-bold mt-2">FMCG / Logistics</p>
+                    <p class="text-sm text-gray-600">Promotional logistics, events</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded shadow-sm">
+                    <p class="text-4xl font-black text-gold">25%</p>
+                    <p class="font-bold mt-2">TMT</p>
+                    <p class="text-sm text-gray-600">Strategic plans, tech consulting</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded shadow-sm">
+                    <p class="text-4xl font-black text-gold">20%</p>
+                    <p class="font-bold mt-2">Mining</p>
+                    <p class="text-sm text-gray-600">SLP compliance, gifting</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Competitor Landscape</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="highlight-card bg-red-50 border-red-200">
+                    <h4 class="font-bold text-red-700 mb-2">Catalogue Pushers</h4>
+                    <p class="text-sm">Mass resellers — volume, low price, no strategy.</p>
+                </div>
+                <div class="highlight-card bg-blue-50 border-blue-200">
+                    <h4 class="font-bold text-blue-700 mb-2">Expensive Agencies</h4>
+                    <p class="text-sm">High creative, slow, expensive, often outsource execution.</p>
+                </div>
+                <div class="highlight-card bg-gold text-white">
+                    <h4 class="font-bold mb-2">Buxino — Profitable Middle</h4>
+                    <p class="text-sm">Strategy + execution. Agile. Premium. Level 1 compliant.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Feasibility: Why This? Why Now? (2026 Context)</h3>
+            <ul class="space-y-4">
+                <li><strong>Mandatory ESD Spend</strong>: Corporates must allocate 2–3% NPAT — Level 1 = 135% recognition.</li>
+                <li><strong>Experience Economy Return</strong>: Premium, tactile items gaining demand post-digital fatigue.</li>
+                <li><strong>SETA Leverage</strong>: Near-zero labor cost enables margin dominance and scalability. Revised for audited slower start.</li>
+            </ul>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">SWOT Analysis</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="swot-box swot-s">
+                    <h4 class="font-bold text-green-800 mb-2">Strengths</h4>
+                    <ul class="text-sm list-disc pl-6">
+                        <li>Level 1 B-BBEE (135% procurement)</li>
+                        <li>Low fixed costs via SETA</li>
+                        <li>Distinct navy/gold premium identity</li>
+                        <li>Agile supply chain (Amrod + local)</li>
+                    </ul>
+                </div>
+                <div class="swot-box swot-w">
+                    <h4 class="font-bold text-yellow-800 mb-2">Weaknesses</h4>
+                    <ul class="text-sm list-disc pl-6">
+                        <li>Founder-dependent (mitigated Q2 2026 hire)</li>
+                        <li>Limited pre-loan marketing (R2m loan addresses)</li>
+                        <li>No owned warehouse until 2027</li>
+                        <li>Audited historical losses/overdraft require loan buffer</li>
+                    </ul>
+                </div>
+                <div class="swot-box swot-o">
+                    <h4 class="font-bold text-blue-800 mb-2">Opportunities</h4>
+                    <ul class="text-sm list-disc pl-6">
+                        <li>Automotive dealer incentive recovery</li>
+                        <li>ESD pressure in mining/TMT</li>
+                        <li>FMCG private-label surge</li>
+                        <li>Gifting → retainer upsell</li>
+                    </ul>
+                </div>
+                <div class="swot-box swot-t">
+                    <h4 class="font-bold text-red-800 mb-2">Threats</h4>
+                    <ul class="text-sm list-disc pl-6">
+                        <li>Supply chain delays (local partners mitigate)</li>
+                        <li>Economic slowdown (ESD mandatory cushions)</li>
+                        <li>Larger agencies entering ESD</li>
+                        <li>Continued low traction if loan delayed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 4–5 of 14
+        </div>
+    </div>
+
+    <!-- Page 6 – Products & Services -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">3. Products & Services</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="glass-panel">
+                <h3 class="font-black text-xl mb-6 text-gold">Core Offerings</h3>
+                <ul class="space-y-4">
+                    <li><strong>Corporate Gifting & Branding</strong> — Premium quality branded products as an Amrod affiliate, establishing sophisticated corporate image (30% markup).</li>
+                    <li><strong>Business Consulting Retainers</strong> — Quarterly strategy & execution packages (R50k–R150k/qtr, revised).</li>
+                    <li><strong>Strategic Business Plans</strong> — Professional assistance in 5-year financial plans and structural blueprints.</li>
+                    <li><strong>Event Planning & Logistics</strong> — White-glove activations, last-mile delivery, TMT/FMCG nexus focus.</li>
+                </ul>
+            </div>
+            <div class="glass-panel">
+                <h3 class="font-black text-xl mb-6 text-gold">Value Proposition</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Level 1 B-BBEE compliance + 135% recognition</li>
+                    <li>Recurring strategic support via subscription model</li>
+                    <li>Mobile branding via branded fleet</li>
+                    <li>Cost efficiency passed on through SETA multiplier</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 6 of 14
+        </div>
+    </div>
+
+    <!-- Page 7–9 – Marketing & Sales Strategy -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">4. Marketing & Sales Strategy</h2>
+        </div>
+        
+        <div class="glass-panel mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Positioning: Architect of Execution</h3>
+            <p class="text-lg italic mb-6">"We believe that marketing & sales are the crucial elements in building a successful brand."</p>
+            <p>Voice: Surgical, minimalist, authoritative. Visuals: Navy & Gold, high-key precision. Philosophy: "The Art of the Ascent" — business as deliberate climb, with proudly African solutions transforming society.</p>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Competitor Landscape</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="highlight-card bg-red-50 border-red-200">
+                    <h4 class="font-bold text-red-700 mb-2">Catalogue Pushers</h4>
+                    <p class="text-sm">Mass resellers — volume, low price, no strategy.</p>
+                </div>
+                <div class="highlight-card bg-blue-50 border-blue-200">
+                    <h4 class="font-bold text-blue-700 mb-2">Expensive Agencies</h4>
+                    <p class="text-sm">High creative, slow, expensive, often outsource execution.</p>
+                </div>
+                <div class="highlight-card bg-gold text-white">
+                    <h4 class="font-bold mb-2">Buxino — Profitable Middle</h4>
+                    <p class="text-sm">Strategy + execution. Agile. Premium. Level 1 compliant.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Marketing Allocation (Fixed 8% of Revenue)</h3>
+            <ul class="space-y-3">
+                <li><strong>2025</strong>: R429 (based on audited R5,362 rev) — LinkedIn content & executive networking</li>
+                <li><strong>2026</strong>: R26,000 — Fleet partnerships, sector targeting</li>
+                <li><strong>2027+</strong>: R66,360–R158,280 — Thought leadership, events, national visibility</li>
+            </ul>
+            <p class="mt-6 font-bold">Primary Channels: LinkedIn executive outreach, branded VW Caddy visibility, ESD/incubator referrals, targeted OEM procurement emails.</p>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Trojan Horse Sales Strategy & LTV Engine</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <ol class="space-y-6 list-decimal pl-6">
+                        <li><strong>The Wedge</strong> — Enter via premium gifting (low-risk, high-visibility).</li>
+                        <li><strong>The Audit</strong> — Identify gaps during delivery → position strategy solutions.</li>
+                        <li><strong>The Upsell</strong> — Convert to recurring quarterly retainers (LTV R200k+ over 3 years, revised).</li>
+                    </ol>
+                </div>
+                <div class="glass-panel text-center">
+                    <p class="text-sm uppercase text-gray-500 mb-2">Typical 3-Year LTV Journey (Revised)</p>
+                    <div class="space-y-3">
+                        <div class="flex justify-between border-b pb-2">
+                            <span>Year 1 — Gifting Only</span><span class="font-bold">R 12,500</span>
+                        </div>
+                        <div class="flex justify-between border-b pb-2">
+                            <span>Year 2 — Gifting + Events</span><span class="font-bold">R 37,500</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year 3 — Consulting Retainer</span><span class="font-bold text-gold">R 112,500</span>
+                        </div>
+                        <div class="bg-gold text-white p-4 mt-4 font-bold text-xl">
+                            Total LTV: R 162,500+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 bg-gray-100 p-6 border-l-4 border-gold">
+                <h4 class="font-bold text-lg mb-3">Subscription Mindset Retention</h4>
+                <p>Every 90 days deliver curated “Season Concept” proposals (e.g., Q4 Dealer Excellence). Turns transactional into predictable recurring revenue — lowers CAC, boosts LTV.</p>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Workforce & Sales Intelligence (Hybrid Engine)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-panel">
+                    <h4 class="font-bold text-lg mb-3">Strategic Core (In-House)</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><strong>MD (Bakang Matjila)</strong> — Whale accounts, strategy, governance</li>
+                        <li><strong>Office Coordinator</strong> — Q2 2026 (R25k/mo) — admin, logistics, compliance</li>
+                        <li><strong>Senior Sales (2027+)</strong> — Commission-based as revenue > R625k</li>
+                    </ul>
+                </div>
+                <div class="glass-panel">
+                    <h4 class="font-bold text-lg mb-3">SETA Support Wing</h4>
+                    <ul class="space-y-2 text-sm italic">
+                        <li><strong>Market Analysts</strong> — Cold-scout leads</li>
+                        <li><strong>Multimedia Learners</strong> — 3D mockups, design</li>
+                        <li><strong>Admin Learners</strong> — CRM, logistics coordination</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8">
+                <p class="font-bold">Payroll Trajectory (aligned to revenue):</p>
+                <ul class="space-y-2 mt-4 text-sm">
+                    <li>2025: R115k — Founder + outsourced + early learners</li>
+                    <li>2026: R321k — Founder + Coordinator + 5 SETA learners (R0 cost)</li>
+                    <li>2027: R573k — Add senior sales & juniors</li>
+                    <li>2029: R1,365k — Full team of 8–10</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 7–9 of 14
+        </div>
+    </div>
+
+    <!-- Page 10 – Operations & Organization -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">5. Operations & Organization</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="glass-panel">
+                <h3 class="font-black text-xl mb-6 text-gold">2026 Structure</h3>
+                <ul class="space-y-4">
+                    <li><strong>Managing Director</strong> — Strategy, sales, governance</li>
+                    <li><strong>Office Coordinator</strong> — Q2 2026 (R25k/mo)</li>
+                    <li><strong>SETA Learners (5)</strong> — R0 cost — execution squad</li>
+                    <li><strong>Outsourced</strong> — Finance, HR/IT</li>
+                </ul>
+            </div>
+            <div class="glass-panel">
+                <h3 class="font-black text-xl mb-6 text-gold">Infrastructure</h3>
+                <ul class="space-y-4">
+                    <li>2025–2026: Co-working (Hatfield)</li>
+                    <li>2027+: 234 m² HQ — secure parking, storage</li>
+                    <li>Fleet: VW Caddy Cargo (R500k loan)</li>
+                    <li>Equipment: Apple ecosystem + laptops (R156k)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Talent & Careers</h3>
+            <p>Buxino's "Join the Blueprint" initiative cultivates elite talent in precision, innovation, and transformation, aligning with our commitment to human development and proudly African solutions.</p>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 10 of 14
+        </div>
+    </div>
+
+    <!-- Page 11 – Risk Mitigation & Compliance -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">6. Risk Mitigation & Compliance</h2>
+        </div>
+        
+        <div class="glass-panel mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Key Risks & Mitigation Strategies</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Risk Category</th>
+                        <th>Potential Impact</th>
+                        <th>Mitigation Plan</th>
+                        <th>Compliance Alignment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Financial (Loan Dependency)</td>
+                        <td>Delayed growth if funding delayed</td>
+                        <td>Bootstrapped contingency; phased deployment; R500k buffer for delayed payments/overdraft payoff</td>
+                        <td>Aligned with 5-year term at 10% interest; full repayment by 2030</td>
+                    </tr>
+                    <tr>
+                        <td>Operational (Supply Chain)</td>
+                        <td>Delivery delays affecting client trust</td>
+                        <td>Local Amrod + backups; inventory buffer (R100k from loan, revised)</td>
+                        <td>PPE/Safety buffer in compliance (COIDA/UIF)</td>
+                    </tr>
+                    <tr>
+                        <td>Market (Economic Downturn)</td>
+                        <td>Reduced ESD spend</td>
+                        <td>Diversified sectors; mandatory ESD cushions; agile pivots</td>
+                        <td>Level 1 B-BBEE maximizes recognition</td>
+                    </tr>
+                    <tr>
+                        <td>HR (Founder Dependency)</td>
+                        <td>Single point of failure</td>
+                        <td>Q2 2026 coordinator hire; SETA learners from Q2</td>
+                        <td>Statutory compliance (COIDA/UIF/SDL/PAYE) ramps Q2 2026</td>
+                    </tr>
+                    <tr>
+                        <td>Compliance/Legal</td>
+                        <td>Fines, reputational damage</td>
+                        <td>Outsourced financial person Q3 2026; annual audits</td>
+                        <td>Full COIDA/UIF/SDL/PAYE/PPE buffer (R40k–R65k/year)</td>
+                    </tr>
+                    <tr>
+                        <td>Historical Losses/Overdraft</td>
+                        <td>Cash constraints</td>
+                        <td>Loan allocation for overdraft payoff; conservative projections</td>
+                        <td>SARS compliance ensured</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Organisational Structure & Hiring Plan</h3>
+            <div class="glass-panel">
+                <p class="mb-4">Hierarchical structure with MD at apex, scaling to 8–10 by 2029. Hiring timed to revenue milestones for sustainability.</p>
+                <ul class="space-y-4">
+                    <li><strong>2026 (R325k revenue)</strong>: MD + Coordinator (Q2) + 5 SETA learners (R0 cost) + Outsourced finance/HR</li>
+                    <li><strong>2027 (R829k)</strong>: Add Senior Sales + 2 Juniors (commission + R20k/mo base)</li>
+                    <li><strong>2028–2029 (R1.41–1.98M)</strong>: Full team: Operations Manager, additional learners, specialists</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="font-black text-xl mb-6 text-gold">Expansion Aspirations</h3>
+            <p class="mb-4">From Pretoria base, expand to Johannesburg (2027 office satellite) then Cape Town (2028). National by 2029 via retainers and events. International pivot 2030+ through African TMT partnerships.</p>
+            <p>Alignment: All expansion tied to ESD compliance, SETA scaling, and Level 1 status to maximize procurement appeal.</p>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 11 of 15
+        </div>
+    </div>
+
+    <!-- Financial Projections – Page 12–13 -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">7. Financial Projections</h2>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>2025 (Audited)</th>
+                        <th>2026</th>
+                        <th>2027</th>
+                        <th>2028</th>
+                        <th>2029</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-header">
+                        <td colspan="6">Revenue Streams</td>
+                    </tr>
+                    <tr><td>Corporate Gifting & Branding</td><td>R 0</td><td>R 65,000</td><td>R 97,500</td><td>R 162,500</td><td>R 227,500</td></tr>
+                    <tr><td>Business Consulting Retainers</td><td>R 5,000</td><td>R 97,500</td><td>R 325,000</td><td>R 585,000</td><td>R 819,000</td></tr>
+                    <tr><td>Business Plans</td><td>R 362</td><td>R 81,250</td><td>R 195,000</td><td>R 325,000</td><td>R 455,000</td></tr>
+                    <tr><td>Event Planning & Logistics</td><td>R 0</td><td>R 81,250</td><td>R 211,250</td><td>R 338,000</td><td>R 473,200</td></tr>
+                    <tr class="row-total">
+                        <td>Total Revenue</td>
+                        <td>R 5,362</td>
+                        <td>R 325,000</td>
+                        <td>R 828,750</td>
+                        <td>R 1,410,500</td>
+                        <td>R 1,974,700</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="6">Key Metrics</td>
+                    </tr>
+                    <tr><td>Gross Profit Margin</td><td>100%</td><td>74%</td><td>80%</td><td>82%</td><td>85%</td></tr>
+                    <tr><td>Net Profit (Pre-Tax)</td><td>R -3,466</td><td>R -67,000</td><td>R 99,700</td><td>R 343,150</td><td>R 509,660</td></tr>
+                    <tr class="row-grand-total">
+                        <td>Closing Cash Balance (2029)</td>
+                        <td colspan="5" class="text-center text-white">R 1,822,500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-12 glass-panel">
+            <h3 class="font-black text-xl mb-6 text-gold">R2M Loan Deployment (Aug 2026)</h3>
+            <ul class="space-y-3">
+                <li>VW Caddy Cargo – R500,000</li>
+                <li>Inventory build – R100,000 (revised)</li>
+                <li>Marketing ramp – R100,000 (revised)</li>
+                <li>Staff & contingency – R1,300,000 (incl. overdraft payoff)</li>
+            </ul>
+            <p class="mt-6 text-sm italic">Terms: 10% interest, 5-year term, R400k annual principal from 2027. Revised for current overdraft.</p>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 12–13 of 15
+        </div>
+    </div>
+
+    <!-- Funding & Exit – Page 14 -->
+    <div class="page-break mt-16">
+        <div class="page-header">
+            <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-12">
+            <h2 class="corporate-font font-black text-4xl border-gold border-l-8 pl-6">8. Funding Requirements & Exit Strategy</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="glass-panel">
+                <h3 class="font-black text-xl mb-6 text-gold">Current & Near-Term Funding</h3>
+                <ul class="space-y-4">
+                    <li>Bootstrapped to date (with audited losses)</li>
+                    <li>R2M loan (target Aug 2026)</li>
+                    <li>merSETA discretionary grant (learner stipends)</li>
+                    <li>Incubator support (space, equipment, furniture)</li>
+                </ul>
+            </div>
+            <div class="glass-panel">
+                <h3 class="font-black text-xl mb-6 text-gold">2029 Exit Path</h3>
+                <p>Acquisition target for:</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4">
+                    <li>International consulting firms seeking SA B-BBEE footprint</li>
+                    <li>Logistics / automotive supply chain players</li>
+                    <li>Private equity in Level 1 entities</li>
+                </ul>
+                <p class="mt-6 font-bold">Target Valuation: 3–5× EBITDA (~R4.8–8M, revised)</p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 14 of 15
+        </div>
+    </div>
+
+    <!-- Closing Page -->
+    <div class="text-center py-32 mt-16 border-t-4 border-gold">
+        <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-32 mx-auto mb-12">
+        <p class="text-4xl font-black mb-8">"We are not merely consulting;<br>we are <span class="text-gold">Architecting Execution.</span>"</p>
+        <p class="text-2xl font-bold">Bakang Matjila</p>
+        <p class="text-gold font-black uppercase tracking-widest text-lg mt-4">Founder & Managing Director</p>
+        <p class="text-gray-600 mt-8">www.buxino.co.za | www.buxino.co.za/governance/</p>
+        <p class="text-gray-500 mt-4 text-sm">Pretoria, South Africa | Confidential</p>
+
+        <div class="page-footer">
+            Buxino Consulting (Pty) Ltd | Confidential | Page 15 of 15
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

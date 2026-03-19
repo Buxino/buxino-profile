@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buxino | Strategic Quotation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@300;400;600;800&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #001F3F; margin: 0; padding: 0; }
+        .corporate-header { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
+        .buxino-navy { background-color: #001F3F; }
+        .buxino-gold { color: #D4AF37; }
+        .input-clean { border-bottom: 1px solid #e2e8f0; padding: 4px; width: 100%; background: transparent; }
+        .input-clean:focus { border-color: #D4AF37; outline: none; }
+        
+        /* Executive Page Look */
+        .page-container { display: flex; flex-direction: column; min-height: 297mm; background: white; margin: 0 auto; width: 100%; max-width: 1024px; }
+        .content-wrap { flex: 1; }
+
+        @media print { 
+            @page { size: A4; margin: 0; }
+            .no-print { display: none !important; } 
+            body { background-color: white; padding: 0 !important; }
+            .page-container { width: 100%; max-width: none; min-height: 0 !important; height: auto !important; display: block !important; border: none !important; box-shadow: none !important; }
+            .content-wrap { display: block; height: auto; }
+            .footer-lock { page-break-inside: avoid !important; margin-top: 20px; }
+            td, th { padding-top: 8px !important; padding-bottom: 8px !important; }
+            input { font-size: 11px !important; }
+            .corporate-header { font-size: 24px !important; }
+            .p-10 { padding: 1.5cm !important; }
+            
+            /* Hide email if empty on print */
+            .hide-if-empty:placeholder-shown { display: none !important; }
+        }
+
+        .admin-input { background-color: #f8fafc; color: #001F3F; border: 1px dashed #e2e8f0; font-size: 10px; text-align: center; }
+        .remove-btn { color: #ef4444; font-weight: bold; cursor: pointer; font-size: 22px; line-height: 1; margin-left: 8px; }
+        .remove-btn:hover { color: #b91c1c; }
+    </style>
+</head>
+<body class="p-0 md:p-12">
+
+    <div class="max-w-5xl mx-auto mb-6 p-4 bg-white border border-gray-200 rounded-lg no-print flex justify-between items-center shadow-sm">
+        <div class="flex gap-6">
+            <div>
+                <label class="text-[9px] uppercase font-black text-gray-400">Delivery (R)</label>
+                <input type="number" id="deliveryInput" value="0" oninput="calculateAll()" class="block w-24 border-b-2 border-[#D4AF37] font-mono text-sm focus:outline-none text-center">
+            </div>
+            <div>
+                <label class="text-[9px] uppercase font-black text-gray-400">VAT (R)</label>
+                <input type="number" id="vatInput" value="0" oninput="calculateAll()" class="block w-24 border-b-2 border-[#D4AF37] font-mono text-sm focus:outline-none text-center">
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <button onclick="addRow()" class="bg-gray-800 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest rounded hover:bg-black transition">+ Add Item</button>
+            <button onclick="window.print()" class="bg-[#001F3F] text-white px-8 py-2 text-[10px] font-black uppercase tracking-widest rounded shadow hover:bg-black transition">Print Quotation</button>
+        </div>
+    </div>
+
+    <div class="page-container shadow-2xl border-t-[12px] border-[#D4AF37]">
+        
+        <div class="content-wrap">
+            <div class="buxino-navy p-10 grid grid-cols-3 items-center">
+                <div>
+                    <h1 class="corporate-header text-5xl font-900 text-white leading-none">Buxino</h1>
+                    <p class="buxino-gold font-bold tracking-[0.4em] text-[10px] uppercase mt-1">Consulting (Pty) Ltd</p>
+                    <div class="text-gray-400 text-[10px] mt-6 uppercase tracking-widest leading-relaxed font-bold">
+                        <p>6159 Matlaisane Street, Pretoria, 0208</p>
+                        <p>consulting@buxino.co.za</p>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-28 h-28 rounded-full border-4 border-[#D4AF37] flex items-center justify-center bg-white shadow-xl overflow-hidden relative">
+                        <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="text-right">
+                    <h2 class="text-white text-[10px] font-black uppercase tracking-[0.5em] opacity-60 mb-1">Quotation</h2>
+                    <input type="text" class="corporate-header text-right bg-transparent text-white font-black text-3xl focus:outline-none w-full uppercase" value="REF: B1-2026">
+                    <p class="text-[11px] text-[#D4AF37] font-bold uppercase tracking-widest mt-2" id="currentDateDisplay"></p>
+                </div>
+            </div>
+
+            <div class="p-10">
+                <div class="grid grid-cols-2 gap-12 mb-8 border-b-2 border-gray-50 pb-8">
+                    <div class="space-y-4">
+                        <h3 class="text-[#D4AF37] uppercase text-[10px] font-black tracking-widest">Client Representative</h3>
+                        <input type="text" class="input-clean font-800 uppercase text-xl text-[#001F3F]" placeholder="PERSON TO CONTACT">
+                        <input type="text" class="input-clean text-xs uppercase font-semibold text-gray-500" placeholder="CONTACT NUMBER">
+                        <input type="text" class="input-clean text-xs uppercase font-semibold text-gray-400 hide-if-empty" placeholder="EMAIL ADDRESS (OPTIONAL)">
+                    </div>
+                    <div class="text-right space-y-4">
+                        <h3 class="text-[#D4AF37] uppercase text-[10px] font-black tracking-widest">Bill To Entity</h3>
+                        <input type="text" class="input-clean font-800 uppercase text-xl text-right text-[#001F3F]" placeholder="COMPANY NAME">
+                        <textarea class="input-clean text-xs text-right text-gray-500 resize-none h-16 font-semibold" placeholder="STREET ADDRESS"></textarea>
+                    </div>
+                </div>
+
+                <table class="w-full text-left mb-6" id="productTable">
+                    <thead>
+                        <tr class="border-b-4 border-[#001F3F] text-[11px] uppercase tracking-tighter font-900 text-[#001F3F]">
+                            <th class="pb-3 w-1/2">Strategic Service / Product</th>
+                            <th class="pb-3 text-center">Qty</th>
+                            <th class="pb-3 text-right">Unit Price</th>
+                            <th class="pb-3 text-right">Total</th>
+                            <th class="pb-3 no-print w-32 text-center">Admin</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-gray-100 item-row">
+                            <td class="py-4 pr-4">
+                                <input type="text" class="font-800 uppercase text-[#001F3F] text-xs w-full focus:outline-none" placeholder="ENTER LINE ITEM">
+                                <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mt-1">Sourcing & Branding</p>
+                            </td>
+                            <td class="py-4 text-center">
+                                <input type="number" class="qty w-12 text-center focus:outline-none font-bold" value="1" oninput="calculateAll()">
+                            </td>
+                            <td class="py-4 text-right font-semibold text-gray-600">
+                                R <span class="unitPrice">0.00</span>
+                            </td>
+                            <td class="py-4 text-right font-900 text-[#001F3F]">
+                                R <span class="lineTotal">0.00</span>
+                            </td>
+                            <td class="py-4 no-print">
+                                <div class="flex items-center justify-end gap-1">
+                                    <input type="number" class="baseCost admin-input w-14 p-1 rounded" placeholder="Cost" oninput="calculateAll()">
+                                    <input type="number" class="markupPercent admin-input w-10 p-1 rounded" value="30" oninput="calculateAll()">
+                                    <span class="remove-btn" title="Remove Item" onclick="removeRow(this)">×</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="p-10 footer-lock">
+            <div class="grid grid-cols-2 gap-16 items-start border-t-2 border-gray-50 pt-8">
+                <div class="bg-gray-50 p-6 border-l-8 border-[#D4AF37]">
+                    <h3 class="text-[#001F3F] uppercase text-[10px] font-black tracking-widest mb-4">Banking Details</h3>
+                    <div class="grid grid-cols-[100px_1fr] gap-y-2 text-[10px] font-bold text-gray-600">
+                        <div class="uppercase opacity-50">Bank</div><div class="text-[#001F3F]">FNB</div>
+                        <div class="uppercase opacity-50">Account</div><div class="text-[#001F3F]">62922178430</div>
+                        <div class="uppercase opacity-50">Branch</div><div class="text-[#001F3F]">250655</div>
+                        <div class="uppercase opacity-50">Holder</div><div class="text-[#001F3F]">BUXINO CONSULTING (PTY) LTD</div>
+                    </div>
+                </div>
+
+                <div class="text-right space-y-4">
+                    <div class="flex justify-between text-gray-400 text-[10px] uppercase font-black tracking-widest">
+                        <span>Delivery</span>
+                        <span id="deliveryDisplay">R 0.00</span>
+                    </div>
+                    <div class="flex justify-between text-gray-400 text-[10px] uppercase font-black tracking-widest">
+                        <span>VAT</span>
+                        <span id="vatDisplay">R 0.00</span>
+                    </div>
+                    <div class="flex justify-between items-end border-t-4 border-[#001F3F] pt-6 mt-2">
+                        <span class="corporate-header font-900 text-xl">TOTAL AMOUNT</span>
+                        <span class="font-900 bg-[#001F3F] text-white px-6 py-2 text-3xl" id="finalTotal">R 0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-gray-100 text-[9px] text-gray-400 font-bold uppercase tracking-wider grid grid-cols-2 gap-10">
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>70% deposit required for commencement.</li>
+                    <li>Valid for 7 business days.</li>
+                    <li>Delivery: 7-10 working days.</li>
+                </ul>
+                <div class="text-right flex flex-col justify-end">
+                    <p class="text-[#D4AF37] font-900">FORMALIZE YOUR GROWTH STRATEGY</p>
+                    <p class="text-[#001F3F]">BUXINO.CO.ZA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set Date
+        document.getElementById('currentDateDisplay').innerText = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+
+        function addRow() {
+            const tbody = document.querySelector('#productTable tbody');
+            const newRow = tbody.rows[0].cloneNode(true);
+            newRow.querySelectorAll('input').forEach(i => {
+                if(i.classList.contains('qty')) i.value = 1;
+                else if(i.classList.contains('markupPercent')) i.value = 30;
+                else i.value = '';
+            });
+            newRow.querySelector('.unitPrice').innerText = '0.00';
+            newRow.querySelector('.lineTotal').innerText = '0.00';
+            tbody.appendChild(newRow);
+        }
+
+        function removeRow(btn) {
+            const tbody = document.querySelector('#productTable tbody');
+            if (tbody.rows.length > 1) {
+                btn.closest('tr').remove();
+                calculateAll();
+            } else {
+                alert("At least one item is required.");
+            }
+        }
+
+        function calculateAll() {
+            let runningSubtotal = 0;
+            const rows = document.querySelectorAll('.item-row');
+            const delivery = parseFloat(document.getElementById('deliveryInput').value) || 0;
+            const vat = parseFloat(document.getElementById('vatInput').value) || 0;
+
+            rows.forEach(row => {
+                const base = parseFloat(row.querySelector('.baseCost').value) || 0;
+                const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                const mPercent = parseFloat(row.querySelector('.markupPercent').value) || 0;
+                const unitWithMarkup = base * (1 + (mPercent / 100));
+                const rowTotal = unitWithMarkup * qty;
+                runningSubtotal += rowTotal;
+                row.querySelector('.unitPrice').innerText = unitWithMarkup.toLocaleString('en-ZA', {minimumFractionDigits: 2});
+                row.querySelector('.lineTotal').innerText = rowTotal.toLocaleString('en-ZA', {minimumFractionDigits: 2});
+            });
+
+            document.getElementById('deliveryDisplay').innerText = 'R ' + delivery.toLocaleString('en-ZA', {minimumFractionDigits: 2});
+            document.getElementById('vatDisplay').innerText = 'R ' + vat.toLocaleString('en-ZA', {minimumFractionDigits: 2});
+            document.getElementById('finalTotal').innerText = 'R ' + (runningSubtotal + delivery + vat).toLocaleString('en-ZA', {minimumFractionDigits: 2});
+        }
+    </script>
+</body>
+</html>

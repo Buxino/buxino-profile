@@ -17,7 +17,7 @@ export default function Home() {
       {/* 2. Hero (The Hook) */}
       <HeroSection
         title="Welcome to Buxino Consulting"
-        backgroundImage="IMG_3183.jpg"
+        backgroundImage="BuxinoConsultingBanner.png"
         buttonText="Our Business"
         buttonLink="/business"
         height="h-[80vh]" 

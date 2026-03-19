@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buxino Consulting | Company Profile 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap');
+        
+        :root {
+            --midnight: #020617; 
+            --gold: #C5A059;
+            --slate: #94a3b8;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--midnight); 
+            color: #cbd5e1; 
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif { font-family: 'Cinzel', serif; letter-spacing: 0.2em; }
+        
+        .gold-gradient {
+            background: linear-gradient(to right, #C5A059, #F2D091, #C5A059);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-border { border-left: 1px solid rgba(197, 160, 89, 0.3); }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Hero Section with Booklet Data */
+        .hero-profile {
+            background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 1)), 
+                              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media print {
+            .no-print { display: none; }
+            body { background: white; color: black; }
+            .stat-card { border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="hero-profile min-h-screen flex flex-col justify-center items-center text-center px-6 border-b border-gold/20">
+        <div class="mb-12">
+            <h1 class="text-7xl md:text-9xl font-black tracking-tighter text-white mb-2">BUXINO</h1>
+            <p class="text-gold tracking-[0.8em] font-bold text-sm md:text-xl uppercase">Consulting (Pty) Ltd</p>
+        </div>
+        
+        <div class="w-32 h-[1px] bg-gold mb-12"></div>
+        
+        <div class="space-y-4">
+            <h2 class="text-2xl md:text-4xl font-light text-white uppercase tracking-[0.3em]">Architecting Execution</h2>
+            <p class="text-slate uppercase tracking-[0.5em] text-xs">Institutional Excellence • 2026 Corporate Profile</p>
+        </div>
+
+        <div class="absolute bottom-10 flex gap-8 opacity-50 text-[10px] tracking-widest uppercase">
+            <span>Level 1 B-BBEE</span>
+            <span>100% Black Owned</span>
+            <span>Reg: 2021/965486/07</span>
+        </div>
+    </header>
+
+    <section class="py-32 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div>
+                <h3 class="text-gold text-xs font-bold uppercase tracking-[0.5em] mb-6 italic">The Foundation</h3>
+                <h2 class="text-4xl text-white mb-8 serif uppercase leading-tight">Bridging Strategy <br>and Compliance</h2>
+                <p class="text-slate text-lg leading-relaxed mb-6 italic">
+                    Founded in 2021, Buxino Consulting is a strategic services firm specializing in converting transactional corporate spend into recurring institutional growth.
+                </p>
+                <p class="text-slate text-base leading-relaxed">
+                    We leverage a hybrid engine that combines a lean strategic core with SETA-funded support wings, allowing us to deliver premium-tier execution at high-margin efficiency. We help blue-chip enterprises navigate the R20-30B annual ESD landscape while addressing South Africa's 44% youth unemployment crisis through meaningful training.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="stat-card p-8 text-center">
+                    <span class="block text-3xl font-bold text-white mb-2">135%</span>
+                    <span class="text-[10px] text-gold tracking-widest uppercase">Procurement Recognition</span>
+                </div>
+                <div class="stat-card p-8 text-center">
+                    <span class="block text-3xl font-bold text-white mb-2">90%</span>
+                    <span class="text-[10px] text-gold tracking-widest uppercase">Projected GP Margin (2029)</span>
+                </div>
+                <div class="stat-card p-8 text-center">
+                    <span class="block text-3xl font-bold text-white mb-2">3%</span>
+                    <span class="text-[10px] text-gold tracking-widest uppercase">NPAT ESD Target Focus</span>
+                </div>
+                <div class="stat-card p-8 text-center">
+                    <span class="block text-3xl font-bold text-white mb-2">2021</span>
+                    <span class="text-[10px] text-gold tracking-widest uppercase">Established</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-black/40 border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center text-gold text-xs font-bold uppercase tracking-[0.6em] mb-20">The Execution Ecosystem</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-10 border-l border-gold/30 bg-white/[0.01]">
+                    <span class="text-gold/40 text-[10px] font-bold uppercase tracking-widest">Revenue Stream 01</span>
+                    <h3 class="text-white text-xl mt-4 mb-6 serif uppercase">Corporate <br>Gifting</h3>
+                    <p class="text-xs text-slate leading-loose mb-6">Premium executive kits and branded merchandise sourced via the Amrod affiliate network. Designed as a high-friction entry wedge for blue-chip accounts.</p>
+                    <ul class="text-[9px] text-gold/60 space-y-2 tracking-widest uppercase">
+                        <li>• Automotive Incentive Kits</li>
+                        <li>• Mining SLP Community Gifts</li>
+                        <li>• FMCG Product Launch Kits</li>
+                    </ul>
+                </div>
+
+                <div class="p-10 border-l border-gold/30 bg-white/[0.01]">
+                    <span class="text-gold/40 text-[10px] font-bold uppercase tracking-widest">Revenue Stream 02</span>
+                    <h3 class="text-white text-xl mt-4 mb-6 serif uppercase">Strategic <br>Consulting</h3>
+                    <p class="text-xs text-slate leading-loose mb-6">Retainer-based sales optimization, branding architecture, and ESD compliance navigation. Our core recurring revenue engine.</p>
+                    <ul class="text-[9px] text-gold/60 space-y-2 tracking-widest uppercase">
+                        <li>• R35k - R75k+ Monthly Retainers</li>
+                        <li>• Procurement Infiltration</li>
+                        <li>• TMT Sector Market Entry</li>
+                    </ul>
+                </div>
+
+                <div class="p-10 border-l border-gold/30 bg-white/[0.01]">
+                    <span class="text-gold/40 text-[10px] font-bold uppercase tracking-widest">Revenue Stream 03</span>
+                    <h3 class="text-white text-xl mt-4 mb-6 serif uppercase">Buxino <br>Academy</h3>
+                    <p class="text-xs text-slate leading-loose mb-6">Knowledge monetization through digital toolkits and mentorship. Turning Buxino's execution IP into a scalable digital flywheel.</p>
+                    <ul class="text-[9px] text-gold/60 space-y-2 tracking-widest uppercase">
+                        <li>• Funder-Ready Plans</li>
+                        <li>• License-Ready Systems</li>
+                        <li>• SME Mentorship Packages</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div class="section-border pl-12">
+                <h3 class="text-gold text-xs font-bold uppercase tracking-[0.5em] mb-8 italic">The Architect</h3>
+                <h2 class="text-3xl text-white mb-6 serif uppercase">Bakang Matjila</h2>
+                <p class="text-slate text-sm leading-loose mb-6">
+                    Managing Director with a BCom in Economic Management Sciences. A multi-disciplinary strategist synthesizing Marketing Management and Financial Accounting to create structural freedom for African brands.
+                </p>
+                <div class="flex gap-4 opacity-70">
+                    <div class="h-10 w-10 border border-gold/30 rounded-full flex items-center justify-center text-[10px] text-gold">LI</div>
+                    <div class="h-10 w-10 border border-gold/30 rounded-full flex items-center justify-center text-[10px] text-gold">IG</div>
+                </div>
+            </div>
+            
+            <div class="bg-white/5 p-12">
+                <h3 class="text-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-8 italic">Institutional Governance</h3>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="h-2 w-2 bg-gold mt-2"></div>
+                        <div>
+                            <p class="text-white text-sm font-bold uppercase tracking-widest">B-BBEE Level 1</p>
+                            <p class="text-[10px] text-slate mt-1">100% Black Owned, 135% Procurement Recognition.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="h-2 w-2 bg-gold mt-2"></div>
+                        <div>
+                            <p class="text-white text-sm font-bold uppercase tracking-widest">Compliance</p>
+                            <p class="text-[10px] text-slate mt-1">SARS Tax Compliant, POPIA Registered, SETA-Aligned.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="h-2 w-2 bg-gold mt-2"></div>
+                        <div>
+                            <p class="text-white text-sm font-bold uppercase tracking-widest">Operations</p>
+                            <p class="text-[10px] text-slate mt-1">Headquartered in Pretoria with 2027 Hatfield expansion targets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-24 border-t border-white/5 bg-[#01040a]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl text-white serif uppercase mb-8 italic">"Architecting Execution."</h2>
+            <p class="text-xs text-slate tracking-[0.4em] uppercase mb-16 italic">Out of the night, into prosperity.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-[10px] text-gold/60 tracking-widest uppercase">
+                <div>079 264 4869</div>
+                <div>CONSULTING@BUXINO.CO.ZA</div>
+                <div>WWW.BUXINO.CO.ZA</div>
+            </div>
+            
+            <div class="mt-20 opacity-20 text-[8px] tracking-[1em] text-white">
+                BUXINO CONSULTING (PTY) LTD • 2021/965486/07 • LEVEL 1 B-BBEE
+            </div>
+        </div>
+    </footer>
+
+    <div class="no-print fixed bottom-8 right-8">
+        <button onclick="window.print()" class="bg-gold text-midnight px-6 py-3 text-[10px] font-bold tracking-[0.3em] uppercase hover:bg-white transition-all">
+            Export Profile
+        </button>
+    </div>
+
+</body>
+</html>

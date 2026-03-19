@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buxino Consulting (Pty) Ltd – Master Business Booklet 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap');
+
+        :root {
+            --navy: #001F3F;
+            --gold: #D4AF37;
+            --slate: #334155;
+            --light-bg: #f8fafc;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #cbd5e1; 
+            color: var(--navy); 
+            line-height: 1.6;
+        }
+
+        /* PRINT BUTTON – now at bottom center, smaller, NOT sticky */
+        .no-print {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .no-print button {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 10px 24px;
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            letter-spacing: 0.08em;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            white-space: nowrap;
+        }
+
+        .no-print button:hover {
+            background: #c39c3e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .no-print button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Institutional Page Styling – unchanged */
+        .book-page { 
+            background: white; 
+            margin: 50px auto; 
+            width: 210mm; 
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            border-top: 10px solid var(--gold);
+        }
+
+        .section-title { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; 
+            font-size: 24px; 
+            text-transform: uppercase;
+            color: var(--navy); 
+            border-left: 6px solid var(--gold); 
+            padding-left: 20px; 
+            margin: 40px 0 30px 0;
+            letter-spacing: 0.05em;
+        }
+
+        .subsection-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: var(--navy);
+            margin: 25px 0 12px 0;
+        }
+
+        .highlight-card { 
+            background: var(--light-bg); 
+            border: 1px solid #e2e8f0; 
+            border-left: 5px solid var(--navy); 
+            padding: 25px; 
+            margin: 25px 0; 
+        }
+
+        .pull-quote { 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            color: var(--navy); 
+            border-left: 5px solid var(--gold); 
+            padding-left: 25px; 
+            margin: 40px 0; 
+            font-style: italic; 
+            line-height: 1.5;
+        }
+
+        /* Table Styling */
+        table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 12px; }
+        th { background: var(--navy); color: white; padding: 14px; text-align: left; text-transform: uppercase; font-weight: 800; border: 1px solid #1e293b; }
+        td { padding: 12px; border: 1px solid #e2e8f0; color: var(--slate); vertical-align: top; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+
+        /* Footer Branding */
+        .footer-brand {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-top: 4px solid var(--gold);
+        }
+
+        /* SWOT Grid */
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .swot-box { padding: 20px; border-radius: 4px; border: 1px solid #e2e8f0; }
+        .swot-s { border-top: 5px solid #10b981; background: #f0fdf4; }
+        .swot-w { border-top: 5px solid #f59e0b; background: #fffbeb; }
+        .swot-o { border-top: 5px solid #3b82f6; background: #eff6ff; }
+        .swot-t { border-top: 5px solid #ef4444; background: #fef2f2; }
+
+        @media print { 
+            body { background: white; }
+            .no-print { display: none !important; } 
+            .book-page { 
+                margin: 0; 
+                width: 100%; 
+                box-shadow: none; 
+                border: none; 
+                page-break-after: always; 
+                padding: 15mm; 
+            }
+            .footer-brand { position: static; margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PRINT BUTTON – smaller, bottom center, no stickiness issues -->
+<div class="no-print">
+    <button onclick="window.print()">Print / Export PDF</button>
+</div>
+
+<div class="book-page flex flex-col items-center justify-center text-center">
+    <div class="mb-12">
+        <h1 class="corporate-header text-7xl font-black text-[#001F3F] leading-none">Buxino</h1>
+        <p class="font-bold text-2xl tracking-[0.3em] text-[#D4AF37] uppercase">Consulting (Pty) Ltd</p>
+    </div>
+    
+    <div class="w-24 h-1 bg-[#D4AF37] mb-12"></div>
+    
+    <h2 class="corporate-header text-4xl font-black text-[#001F3F] mb-4">Master Business Overview</h2>
+    <p class="text-3xl font-light tracking-widest text-gray-400 mb-12">2026 REVISED EDITION</p>
+    
+    <p class="text-xl font-bold italic border-y-2 border-gray-100 py-4 px-8 mb-16 text-[#001F3F]">"Architecting Execution – Institutional Excellence"</p>
+    
+    <div class="text-sm text-gray-500 space-y-2 uppercase tracking-widest">
+        <p>Level 1 B-BBEE • 100% Black Owned</p>
+        <p>Registration: 2021/965486/07</p>
+        <p class="pt-8 font-black text-[#001F3F]">Prepared by Bakang Matjila</p>
+        <p>Founder & Managing Director</p>
+    </div>
+
+    <div class="footer-brand">
+        Confidential Proprietary Information • Page 1
+    </div>
+</div>
+
+<!-- Table of Contents -->
+<div class="book-page">
+    <h2 class="section-title">Table of Contents</h2>
+    <div class="space-y-4 mt-12 text-lg">
+        <a href="#executive-summary" class="block hover:text-[#D4AF37]">Executive Summary</a>
+        <a href="#company-description" class="block hover:text-[#D4AF37]">1. Company Description & Governance</a>
+        <a href="#market-analysis" class="block hover:text-[#D4AF37]">2. Market Analysis & Positioning</a>
+        <a href="#pestle-analysis" class="block hover:text-[#D4AF37]">PESTLE Analysis</a>
+        <a href="#products-services" class="block hover:text-[#D4AF37]">3. Products & Services</a>
+        <a href="#sales-marketing" class="block hover:text-[#D4AF37]">4. Sales & Marketing Strategy</a>
+        <a href="#workforce-operations" class="block hover:text-[#D4AF37]">5. Workforce & Operations</a>
+        <a href="#financial-projections" class="block hover:text-[#D4AF37]">6. Financial Projections</a>
+        <a href="#funding-requirements" class="block hover:text-[#D4AF37]">7. Funding Requirements</a>
+        <a href="#compliance" class="block hover:text-[#D4AF37]">Compliance Statement</a>
+        <a href="#closing" class="block hover:text-[#D4AF37]">Closing Statement</a>
+    </div>
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 2
+    </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="book-page" id="executive-summary">
+    <h2 class="section-title">Executive Summary</h2>
+    <p class="text-lg leading-relaxed mb-8">
+        Buxino Consulting (Pty) Ltd is a Level 1 Broad-Based Black Economic Empowerment (B-BBEE), 100% Black-owned strategic services firm founded in October 2021. We specialize in corporate gifting & branding, retainer-based consulting, strategic business plans, premium event logistics — and increasingly in knowledge monetization through <strong>Buxino Academy</strong>, the digital extension of our execution methodology.
+    </p>
+    <p class="text-lg leading-relaxed mb-8">
+        Our hybrid model leverages Sector Education and Training Authority (SETA)-funded learners for near-zero direct execution cost and converts transactional spend into recurring revenue via retainers and Academy subscriptions. From a bootstrapped base, we project measured growth to R4.16 million total revenue by 2029 (including R2.19m from Buxino Academy), with gross margins scaling to 80–90% and consistent profitability from 2028 onward.
+    </p>
+    <p class="pull-quote">
+        "We help blue-chip companies meet their 3% Net Profit After Tax (NPAT) ESD targets faster and more cost-effectively — while building a scalable knowledge business through Buxino Academy."
+    </p>
+    <p class="text-lg leading-relaxed mb-8">
+        Targeting blue-chip ESD spend (~R20–30B annually) ensures stability, while Buxino Academy creates high-margin, digital recurring revenue by teaching other black-owned businesses the same execution system that built Buxino. We address youth unemployment (44%) through SETA training and B-BBEE transformation, creating inclusive economic impact.
+    </p>
+    <div class="highlight-card">
+        <p class="text-3xl font-black text-[#D4AF37] mb-4">Key Highlights</p>
+        <ul class="list-disc pl-8 space-y-3 text-lg">
+            <li>Level 1 B-BBEE (135% procurement recognition)</li>
+            <li>Hybrid workforce: Strategic core + SETA multiplier</li>
+            <li>Entry-to-scale model: Gifting → consulting retainers → Academy upsell</li>
+            <li>Buxino Academy: Digital knowledge monetization (high-margin flywheel)</li>
+            <li>Funding ask: R2 million loan (5-year term, 10% interest) for fleet, buffer, and ramp</li>
+        </ul>
+    </div>
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 3
+    </div>
+</div>
+
+<!-- 1. Company Description & Governance -->
+<div class="book-page" id="company-description">
+    <h2 class="section-title">1. Company Description & Governance</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+        <div>
+            <h3 class="subsection-title">Legal & Ownership</h3>
+            <ul class="space-y-3 text-base">
+                <li><strong>Entity:</strong> Buxino Consulting (Pty) Ltd</li>
+                <li><strong>Registration:</strong> 2021/965486/07</li>
+                <li><strong>Ownership:</strong> 100% Black Owned – Bakang Matjila (Founder & MD)</li>
+                <li><strong>B-BBEE:</strong> Level 1 (135% procurement recognition)</li>
+                <li><strong>Location:</strong> Pretoria (Hatfield expansion target 2027)</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="subsection-title">Mission & Vision</h3>
+            <p class="italic text-base mb-4">"We believe that marketing & sales are the crucial elements in building a successful brand."</p>
+            <p class="text-base"><strong>Mission:</strong> Unlock business potential through strategy, high-quality content, and personalized service while transforming society with proudly African solutions. Emerging from Pretoria township roots, we embed grit and transformation in every initiative.</p>
+            <p class="text-base mt-4"><strong>Vision:</strong> Become the preferred Level 1 B-BBEE partner for macro enterprises in TMT and FMCG sectors by 2029, driving economic inclusion from township origins.</p>
+        </div>
+    </div>
+
+    <h3 class="subsection-title">Core Values</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="highlight-card">
+            <h4 class="font-bold text-lg mb-2">Agility</h4>
+            <p>Speed and adaptability without compromising precision.</p>
+        </div>
+        <div class="highlight-card">
+            <h4 class="font-bold text-lg mb-2">Transformation</h4>
+            <p>Uplifting communities around the businesses we serve, addressing social issues like youth unemployment.</p>
+        </div>
+        <div class="highlight-card">
+            <h4 class="font-bold text-lg mb-2">Integrity</h4>
+            <p>Transparency as baseline, governance-first mindset.</p>
+        </div>
+        <div class="highlight-card">
+            <h4 class="font-bold text-lg mb-2">Innovation</h4>
+            <p>Global tech solving uniquely African challenges, fostering inclusive growth.</p>
+        </div>
+    </div>
+
+    <div class="highlight-card mt-12">
+        <h3 class="subsection-title">Governance Overview</h3>
+        <p>Our governance-first approach ensures transparency, compliance, and ethical growth. Full framework available at <a href="https://www.buxino.co.za/governance/" class="text-gold hover:underline">www.buxino.co.za/governance/</a>, including Protection of Personal Information Act (POPIA) compliance and leadership commitments.</p>
+    </div>
+
+    <h3 class="subsection-title mt-12">Management Structure</h3>
+    <p class="text-base mb-4">Buxino's management is led by Founder & MD Bakang Matjila, with a hybrid structure for efficiency. IT, Human Resources (HR), and payroll are outsourced to maintain lean operations until profitability allows integration. SETA learners ease cashflow constraints by providing low-cost support.</p>
+    <p class="text-base mb-4">We are currently seeking incubation with SETA-aligned companies for a corporate home, with aspirations to secure a permanent space in Hatfield for full utilisation as the company grows.</p>
+    <div class="organogram mb-12">
+        <div class="org-box">
+            <p class="font-bold">Managing Director</p>
+            <p>Bakang Matjila</p>
+        </div>
+        <div class="org-line"></div>
+        <div class="org-box">
+            <p class="font-bold">Office Coordinator</p>
+            <p>(Q2 2026 Hire)</p>
+        </div>
+        <div class="org-line"></div>
+        <div class="org-sub">
+            <div class="org-box">
+                <p class="font-bold">Market Analysts</p>
+                <p>(2 Learners)</p>
+            </div>
+            <div class="org-box">
+                <p class="font-bold">Multimedia Learners</p>
+                <p>(2 Learners)</p>
+            </div>
+            <div class="org-box">
+                <p class="font-bold">Admin Learner</p>
+                <p>(1 Learner)</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="subsection-title mt-12">MD Overview</h3>
+    <p class="text-base">Bakang Matjila, Founder & CEO, holds a <strong>BCom in Economic Management Sciences</strong> with studies in <strong>Marketing</strong>, <strong>Accounting</strong>, and <strong>Management</strong>. He is a multi-disciplinary strategist synthesizing <strong>Marketing Management</strong>, <strong>Financial Accounting</strong>, and <strong>Business Management</strong>; with high-stakes business development in TMT, FMCG, and Media sectors. Expertise in translating creative brand transformation into financial reporting and corporate governance. Aspirations: Bridging marketing psychology and financial precision; creating structural freedom for brands to grow without losing their soul.</p>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 4
+    </div>
+</div>
+
+<!-- 2. Market Analysis & Positioning -->
+<div class="book-page" id="market-analysis">
+    <h2 class="section-title">2. Market Analysis & Positioning</h2>
+    <p class="text-lg leading-relaxed mb-8">
+        The corporate gifting and branding market splits into two extremes: mass resellers (volume/low price, no strategy) and expensive agencies (high creative, slow execution). Buxino owns the profitable middle ground — strategy + agile execution at premium quality with Level 1 B-BBEE advantage.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="highlight-card">
+            <h3 class="font-bold text-red-700 mb-3">Catalogue Pushers</h3>
+            <p>Volume at lowest price — commoditised, no strategic value.</p>
+        </div>
+        <div class="highlight-card">
+            <h3 class="font-bold text-blue-700 mb-3">Expensive Agencies</h3>
+            <p>High-level creative but slow and costly — often outsource execution.</p>
+        </div>
+        <div class="highlight-card bg-[#001F3F] text-white">
+            <h3 class="font-bold mb-3">Buxino – The Profitable Middle</h3>
+            <p>Strategy + flawless execution. Agile. Premium. Level 1 compliant.</p>
+        </div>
+    </div>
+
+    <h3 class="subsection-title">Feasibility – Why This? Why Now?</h3>
+    <ul class="list-disc pl-8 space-y-4 text-base mb-12">
+        <li><strong>Mandatory ESD Spend:</strong> Corporates must allocate 3% NPAT (~R20-30B annually) — Level 1 delivers 135% recognition.</li>
+        <li><strong>Experience Economy Return:</strong> Demand for premium, tactile branding items post-digital fatigue.</li>
+        <li><strong>SETA Leverage:</strong> Near-zero labor cost via learners enables margin dominance.</li>
+    </ul>
+
+    <p class="pull-quote">
+        "We help blue-chip companies meet their 3% NPAT ESD targets faster and more cost-effectively — while delivering premium execution."
+    </p>
+
+    <h3 class="subsection-title">Market Volatility & Growth</h3>
+    <p class="text-base mb-8">South Africa's economy faces volatility, but targeted sectors show resilience. Automotive: 7.5% sales growth in 2026 (50,073 units Jan alone). TMT: 3.12% <strong>Compound Annual Growth Rate (CAGR)</strong> to R13.07B by 2031, driven by 5G/IoT. FMCG: Steady demand with online growth (2% e-commerce share, projected expansion). Mining: +2.5% production, R439B GDP contribution, critical minerals demand up 10%. Volatility mitigated by ESD mandatory spend and B-BBEE preferences.</p>
+
+    <div class="swot-grid mt-12">
+        <div class="swot-box swot-s">
+            <h3 class="font-bold text-green-800 mb-2">Strengths</h3>
+            <ul class="list-disc pl-4 space-y-1 text-sm">
+                <li>Level 1 B-BBEE status — 135% procurement recognition</li>
+                <li>Low fixed costs via SETA staffing model</li>
+                <li>Distinct premium brand identity (navy/gold, minimalist)</li>
+                <li>Agile supply chain (Amrod + local partners)</li>
+            </ul>
+        </div>
+        <div class="swot-box swot-w">
+            <h3 class="font-bold text-yellow-800 mb-2">Weaknesses</h3>
+            <ul class="list-disc pl-4 space-y-1 text-sm">
+                <li>Limited pre-loan marketing budget (addressed via R2m loan)</li>
+                <li>No owned warehouse until 2027 HQ move</li>
+            </ul>
+        </div>
+        <div class="swot-box swot-o">
+            <h3 class="font-bold text-blue-800 mb-2">Opportunities</h3>
+            <ul class="list-disc pl-4 space-y-1 text-sm">
+                <li>Automotive dealer incentive recovery (2026 growth)</li>
+                <li>ESD compliance pressure in mining & TMT</li>
+                <li>FMCG private-label branding surge</li>
+                <li>Upsell path: gifting → consulting retainers (modest scale)</li>
+            </ul>
+        </div>
+        <div class="swot-box swot-t">
+            <h3 class="font-bold text-red-800 mb-2">Threats</h3>
+            <ul class="list-disc pl-4 space-y-1 text-sm">
+                <li>Supply chain delays (local partners mitigate)</li>
+                <li>Economic slowdown reducing discretionary spend</li>
+                <li>Larger agencies entering ESD space</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="text-base mt-8 italic">Strategic Risk: Founder dependency mitigated by coordinator hire in Q2 2026.</p>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 5
+    </div>
+</div>
+
+<!-- PESTLE Analysis -->
+<div class="book-page" id="pestle-analysis">
+    <h2 class="section-title">PESTLE Analysis</h2>
+    <p class="text-base mb-8">This Political, Economic, Social, Technological, Legal, and Environmental (PESTLE) analysis examines the macro environment for South African businesses in 2026, highlighting opportunities for Buxino's expansion.</p>
+
+    <div class="grid grid-cols-1 gap-6">
+        <div class="highlight-card">
+            <h3 class="subsection-title">Political</h3>
+            <p>Broad-Based Black Economic Empowerment (B-BBEE) reforms (e.g., 3% NPAT Transformation Fund) emphasize Enterprise and Supplier Development (ESD), favoring Level 1 firms like Buxino. Coalition government stability supports policy certainty, but regulatory changes require compliance vigilance.</p>
+        </div>
+        <div class="highlight-card">
+            <h3 class="subsection-title">Economic</h3>
+            <p>GDP growth 1.4-1.9%, inflation 3.3%, interest rate cuts. Sector growth: automotive 7.5%, mining +2.5%, TMT 3.12% Compound Annual Growth Rate (CAGR), FMCG steady. ESD R20-30B annual spend creates stable demand.</p>
+        </div>
+        <div class="highlight-card">
+            <h3 class="subsection-title">Social</h3>
+            <p>Youth unemployment 44% — Buxino addresses via SETA training, creating jobs and skills. B-BBEE transformation promotes inclusion, solving apartheid legacy issues like poverty/inequality. Urban migration boosts FMCG/TMT demand.</p>
+        </div>
+        <div class="highlight-card">
+            <h3 class="subsection-title">Technological</h3>
+            <p>5G/IoT growth (TMT CAGR 3.12%), AI/digital transformation. Buxino leverages for branding/logistics efficiency, aligning with smart-city initiatives.</p>
+        </div>
+        <div class="highlight-card">
+            <h3 class="subsection-title">Legal</h3>
+            <p>B-BBEE/Employment Equity Act (EEA) compliance mandatory; Buxino is Level 1/tax/Protection of Personal Information Act (POPIA) compliant. Labour laws support SETA; ESD regulations favor Black-owned suppliers.</p>
+        </div>
+        <div class="highlight-card">
+            <h3 class="subsection-title">Environmental</h3>
+            <p>Sustainable mining/FMCG practices; Buxino promotes eco-friendly gifting/logistics to align with green procurement trends.</p>
+        </div>
+    </div>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 6
+    </div>
+</div>
+
+<!-- 3. Products & Services – all streams fully explained -->
+<div class="book-page" id="products-services">
+    <h2 class="section-title">3. Products & Services</h2>
+    <p class="text-base mb-8">Each revenue stream is deliberately designed to serve blue-chip ESD/CSI budgets while creating a natural Trojan Horse progression: low-friction entry → trust-building delivery → high-margin retainers → scalable knowledge monetization. All streams align with mandatory 3% NPAT ESD spend (~R20–30B annually across SA corporates) and deliver 135% Level 1 B-BBEE procurement recognition.</p>
+
+    <div class="grid grid-cols-1 gap-8">
+        <!-- 1. Premium Corporate Gifting & Branding -->
+        <div class="highlight-card">
+            <h3 class="subsection-title">1. Premium Corporate Gifting & Branding</h3>
+            <p class="mb-3">Curated, high-perceived-value executive kits and branded merchandise sourced via trusted partners (e.g., Amrod affiliate network). Average deal size R13 000–R25 000 per order. 30% markup on physical costs only — all other value (strategy, curation, delivery) is margin.</p>
+            <p class="font-semibold mb-2">Target Clients & Industries</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Automotive: Dealer incentive kits, CSI activations (7.5% sector growth 2026)</li>
+                <li>Mining: SLP community gifts, executive thank-yous (R439B GDP contribution)</li>
+                <li>FMCG: Product launch kits, trade promotions (R1.64T market)</li>
+                <li>TMT: Event swag, employee recognition (3.12% CAGR to R13.07B by 2031)</li>
+            </ul>
+            <p class="font-semibold mb-2">Why Companies Choose Buxino</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Level 1 recognition = 135% scorecard credit on ESD spend</li>
+                <li>Premium quality at mid-market pricing (not catalogue junk, not agency expensive)</li>
+                <li>Fast 7–14 day turnaround via just-in-time supply chain</li>
+                <li>Full branding strategy included — not just product push</li>
+            </ul>
+            <p class="font-semibold mb-2">Trojan Horse Role & Sales Path</p>
+            <p class="text-sm">Primary entry wedge. 70–80% of consulting retainers originate from gifting relationships. Typical journey: first R15k gift order → delivery excellence → audit conversation → strategy retainer upsell.</p>
+            <p class="text-sm italic mt-3">Action plan: Target 5–15 orders/year initially via LinkedIn/ESD officer outreach, referrals, and sector events. Volume scales with brand authority and repeat business.</p>
+        </div>
+
+        <!-- 2. Business Consulting Retainers -->
+        <div class="highlight-card">
+            <h3 class="subsection-title">2. Business Consulting Retainers</h3>
+            <p class="mb-3">Quarterly or annual strategy retainers focused on sales optimization, branding architecture, ESD compliance navigation, procurement infiltration, and growth systemisation. Typical deal size R50 000–R150 000 per quarter.</p>
+            <p class="font-semibold mb-2">Target Clients & Industries</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>TMT: Market entry, partner ecosystem strategy (5G/IoT boom)</li>
+                <li>FMCG: Supply chain diversity, private-label branding</li>
+                <li>Automotive: Dealer network transformation, CSI alignment</li>
+                <li>Mining: SLP execution, community investment optimisation</li>
+            </ul>
+            <p class="font-semibold mb-2">Why Companies Choose Buxino</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Founder-led execution — not junior consultants</li>
+                <li>135% Level 1 recognition on every rand spent</li>
+                <li>Proven Trojan Horse methodology that delivers measurable procurement wins</li>
+                <li>High ROI: R1 spent typically unlocks R3–10 in future procurement access</li>
+            </ul>
+            <p class="font-semibold mb-2">Trojan Horse Role & Sales Path</p>
+            <p class="text-sm">Core recurring engine. 80%+ of retainers come from gifting or Academy clients. Path: gifting delivery → diagnostic audit → proposal → signed retainer (90-day onboarding typical).</p>
+            <p class="text-sm italic mt-3">Action plan: Target 3–10 active retainers by 2027, growing to 15–25 by 2029. Upsell cadence: quarterly reviews + scope expansion.</p>
+        </div>
+
+        <!-- 3. Strategic Plans & Registrations -->
+        <div class="highlight-card">
+            <h3 class="subsection-title">3. Strategic Plans & Registrations</h3>
+            <p class="mb-3">Custom 5-year strategic business plans, CIPC registrations, tax structuring, B-BBEE verifications, and ESD readiness packages. Typical deal size R25 000–R85 000 per engagement (frequently bundled with retainers).</p>
+            <p class="font-semibold mb-2">Target Clients & Industries</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Mining: SLP submissions and compliance roadmaps</li>
+                <li>Automotive & TMT: Expansion and transformation plans</li>
+                <li>FMCG: Supplier development frameworks for corporate clients</li>
+                <li>Black-owned SMEs: Seeking Level 1–2 status or corporate onboarding</li>
+            </ul>
+            <p class="font-semibold mb-2">Why Companies Choose Buxino</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Founder expertise in bridging strategy and financial compliance</li>
+                <li>135% recognition when used as ESD intervention</li>
+                <li>Proven templates + customisation = faster approval</li>
+                <li>Often bundled with consulting for seamless execution</li>
+            </ul>
+            <p class="font-semibold mb-2">Trojan Horse Role & Sales Path</p>
+            <p class="text-sm">Mid-funnel bridge. Many clients start with gifting, move to plan/registration for compliance, then convert to retainers. Path: enquiry → diagnostic call → fixed-price proposal → delivery → retainer discussion.</p>
+            <p class="text-sm italic mt-3">Action plan: Target 5–15 engagements/year, 60% conversion to retainers. Frequently bundled (e.g., plan + 3-month retainer package).</p>
+        </div>
+
+        <!-- 4. Event Planning & Logistics -->
+        <div class="highlight-card">
+            <h3 class="subsection-title">4. Event Planning & Logistics</h3>
+            <p class="mb-3">White-glove corporate activations, product launches, CSI events, dealer conferences, and end-to-end logistics. Typical deal size R25 000–R150 000 per event (scalable from small executive dinners to 200-pax activations).</p>
+            <p class="font-semibold mb-2">Target Clients & Industries</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Automotive: Dealer incentive events (7.5% sector growth)</li>
+                <li>Mining: SLP community & stakeholder engagements</li>
+                <li>FMCG: Product rollouts, trade shows</li>
+                <li>TMT: Partner summits, tech showcases (3.12% CAGR)</li>
+            </ul>
+            <p class="font-semibold mb-2">Why Companies Choose Buxino</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm mb-3">
+                <li>Level 1 recognition on full event spend</li>
+                <li>End-to-end execution (strategy → logistics → reporting)</li>
+                <li>SETA learners reduce on-ground costs</li>
+                <li>Proven CSI/ESD alignment (photos, reports, impact metrics)</li>
+            </ul>
+            <p class="font-semibold mb-2">Trojan Horse Role & Sales Path</p>
+            <p class="text-sm">High-visibility entry or upsell from consulting. Path: retainer client requests event → full proposal → execution → post-event strategy discussion → expanded scope.</p>
+            <p class="text-sm italic mt-3">Action plan: Target 3–12 events/year, 50% from existing clients. Average value grows with relationship maturity.</p>
+        </div>
+
+        <!-- 5. Buxino Academy – Knowledge Monetization Flywheel -->
+<div class="highlight-card bg-[#001F3F] text-white mt-8">
+    <h3 class="subsection-title">5. Buxino Academy – Knowledge Monetization Flywheel</h3>
+    <p class="mb-4">The long-term scalable extension of our execution methodology — packaging our battle-tested system (enter small with low-friction ESD offers → prove value fast → scale retainers) into digital and high-touch learning products for black-owned SMEs and corporates wanting to replicate our model internally.</p>
+    <p class="mb-4 font-bold">Four Revenue Tiers:</p>
+    <ul class="list-disc pl-8 space-y-2 text-sm">
+        <li><strong>Self-Serve Toolkit (R10 000 one-time)</strong>: Browser-based digital playbook, 100-point scorecard, proposal generator, cash-flow survival guide, red-flag matrix, Level 1 JV strategy module. IP-protected, no downloads. Targets ambitious founders ready to execute independently.</li>
+        <li><strong>Done-With-You Mentorship (R35 000 package)</strong>: 3 × 60-min 1:1 sessions with Bakang Matjila + personalised 90-day roadmap & audits. High-touch guidance for cracking corporate budgets and building retainers.</li>
+        <li><strong>White-Label / Licensing (R75 000+)</strong>: Corporates and larger ESD providers rebrand and resell the system to their suppliers or internally. Includes unlimited internal usage rights and light customisation.</li>
+        <li><strong>Community & Recurring Subscriptions</strong>: Monthly access to live Q&A, template updates, peer network, exclusive case studies. Creates predictable recurring revenue and loyalty flywheel.</li>
+    </ul>
+    <p class="mt-4 text-sm italic">Why now? Massive ESD compliance pressure (R20–30B annual spend) + youth unemployment crisis (44%) create urgent demand for proven, replicable execution systems. Academy turns founder IP into a high-margin, compounding asset while reinforcing Buxino’s authority in black economic transformation.</p>
+</div>
+    </div>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 7
+    </div>
+</div>
+
+<!-- 4. Sales & Marketing Strategy -->
+<div class="book-page" id="sales-marketing">
+    <h2 class="section-title">4. Sales & Marketing Strategy</h2>
+    <h3 class="subsection-title">Targeting Blue-Chip Market</h3>
+    <p class="text-base mb-8">Blue-chip companies (e.g., Vodacom, Anglo American, Nedbank, FirstRand, MTN, Sasol, Shoprite, Woolworths, Standard Bank, Old Mutual) are targeted for stable ESD spend (3% NPAT, R20-30B annually), ensuring compliance while delivering 135% recognition. This mitigates volatility in smaller markets. Top givers contribute 35% CSI in basic materials, 20% in financials — Buxino aligns with their ESD/CSI objectives.</p>
+
+    <h3 class="subsection-title">Our Compliance Readiness for Tenders</h3>
+    <ul class="list-disc pl-8 space-y-2 text-base mb-6">
+        <li>Valid Tax Clearance Certificate (SARS)</li>
+        <li>COIDA Letter of Good Standing (budgeted post-loan/staff onboarding)</li>
+        <li>Public Liability Insurance (budgeted in R2M loan)</li>
+    </ul>
+    <p class="text-sm italic">These items are pre-checked to meet large corporate tender checklists.</p>
+
+    <h3 class="subsection-title">Why Companies Choose Buxino</h3>
+    <ul class="list-disc pl-8 space-y-4 text-base mb-12">
+        <li><strong>Level 1 B-BBEE</strong>: 135% ESD recognition, tax-compliant, POPIA registered.</li>
+        <li><strong>Cost-efficient premium solutions</strong>: SETA leverage lowers costs, Trojan Horse upsell maximizes Lifetime Value (LTV).</li>
+        <li><strong>Solves social issues</strong>: Youth employment via SETA, transformation in high-unemployment SA (44% youth rate).</li>
+        <li><strong>Macro alignment</strong>: PESTLE-resilient (e.g., technological innovation in TMT, economic growth in mining).</li>
+    </ul>
+
+    <div class="highlight-card">
+        <h3 class="subsection-title">Compliance Advantage – Procurement ROI</h3>
+        <table>
+            <thead>
+                <tr><th>Spend Amount</th><th>Buxino (Level 1)</th><th>Level 4 Competitor</th><th>Client Benefit</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>R100,000</td><td>R135,000 recognized</td><td>R100,000 recognized</td><td>35% extra scorecard value</td></tr>
+            </tbody>
+        </table>
+        <p class="text-sm italic mt-4">Level 1 provides 135% recognition, helping clients hit transformation targets faster and cheaper.</p>
+    </div>
+
+    <h3 class="subsection-title mt-12">Trojan Horse Strategy & LTV</h3>
+    <ol class="list-decimal pl-8 space-y-4 text-base">
+        <li><strong>Wedge</strong> – Gifting entry (5–10/month leads via LinkedIn/ESD).</li>
+        <li><strong>Audit</strong> – Identify gaps during delivery → position strategy solutions (1–2/month closes).</li>
+        <li><strong>Upsell</strong> – Retainer conversion (LTV R162,500+ over 3 years).</li>
+    </ol>
+
+    <p class="text-base mt-8">KPIs for SETA learners: Market analysts – 5 leads/week; Multimedia – 3 mockups/week; Admin – 80% client tasks. Utilisation: <strong>70% billable / 30% training</strong> ratio, ensuring high output and quality while remaining a learning-centric organization. All technical output undergoes final <strong>Director Review</strong> to meet Buxino 'Institutional Excellence' standard before client delivery.</p>
+
+    <h3 class="subsection-title mt-12">Typical Project Lifecycle</h3>
+    <div class="cycle-diagram">
+        <div class="cycle-node">
+            <p class="font-bold">1. Entry</p>
+            <p>Branded Gifts/Kits</p>
+        </div>
+        <div class="cycle-connector"></div>
+        <div class="cycle-node">
+            <p class="font-bold">2. Engagement</p>
+            <p>Audit & Gap Identification</p>
+        </div>
+        <div class="cycle-connector"></div>
+        <div class="cycle-node">
+            <p class="font-bold">3. Expansion</p>
+            <p>Retainer Contract</p>
+        </div>
+        <div class="cycle-connector"></div>
+        <div class="cycle-node">
+            <p class="font-bold">4. Legacy</p>
+            <p>Ongoing Recurring Revenue</p>
+        </div>
+    </div>
+
+    <h3 class="subsection-title mt-12">Contact-to-Contract Timeline</h3>
+    <p class="text-base">Typical lead-to-contract cycle: <strong>4 weeks</strong> for Gifting; <strong>8–12 weeks</strong> for Consulting Retainers.</p>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 8
+    </div>
+</div>
+
+<!-- 5. Workforce & Operations -->
+<div class="book-page" id="workforce-operations">
+    <h2 class="section-title">5. Workforce & Operations</h2>
+    <h3 class="subsection-title">Hybrid Engine: Strategic Core + SETA Support</h3>
+    <p class="text-base mb-8">The hybrid engine combines a lean strategic core with Sector Education and Training Authority (SETA)-funded learners to ease operational constraints on cashflow, enabling efficient scaling as a growing company.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+        <div class="highlight-card">
+            <h4 class="font-bold text-lg mb-3">Strategic Core (In-House)</h4>
+            <ul class="list-disc pl-6 space-y-2 text-base">
+                <li>Managing Director – Whale accounts, strategy, governance</li>
+                <li>Office Coordinator (Q2 2026) – Admin, logistics, compliance</li>
+                <li>Senior Sales (2027+) – Commission-based as revenue grows</li>
+            </ul>
+        </div>
+        <div class="highlight-card">
+            <h4 class="font-bold text-lg mb-3">SETA Support Wing</h4>
+            <ul class="list-disc pl-6 space-y-2 text-base italic">
+                <li>Market Analysts – Cold-scout leads</li>
+                <li>Multimedia Learners – 3D mockups, design</li>
+                <li>Admin Learners – CRM, logistics coordination</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 class="subsection-title">Payroll Trajectory (Aligned to Revenue)</h3>
+    <table>
+        <thead>
+            <tr><th>Year</th><th>Total Salaries</th><th>Composition</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>2025</td><td>R 0</td><td>Founder drawings + minimal outsourced</td></tr>
+            <tr><td>2026</td><td>R 321,000</td><td>Founder + Coordinator + 5 SETA learners (R0)</td></tr>
+            <tr><td>2027</td><td>R 573,000</td><td>Add senior sales & juniors</td></tr>
+            <tr><td>2029</td><td>R 1,365,000</td><td>Full team of 8–10</td></tr>
+        </tbody>
+    </table>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 9
+    </div>
+</div>
+
+<!-- Example: Financial Projections – updated table -->
+<div class="book-page" id="financial-projections">
+    <h2 class="section-title">6. Financial Projections</h2>
+    <p class="text-base mb-8">Projections reflect measured growth from an established base. R2 million loan (Aug 2026) enables fleet, buffer, and ramp-up. Buxino Academy adds high-margin digital revenue from 2026.</p>
+
+    <table>
+        <thead>
+            <tr><th>Description</th><th>2025</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th></tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="6" class="bg-gray-100 font-bold p-3">Revenue Streams</td></tr>
+            <tr><td>Corporate Gifting & Branding</td><td>R 0</td><td>R 65,000</td><td>R 97,500</td><td>R 162,500</td><td>R 227,500</td></tr>
+            <tr><td>Business Consulting Retainers</td><td>R 5,000</td><td>R 97,500</td><td>R 325,000</td><td>R 585,000</td><td>R 819,000</td></tr>
+            <tr><td>Business Plans & Registrations</td><td>R 362</td><td>R 113,750</td><td>R 243,750</td><td>R 406,250</td><td>R 568,750</td></tr>
+            <tr><td>Event Planning & Logistics</td><td>R 0</td><td>R 48,750</td><td>R 162,500</td><td>R 256,750</td><td>R 359,450</td></tr>
+            <tr><td>Buxino Academy (Toolkit + Mentorship + Licensing + Subscriptions)</td><td>R 0</td><td>R 100,000</td><td>R 570,000</td><td>R 1,215,000</td><td>R 2,190,000</td></tr>
+            <tr class="font-bold bg-gray-100"><td>Total Revenue</td><td>R 5,362</td><td>R 425,000</td><td>R 1,398,750</td><td>R 2,625,500</td><td>R 4,164,700</td></tr>
+            <tr><td colspan="6" class="bg-gray-100 font-bold p-3 mt-4">Key Metrics</td></tr>
+            <tr><td>Gross Profit Margin</td><td>100%</td><td>80%</td><td>88%</td><td>89%</td><td>90%</td></tr>
+            <tr><td>Net Profit (Pre-Tax)</td><td>Negative</td><td>Negative</td><td>Positive</td><td>Positive</td><td>Positive</td></tr>
+        </tbody>
+    </table>
+
+     <p class="pull-quote mt-8">
+        "Buxino Academy adds high-margin, scalable digital revenue — turning execution IP into a compounding flywheel."
+    </p>
+
+    <h3 class="subsection-title mt-12">Cash Conversion Cycle & Working Capital</h3>
+    <p class="text-base mb-4">Blue-chip clients typically pay on 30–60 day terms, while Buxino maintains a <strong>100% upfront payment policy</strong> for physical goods with suppliers like Amrod to ensure priority delivery. The R2 million loan provides a critical cash flow buffer to bridge this gap — ensuring supplier payments are met while awaiting client receipts. This protects operations during the revenue ramp-up phase and prevents liquidity crunches common in South African B2B.</p>
+
+    <h3 class="subsection-title mt-12">Break-Even Analysis</h3>
+    <p class="text-base mb-4">Break-even point for 2026: Fixed costs R731,800, variable costs 26%, break-even revenue R988,919.</p>
+
+    <div class="highlight-card mt-12">
+        <h3 class="subsection-title">Loan Deployment (R2M, Aug 2026)</h3>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>VW Caddy Cargo – R500,000 (deliveries, branding visibility)</li>
+            <li>Inventory & Marketing Buffer – R200,000 (gifting stock, LinkedIn ads, partnerships)</li>
+            <li>Staff & Contingency/Working Capital – R1,300,000 (coordinator hire, SETA compliance, cash flow bridge for 30–60 day client terms)</li>
+        </ul>
+        <p class="mt-4 text-sm italic">5-year term, 10% interest, R400k annual principal from 2027.</p>
+    </div>
+
+    <h3 class="subsection-title mt-12">Forward-Looking Statement</h3>
+    <p class="text-base">Beyond 2029, Buxino is positioned as a high-value acquisition target for international consulting firms seeking a proven, Level 1 B-BBEE footprint in the SADC region.</p>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 10
+    </div>
+</div>
+
+<!-- 7. Funding Requirements -->
+<div class="book-page" id="funding-requirements">
+    <h2 class="section-title">7. Funding Requirements</h2>
+    <p class="text-lg leading-relaxed mb-8">
+        To transition from foundation phase to measured growth, we seek R2 million loan funding (5-year term, 10% interest) to be deployed in August 2026. Funds will enable:
+    </p>
+    <ul class="list-disc pl-8 space-y-4 text-lg mb-12">
+        <li>VW Caddy Cargo for branded deliveries & visibility</li>
+        <li>Modest inventory & marketing ramp</li>
+        <li>Staff buffer (coordinator hire, SETA compliance)</li>
+        <li>Contingency for working capital</li>
+    </ul>
+    <p class="text-lg font-semibold">
+        Repayment from operations by 2030. No equity dilution. Strong B-BBEE/ESD alignment enhances value for financial partners.
+    </p>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 11
+    </div>
+</div>
+
+<!-- Compliance Statement -->
+<div class="book-page" id="compliance">
+    <h2 class="section-title">Compliance Statement</h2>
+    <p class="text-lg leading-relaxed mb-8">
+        Buxino Consulting (Pty) Ltd is fully compliant with key regulatory requirements:
+    </p>
+    <ul class="list-disc pl-8 space-y-4 text-lg">
+        <li>B-BBEE Level 1 certified (135% procurement recognition)</li>
+        <li>Tax compliant with South African Revenue Service (SARS) (valid Tax Clearance Certificate)</li>
+        <li>Protection of Personal Information Act (POPIA) compliant as Information Regulator registered (Registration Number: 2021/965486/07)</li>
+        <li>SETA-aligned for youth training programmes</li>
+    </ul>
+
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Page 12
+    </div>
+</div>
+
+<!-- Closing Statement -->
+<div class="book-page" id="closing">
+    <div class="text-center py-32">
+        <img src="Buxino Consulting LinkedIn Logo.jpg" alt="Buxino Logo" class="h-32 mb-12 mx-auto">
+        <p class="text-4xl font-black mb-8">"We are not merely consulting;<br>we are <span class="buxino-gold">Architecting Execution.</span>"</p>
+        <p class="text-2xl font-bold mb-4">Bakang Matjila</p>
+        <p class="buxino-gold font-black uppercase tracking-widest text-lg">Founder & Managing Director</p>
+        <div class="mt-16 text-base text-gray-600 space-y-2">
+            <p>079 264 4869 | consulting@buxino.co.za</p>
+            <p>www.buxino.co.za • Reg: 2021/965486/07 • Level 1 B-BBEE</p>
+            <p>Pretoria, South Africa • Confidential</p>
+        </div>
+    </div>
+    <div class="footer-brand">
+        Buxino Consulting (Pty) Ltd • Reg: 2021/965486/07 • Level 1 B-BBEE • Confidential • Final Page
+    </div>
+</div>
+
+</body>
+</html>

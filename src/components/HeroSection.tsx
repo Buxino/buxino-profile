@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Subtle Watermark */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
             <img 
-              src="/BuxinoConsultingGemini.png" 
+              src="" 
               alt="" 
               className="max-w-[40%] object-contain"
             />

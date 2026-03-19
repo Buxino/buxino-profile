@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buxino Consulting | Historical Financial Statements – Cash Basis (2022–2026 YTD)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap');
+
+    :root {
+        --navy: #001F3F;
+        --gold: #D4AF37;
+        --slate-dark: #334155;
+        --slate-light: #e2e8f0;
+        --border-color: #cbd5e1;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+        color: var(--navy);
+        margin: 0;
+    }
+
+    .nav-container {
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 50;
+        padding: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+        border-bottom: 4px solid var(--gold);
+    }
+
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 1px solid var(--slate-light);
+        cursor: pointer;
+        background: white;
+        color: var(--navy);
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .nav-btn.active { background: var(--navy); color: white; border-color: var(--gold); border-width: 2px; }
+    .print-btn { background: var(--gold); color: white; border: none; font-weight: 900; }
+    .print-btn:hover { background: #bfa035; }
+
+    .doc-container {
+        max-width: 210mm;
+        margin: 30px auto;
+        background: white;
+        padding: 40px 30px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 16px;
+        font-size: 10px;
+    }
+
+    th {
+        background: var(--navy);
+        color: white;
+        padding: 8px 6px;
+        text-align: right;
+        text-transform: uppercase;
+    }
+
+    th:first-child { text-align: left; }
+
+    td {
+        padding: 6px 8px;
+        border-bottom: 1px solid var(--border-color);
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    td:first-child {
+        text-align: left;
+        font-weight: 600;
+        white-space: normal;
+        max-width: 160px;
+    }
+
+    td:not(:first-child) {
+        padding-right: 16px;
+        min-width: 100px;
+    }
+
+    .section-header {
+        background: #f1f5f9 !important;
+        font-weight: 900;
+        text-align: left !important;
+        color: var(--navy);
+        border-left: 4px solid var(--gold);
+        padding-left: 12px !important;
+    }
+
+    .row-total {
+        background: #f8fafc !important;
+        font-weight: 800;
+        border-top: 2px solid var(--navy);
+    }
+
+    .row-grand-total {
+        background: var(--navy) !important;
+        color: white !important;
+        font-weight: 900;
+    }
+
+    .row-grand-total td { color: white !important; }
+
+    .justification-footer {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        padding: 16px;
+        margin: 12px 0 24px;
+        border-radius: 6px;
+        border-left: 6px solid #f59e0b;
+        font-size: 12px;
+        color: #78350f;
+    }
+
+    .footer-label {
+        font-weight: 900;
+        font-size: 10px;
+        color: #b45309;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 6px;
+        letter-spacing: 0.15em;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media print {
+        @page { size: A4 landscape; margin: 12mm; }
+        body { background: white; }
+        .nav-container { display: none !important; }
+        .doc-container { margin: 0; padding: 15px 20px; box-shadow: none; width: 100%; max-width: none; }
+        .tab-content { display: block !important; page-break-after: always; padding-top: 10px; }
+        table, .justification-footer { page-break-inside: avoid; }
+    }
+</style>
+</head>
+<body>
+
+<div class="nav-container no-print">
+    <button class="nav-btn print-btn" onclick="window.print()">🖨️ Print Full Document</button>
+    <button class="nav-btn active" onclick="showTab(1)">Income Stmt</button>
+    <button class="nav-btn" onclick="showTab(2)">Balance Sheet</button>
+    <button class="nav-btn" onclick="showTab(3)">Cash Flow</button>
+    <button class="nav-btn" onclick="showTab(4)">Tax Est</button>
+    <button class="nav-btn" onclick="showTab(5)">Bank Recon</button>
+    <button class="nav-btn" onclick="showTab(6)">2026 Ledger</button>
+    <button class="nav-btn" onclick="showTab(7)">Historic Ledgers</button>
+</div>
+
+<div class="doc-container">
+    <div class="flex justify-between items-end border-b-4 border-[var(--navy)] pb-4 mb-6">
+        <div>
+            <h1 class="text-4xl font-black text-[var(--navy)] leading-none">BUXINO CONSULTING</h1>
+            <p class="text-[var(--gold)] font-bold text-xs tracking-[0.4em] uppercase mt-2">Historical Financial Statements – Cash Basis</p>
+        </div>
+        <div class="text-right">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">Internal / Management Use – February 2026 YTD</p>
+            <p class="text-xl font-black text-[var(--navy)]">Pure Cash Basis – Reconciled</p>
+        </div>
+    </div>
+
+    <div class="justification-footer">
+        <span class="footer-label">Important Notes</span>
+        <p class="footer-text">
+            This report uses pure cash basis accounting (cash flows only; no accruals, provisions, receivables/payables). Drawings are equity reductions (not expenses). Capital injections are equity contributions (not income). No depreciation (no fixed assets). All figures reconciled to bank statements and vouchers. For statutory purposes (SARS, audit), accrual basis (IFRS/IFRS for SMEs) is required — consult a registered accountant/tax practitioner. Rounding may cause minor differences.
+        </p>
+    </div>
+
+    <!-- February 2026 Adjustment Input -->
+    <div class="justification-footer">
+        <span class="footer-label">February 2026 Bank Charges Adjustment</span>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+            <label for="bankCharge">Feb 2026 Bank Charges (R):</label>
+            <input type="number" id="bankCharge" step="0.01" placeholder="e.g. 93.50" style="padding:8px; width:120px; border:1px solid var(--border-color); border-radius:4px;">
+            <button onclick="applyAdjustment()" style="background:var(--gold); color:var(--navy); padding:8px 16px; border:none; border-radius:4px; font-weight:700; cursor:pointer;">Apply Adjustment</button>
+        </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="flex border-b-2 border-[var(--border-color)] mb-6 overflow-x-auto">
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg mr-1 bg-white active" onclick="showTab(1)">Income Stmt</button>
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg mr-1" onclick="showTab(2)">Balance Sheet</button>
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg mr-1" onclick="showTab(3)">Cash Flow</button>
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg mr-1" onclick="showTab(4)">Tax Est</button>
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg mr-1" onclick="showTab(5)">Bank Recon</button>
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg mr-1" onclick="showTab(6)">2026 Ledger</button>
+        <button class="tab-btn px-4 py-2 font-bold text-sm border border-[var(--border-color)] border-b-0 rounded-t-lg" onclick="showTab(7)">Historic Ledgers</button>
+    </div>
+
+    <!-- Tab 1: Income Statement -->
+    <div id="tab1" class="tab-content active">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">Income Statement – Comparative (Years Ended February)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="numeric">2022</th>
+                    <th class="numeric">2023</th>
+                    <th class="numeric">2024</th>
+                    <th class="numeric">2025</th>
+                    <th class="numeric">2026 (YTD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="section-header"><td colspan="6">REVENUE</td></tr>
+                <tr><td>Sales</td><td class="numeric">R 20,480</td><td class="numeric">R 20,840</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr><td>Cost of Sales</td><td class="numeric">R 12,736</td><td class="numeric">R 13,538</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr class="row-total"><td>Gross Profit</td><td class="numeric">R 7,744</td><td class="numeric">R 7,302</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+
+                <tr class="section-header"><td colspan="6">OTHER INCOME</td></tr>
+                <tr><td>Services Rendered</td><td class="numeric">R 0</td><td class="numeric">R 31,800</td><td class="numeric">R 28,300</td><td class="numeric">R 5,000</td><td class="numeric">R 0</td></tr>
+                <tr><td>Bank / Other (refunds, interest)</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 527</td><td class="numeric">R 362</td><td class="numeric">R 0</td></tr>
+                <tr class="row-total"><td>Gross Income</td><td class="numeric">R 7,744</td><td class="numeric">R 39,102</td><td class="numeric">R 28,827</td><td class="numeric">R 5,362</td><td class="numeric" id="gross-income-26">R 0</td></tr>
+
+                <tr class="section-header"><td colspan="6">OPERATING EXPENSES</td></tr>
+                <tr><td>Wages / Casual labour</td><td class="numeric">R 0</td><td class="numeric">R 1,200</td><td class="numeric">R 500</td><td class="numeric">R 1,660</td><td class="numeric">R 0</td></tr>
+                <tr><td>Rental (Vehicle)</td><td class="numeric">R 0</td><td class="numeric">R 15,428</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr><td>Fuel Allowance</td><td class="numeric">R 450</td><td class="numeric">R 2,350</td><td class="numeric">R 809</td><td class="numeric">R 514</td><td class="numeric">R 0</td></tr>
+                <tr><td>Cellphone Allowance</td><td class="numeric">R 616</td><td class="numeric">R 1,381</td><td class="numeric">R 2,270</td><td class="numeric">R 3,808</td><td class="numeric" id="cell-26">R 123</td></tr>
+                <tr><td>Cost of services rendered</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 8,542</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr><td>Bank Charges</td><td class="numeric">R 452</td><td class="numeric">R 1,367</td><td class="numeric">R 1,438</td><td class="numeric">R 1,660</td><td class="numeric" id="bank-chg-26">R 1,434</td></tr>
+                <tr><td>Storage</td><td class="numeric">R 0</td><td class="numeric">R 1,600</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr><td>Miscellaneous</td><td class="numeric">R 790</td><td class="numeric">R 0</td><td class="numeric">R 368</td><td class="numeric">R 1,187</td><td class="numeric">R 0</td></tr>
+                <tr class="row-total"><td>Total Operating Expenses</td><td class="numeric">R 2,308</td><td class="numeric">R 23,326</td><td class="numeric">R 13,927</td><td class="numeric">R 8,829</td><td class="numeric" id="exp-26">R 1,557</td></tr>
+
+                <tr class="row-grand-total"><td>Profit Before Tax</td><td class="numeric">R 5,436</td><td class="numeric">R 15,776</td><td class="numeric">R 14,900</td><td class="numeric neg">R -3,467</td><td class="numeric neg" id="pbt-dynamic">R -1,557</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tab 2: Balance Sheet -->
+    <div id="tab2" class="tab-content">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">Balance Sheet – As at February (End of Year)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="numeric">2022</th>
+                    <th class="numeric">2023</th>
+                    <th class="numeric">2024</th>
+                    <th class="numeric">2025</th>
+                    <th class="numeric">2026 (YTD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="section-header"><td colspan="6">ASSETS</td></tr>
+                <tr><td>Cash and Cash Equivalents</td><td class="numeric neg">R -81</td><td class="numeric">R 156</td><td class="numeric">R 4,631</td><td class="numeric">R 2,168</td><td class="numeric neg" id="bs-cash-26">R -3,938</td></tr>
+                <tr><td>Accounts Receivable</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr><td>Inventory</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr class="row-total"><td>Total Assets</td><td class="numeric neg">R -81</td><td class="numeric">R 156</td><td class="numeric">R 4,631</td><td class="numeric">R 2,168</td><td class="numeric neg" id="bs-assets-26">R -3,938</td></tr>
+
+                <tr class="section-header"><td colspan="6">LIABILITIES & EQUITY</td></tr>
+                <tr><td>Liabilities</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td></tr>
+                <tr><td>Owner's Equity</td><td class="numeric neg">R -81</td><td class="numeric">R 156</td><td class="numeric">R 4,631</td><td class="numeric">R 2,168</td><td class="numeric neg" id="bs-equity-26">R -3,938</td></tr>
+                <tr class="row-grand-total"><td>Total Liabilities & Equity</td><td class="numeric neg">R -81</td><td class="numeric">R 156</td><td class="numeric">R 4,631</td><td class="numeric">R 2,168</td><td class="numeric neg" id="bs-total-26">R -3,938</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tab 3: Cash Flow -->
+    <div id="tab3" class="tab-content">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">Cash Flow Statement – Years Ended February</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="numeric">2022</th>
+                    <th class="numeric">2023</th>
+                    <th class="numeric">2024</th>
+                    <th class="numeric">2025</th>
+                    <th class="numeric">2026 (YTD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="section-header"><td colspan="6">CASH FLOWS FROM OPERATING ACTIVITIES</td></tr>
+                <tr><td>Net Cash from Operating Activities</td><td class="numeric">R 5,436</td><td class="numeric">R 15,777</td><td class="numeric">R 14,901</td><td class="numeric neg">R -3,466</td><td class="numeric neg" id="cf-ops">R -1,557</td></tr>
+
+                <tr class="section-header"><td colspan="6">CASH FLOWS FROM FINANCING ACTIVITIES</td></tr>
+                <tr><td>Capital Injections (Equity)</td><td class="numeric">R 1,451</td><td class="numeric">R 1,830</td><td class="numeric">R 1,625</td><td class="numeric">R 42,597</td><td class="numeric">R 1,363</td></tr>
+                <tr><td>Drawings (Equity Withdrawal)</td><td class="numeric neg">R -6,968</td><td class="numeric neg">R -17,346</td><td class="numeric neg">R -12,125</td><td class="numeric neg">R -42,669</td><td class="numeric neg">R -450</td></tr>
+
+                <tr class="row-grand-total"><td>Net Change in Cash</td><td class="numeric neg">R -81</td><td class="numeric">R 261</td><td class="numeric">R 4,401</td><td class="numeric neg">R -3,538</td><td class="numeric neg" id="cf-change">R -644</td></tr>
+                <tr><td>Cash at Beginning of Year</td><td class="numeric">R 0</td><td class="numeric neg">R -81</td><td class="numeric">R 156</td><td class="numeric">R 4,631</td><td class="numeric">R 2,168</td></tr>
+                <tr class="row-grand-total"><td>Cash at End of Year</td><td class="numeric neg">R -81</td><td class="numeric">R 156</td><td class="numeric">R 4,631</td><td class="numeric">R 2,168</td><td class="numeric neg" id="cf-end">R -3,938</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tab 4: Tax Estimation -->
+    <div id="tab4" class="tab-content">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">Tax Estimation – Comparative (Years Ended February)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="numeric">2022</th>
+                    <th class="numeric">2023</th>
+                    <th class="numeric">2024</th>
+                    <th class="numeric">2025</th>
+                    <th class="numeric">2026 (YTD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Profit Before Tax</td><td class="numeric">R 5,436</td><td class="numeric">R 15,777</td><td class="numeric">R 14,901</td><td class="numeric neg">R -3,466</td><td class="numeric neg" id="tax-pbt">R -1,557</td></tr>
+                <tr><td>Assessed Loss Carryforward (Start)</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 3,466</td></tr>
+                <tr><td>Taxable Income</td><td class="numeric">R 5,436</td><td class="numeric">R 15,777</td><td class="numeric">R 14,901</td><td class="numeric">R 0</td><td class="numeric" id="tax-taxable">R 0</td></tr>
+                <tr class="row-grand-total"><td>Estimated Corporate Tax (27%)</td><td class="numeric">R 1,468</td><td class="numeric">R 4,260</td><td class="numeric">R 4,023</td><td class="numeric">R 0</td><td class="numeric" id="tax-est">R 0</td></tr>
+                <tr><td>Assessed Loss Carryforward (End)</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 0</td><td class="numeric">R 3,466</td><td class="numeric" id="tax-loss">R 5,023</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tab 5: Bank Reconciliation -->
+    <div id="tab5" class="tab-content">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">Bank Reconciliation – 2026 YTD (As at February 20, 2026)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th class="numeric">Amount (ZAR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Book Balance per Ledger</td><td class="numeric neg" id="recon-book">R -3,938</td></tr>
+                <tr><td>Reconciling Items (Net)</td><td class="numeric">R 0</td></tr>
+                <tr class="row-grand-total"><td>Adjusted Book Balance</td><td class="numeric neg" id="recon-adjusted">R -3,938</td></tr>
+                <tr><td>Bank Statement Balance</td><td class="numeric neg">R -3,938</td></tr>
+                <tr class="row-grand-total"><td>Difference</td><td class="numeric">R 0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tab 6: 2026 Ledger -->
+    <div id="tab6" class="tab-content">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">2026 Transaction Ledger (YTD)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date/Code</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th class="numeric">Amount (ZAR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>46183</td><td>Capital</td><td>Equity</td><td class="numeric">R 300</td></tr>
+                <tr><td>46233</td><td>Capital</td><td>Equity</td><td class="numeric">R 200</td></tr>
+                <!-- ... your full ledger rows here ... -->
+                <tr id="feb-charge-row" class="section-header" style="display:none;">
+                    <td>2026-02-28</td>
+                    <td>February Bank Charges (Adjustment)</td>
+                    <td>Expenses – Bank Charges</td>
+                    <td class="numeric" id="adj-cell">R 0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tab 7: Historic Ledgers -->
+    <div id="tab7" class="tab-content">
+        <h2 class="text-2xl font-black mb-3 uppercase tracking-tight">Historic Transaction Ledgers (2022–2025)</h2>
+        <div class="justification-footer">
+            <span class="footer-label">Summary</span>
+            <p class="footer-text">
+                Detailed transaction listings reconciled to bank statements. Full vouchers/invoices available for audit inspection. Capital injections treated as equity contributions (not revenue). Drawings treated as reduction in equity (not expense for tax purposes).
+            </p>
+        </div>
+        <h3 class="text-xl font-bold mt-6 mb-2">2022 Ledger (Summary)</h3>
+        <p class="text-sm text-gray-700">Sales: R 20,480 | COS: R 12,736 | Services + Other: R 0 | Op Ex: R 2,308 | PBT: R 5,436 | Capital: R 1,451 | Drawings: R 6,968</p>
+
+        
+        <h3 class="text-xl font-bold mt-6 mb-2">2023 Ledger (Summary)</h3>
+        <p class="text-sm text-gray-700">Sales: R 20,840.00 | COS: R 13,538.00 | Services + Other: R 31,800.00 | Operating Expenses: R 23,325.00 | PBT: R 15,777.00 | Capital Injections: R 1,830.00 | Drawings: R 17,346.00</p>
+
+        <h3 class="text-xl font-bold mt-6 mb-2">2024 Ledger (Summary)</h3>
+        <p class="text-sm text-gray-700">Services + Other Income: R 28,827.00 | Operating Expenses: R 13,926.00 | PBT: R 14,901.00 | Capital Injections: R 1,625.00 | Drawings: R 12,125.00</p>
+
+        <h3 class="text-xl font-bold mt-6 mb-2">2025 Ledger (Summary)</h3>
+        <p class="text-sm text-gray-700">Services + Other Income: R 5,362.00 | Operating Expenses: R 8,828.00 | PBT: R -3,466.00 | Capital Injections: R 42,597.00 | Drawings: R 42,669.00</p>
+    </div>
+    </div>
+</div>
+
+<script>
+    function showTab(n) {
+        document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('tab' + n).style.display = 'block';
+        document.querySelectorAll('.tab-btn')[n-1].classList.add('active');
+    }
+
+    function applyAdjustment() {
+        let charge = parseFloat(document.getElementById('bankCharge').value) || 0;
+        if (charge < 0) charge = 0;
+
+        const baseExpenses = 1557;
+        const baseBankCharges = 1434;
+        const basePBT = -1557;
+        const baseCashEnd = -3938;
+
+        const newExpenses = baseExpenses + charge;
+        const newBankCharges = baseBankCharges + charge;
+        const newPBT = basePBT - charge;
+        const newCash = baseCashEnd - charge;
+
+        // Update all tables
+        document.getElementById('exp-26').textContent = 'R ' + newExpenses.toLocaleString('en-ZA');
+        document.getElementById('bank-chg-26').textContent = 'R ' + newBankCharges.toLocaleString('en-ZA');
+        document.getElementById('pbt-dynamic').textContent = 'R ' + newPBT.toLocaleString('en-ZA');
+        document.getElementById('bs-cash-26').textContent = 'R ' + newCash.toLocaleString('en-ZA');
+        document.getElementById('bs-assets-26').textContent = 'R ' + newCash.toLocaleString('en-ZA');
+        document.getElementById('bs-equity-26').textContent = 'R ' + newCash.toLocaleString('en-ZA');
+        document.getElementById('bs-total-26').textContent = 'R ' + newCash.toLocaleString('en-ZA');
+        document.getElementBy('cf-ops').textContent = 'R ' + newPBT.toLocaleString('en-ZA');
+        document.getElementById('cf-change').textContent = 'R ' + (1363 + newPBT - 450).toLocaleString('en-ZA');
+        document.getElementById('cf-end').textContent = 'R ' + newCash.toLocaleString('en-ZA');
+
+        // Show in ledger
+        document.getElementById('feb-charge-row').style.display = 'table-row';
+        document.getElementById('adj-cell').textContent = 'R ' + charge.toLocaleString('en-ZA');
+
+        alert(`Adjustment of R ${charge.toLocaleString('en-ZA')} applied across all statements.`);
+    }
+
+    showTab(1);
+</script>
+
+</body>
+</html>
