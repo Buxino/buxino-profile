@@ -22,8 +22,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="w-full bg-white relative z-0">
       <div className="container mx-auto px-6 md:px-10">
         
-        {/* 1. THE IMAGE BOX – RESPONSIVE & MOBILE-FRIENDLY */}
-        <div className="relative w-full aspect-[4/5] sm:aspect-[16/9] md:aspect-[16/7] lg:aspect-[16/6] overflow-hidden group border border-gray-100 shadow-sm rounded-xl">
+        {/* THE IMAGE BOX – RESPONSIVE ASPECT-RATIO (NO FIXED HEIGHT) */}
+        <div className="relative w-full aspect-[4/5] xs:aspect-[3/4] sm:aspect-[16/9] md:aspect-[16/7] lg:aspect-[16/6] overflow-hidden group border border-gray-100 shadow-sm rounded-xl">
           <img
             src={`/${backgroundImage}`}
             alt="Buxino Consulting Hero"
@@ -51,7 +51,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           )}
         </div>
 
-        {/* 2. THE TYPOGRAPHY (Editorial Layout) */}
+        {/* TYPOGRAPHY – unchanged */}
         <div className="py-16 md:py-28 max-w-6xl mx-auto">
           <h4 className="text-[#c5a059] uppercase tracking-[0.5em] text-[10px] md:text-xs font-bold mb-6 md:mb-8 block">
             Established 2021
