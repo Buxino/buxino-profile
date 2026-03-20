@@ -4,31 +4,28 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Custom arrow icon
-const ArrowRight = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-);
-
 const OurBusinessPage = () => {
   return (
     <main className="bg-gray-50 min-h-screen w-full overflow-x-hidden font-sans selection:bg-[#c5a059] selection:text-black">
 
-      {/* ── 1. HERO IMAGE (Standalone) ──────────────────────────────────────── */}
-      <section className="relative w-full h-[70vh] min-h-[480px] bg-gray-100 border-b border-gray-200">
+      {/* ── 1. HERO IMAGE – FULLY MOBILE-FRIENDLY ──────────────────────────────────────── */}
+      <section className="relative w-full aspect-[4/5] xs:aspect-[3/4] sm:aspect-[16/9] md:aspect-[16/7] lg:aspect-[16/6] overflow-hidden bg-gray-100 border-b border-gray-200">
         <Image
           src="/Buxino Boardroom.png"
           alt="Buxino boardroom environment"
           fill
-          className="object-cover object-[center_20%] brightness-95"
+          className="
+            object-contain sm:object-cover 
+            object-center sm:object-[center_20%] 
+            brightness-95
+          "
           priority
           quality={90}
           sizes="100vw"
         />
       </section>
 
-      {/* ── 2. THE INSTITUTIONAL CORE (Narrative below the image) ────────────── */}
+      {/* ── 2. THE INSTITUTIONAL CORE ──────────────────────────────────────────────── */}
       <section className="py-20 bg-white text-center border-b border-gray-200">
         <div className="container mx-auto px-6 max-w-5xl">
           <span className="text-[#c5a059] font-black tracking-[0.75em] text-[10px] md:text-xs uppercase mb-6 block">
@@ -49,14 +46,14 @@ const OurBusinessPage = () => {
 
           <Link
             href="/values"
-            className="inline-block bg-[#c5a059] text-gray-900 px-10 py-5 text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-colors duration-300 shadow-sm hover:shadow-md rounded-lg"
+            className="inline-block bg-[#c5a059] text-gray-900 px-10 py-5 text-xs font-black uppercase tracking-[0.4em] hover:bg-[#b08a3e] transition-colors duration-300 shadow-sm hover:shadow-md rounded-lg"
           >
             View Our Values
           </Link>
         </div>
       </section>
 
-      {/* ── 3. THE ENVIRONMENT ──────────────────────────────────────────────── */}
+      {/* ── 3. THE ENVIRONMENT ──────────────────────────────────────────────────────── */}
       <section className="py-28 md:py-32 bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <h4 className="text-[#c5a059] uppercase tracking-[0.5em] text-[11px] font-black mb-6">Precision & Transparency</h4>
@@ -71,7 +68,7 @@ const OurBusinessPage = () => {
         </div>
       </section>
 
-      {/* ── 4. BUSINESS MODEL ───────────────────────────────────────────────── */}
+      {/* ── 4. BUSINESS MODEL ──────────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 bg-white border-y border-gray-100">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
@@ -128,7 +125,6 @@ const OurBusinessPage = () => {
 
                 {/* VERTICAL B: TACTICAL REVENUE */}
                 <div className="group relative">
-                  {/* Subtle separator for mobile/tablet */}
                   <div className="absolute -left-6 top-0 bottom-0 w-px bg-gray-200 hidden md:block"></div>
                   
                   <div className="flex items-center gap-3 mb-4">
@@ -147,17 +143,14 @@ const OurBusinessPage = () => {
                     <li className="flex items-center gap-2"><div className="w-1 h-1 bg-[#c5a059] rounded-full"></div> Real-Time Consumer Data Extraction</li>
                   </ul>
                 </div>
-
               </div>
 
-              {/* THE SYNTHESIS / COMPETITIVE EDGE */}
               <div className="bg-gray-50 p-8 md:p-10 border border-gray-200 rounded-lg shadow-sm">
                 <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#c5a059] mb-4">The Multiplier Effect</h4>
                 <p className="text-gray-700 text-sm leading-relaxed italic">
                   By controlling both the high-level corporate strategy (Vertical A) and ground-level cultural execution (Vertical B), Buxino eliminates the disconnect between boardroom theory and consumer reality. Our tactical assets fund our corporate scaling, protecting our high-margin core without requiring outside venture dilution.
                 </p>
               </div>
-
             </div>
           </div>
         </div>

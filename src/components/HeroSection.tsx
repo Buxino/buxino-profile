@@ -8,8 +8,7 @@ interface HeroSectionProps {
   backgroundImage: string;
   buttonText?: string;
   buttonLink?: string;
-  height?: string;
-  watermarkImage?: string; // optional: pass real watermark path if you want it
+  watermarkImage?: string; // optional
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -17,31 +16,30 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage,
   buttonText,
   buttonLink,
-  height = 'h-[75vh]',
-  watermarkImage, // optional
+  watermarkImage,
 }) => {
   return (
-    <section className="w-full bg-white relative z-0 pt-24 md:pt-0">
+    <section className="w-full bg-white relative z-0">
       <div className="container mx-auto px-6 md:px-10">
         
-        {/* 1. THE IMAGE BOX – RESPONSIVE FIX */}
-        <div className={`relative ${height} w-full overflow-hidden group border border-gray-100 shadow-sm rounded-xl`}>
+        {/* 1. THE IMAGE BOX – RESPONSIVE & MOBILE-FRIENDLY */}
+        <div className="relative w-full aspect-[4/5] sm:aspect-[16/9] md:aspect-[16/7] lg:aspect-[16/6] overflow-hidden group border border-gray-100 shadow-sm rounded-xl">
           <img
             src={`/${backgroundImage}`}
             alt="Buxino Consulting Hero"
             className={`
               w-full h-full 
-              object-contain md:object-cover 
-              object-center md:object-[center_20%] 
-              scale-100 md:scale-105 
-              group-hover:scale-100 md:group-hover:scale-100 
-              brightness-95 md:brightness-90 
-              group-hover:brightness-100 md:group-hover:brightness-100 
+              object-contain sm:object-cover 
+              object-center sm:object-[center_20%] 
+              scale-100 sm:scale-105 
+              group-hover:scale-100 sm:group-hover:scale-100 
+              brightness-95 sm:brightness-90 
+              group-hover:brightness-100 sm:group-hover:brightness-100 
               transition-all duration-[2000ms] ease-in-out
             `}
           />
 
-          {/* Subtle Watermark – only render if provided (fixes empty src warning) */}
+          {/* Watermark – only if provided */}
           {watermarkImage && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
               <img
@@ -74,7 +72,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </button>
               </Link>
               
-              {/* Decorative line – only on wider screens */}
               <div className="h-[1px] flex-grow bg-gray-200 hidden md:block max-w-xs"></div>
             </div>
           )}
