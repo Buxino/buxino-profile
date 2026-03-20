@@ -4,107 +4,154 @@
 
 /* 1. BRAND & SYSTEM VARIABLES */
 :root {
-  /* Your Original Hex Brand Colors */
+  /* Brand Colors */
   --navy-blue: #001f3f;
   --gold: #c5a059;
   --off-white: #fafafa;
 
-  /* SHADCN SYSTEM MAPPING (Essential for Dropdowns/Accordions) */
-  --background: 0 0% 100%;       /* White Background */
-  --foreground: 210 100% 12%;    /* Navy Foreground (#001f3f) */
+  /* Shadcn Full System Variables – Light Mode Default */
+  --background: 0 0% 100%;          /* white */
+  --foreground: 210 100% 12%;       /* navy */
   --card: 0 0% 100%;
   --card-foreground: 210 100% 12%;
   --popover: 0 0% 100%;
   --popover-foreground: 210 100% 12%;
-  --primary: 40 51% 56%;         /* Gold Primary (#c5a059) */
+  --primary: 40 51% 56%;            /* gold */
   --primary-foreground: 0 0% 100%;
-  --secondary: 210 100% 12% / 0.05;
-  --secondary-foreground: 210 100% 12%;
-  --muted: 210 100% 12% / 0.05;
-  --muted-foreground: 210 100% 12% / 0.6;
-  --accent: 40 51% 56% / 0.1;
-  --accent-foreground: 40 51% 56%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 210 100% 12% / 0.1;  /* Navy Borders */
-  --input: 210 100% 12% / 0.1;
-  --ring: 40 51% 56%;            /* Gold Focus Rings */
-  --radius: 0rem;                /* Sharp corners for luxury feel */
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 40 51% 56%;               /* gold focus ring */
+  --radius: 0.375rem;               /* slight rounding – change to 0rem if you want sharp */
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
 }
 
+/* Dark Mode – Applied when .dark class is on <html> or <body> */
+.dark {
+  --background: 210 100% 12%;          /* navy dark */
+  --foreground: 0 0% 98%;              /* near-white */
+  --card: 210 100% 15%;
+  --card-foreground: 0 0% 98%;
+  --popover: 210 100% 15%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 40 51% 56%;               /* gold stays gold */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 100% 20% / 0.8;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 210 100% 20% / 0.5;
+  --muted-foreground: 215 20% 65%;
+  --accent: 210 100% 20% / 0.6;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 85.7% 97.3%;
+  --border: 210 100% 20% / 0.3;
+  --input: 210 100% 20% / 0.3;
+  --ring: 40 51% 56%;                  /* gold ring in dark mode too */
+}
+
+/* 2. CORE RESET & BASE STYLES */
 @layer base {
-  /* 2. CORE RESET */
   html {
-    @apply antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply antialiased scroll-smooth;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
-    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 
-  /* 3. UNIVERSAL HEADERS */
+  /* 3. UNIVERSAL HEADERS – Mobile-friendly */
   h1, h2, h3, h4, h5 {
-    color: var(--navy-blue);
+    color: hsl(var(--foreground));
     @apply font-black uppercase tracking-tighter;
   }
 
-  h1 { @apply text-5xl md:text-7xl lg:text-8xl mb-8 leading-[0.85]; }
-  h2 { @apply text-3xl md:text-4xl lg:text-5xl mb-6; }
-  h3 { @apply text-xl md:text-2xl mb-4 tracking-tight; }
-  
+  h1 { @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-8; }
+  h2 { @apply text-3xl sm:text-4xl md:text-5xl mb-6; }
+  h3 { @apply text-2xl md:text-3xl mb-4; }
   h4 { 
     color: var(--gold);
-    @apply text-[10px] font-black tracking-[0.4em] mb-3; 
+    @apply text-xs sm:text-sm font-black tracking-[0.4em] mb-3 uppercase;
   }
 
-  /* 4. UNIVERSAL BODY TEXT */
+  /* 4. BODY TEXT */
   p {
-    @apply leading-relaxed text-gray-500 font-light mb-5;
-    font-size: 0.95rem;
+    @apply leading-relaxed text-muted-foreground mb-5;
+    font-size: 1rem;
   }
 
   strong {
-    @apply font-black uppercase tracking-widest text-[0.8em];
-    color: var(--navy-blue);
+    @apply font-black uppercase tracking-widest text-xs;
+    color: hsl(var(--foreground));
   }
 
-  /* 5. UNIVERSAL BUTTON & LINK BEHAVIOR */
+  /* 5. LINKS & BUTTONS */
   a {
     @apply transition-all duration-300 ease-in-out;
   }
 
-  /* 6. SELECTION COLOR */
+  button, [role="button"] {
+    @apply cursor-pointer transition-all duration-300;
+  }
+
+  /* 6. SELECTION */
   ::selection {
-    background-color: rgba(197, 160, 89, 0.3);
-    color: var(--navy-blue);
+    background-color: color-mix(in srgb, var(--gold) 30%, transparent);
+    color: hsl(var(--foreground));
   }
 }
 
+/* 7. CUSTOM BRAND COMPONENTS */
 @layer components {
-  /* 7. CUSTOM BRAND CLASSES */
   .bg-navy-blue { background-color: var(--navy-blue); }
   .text-navy-blue { color: var(--navy-blue); }
   .text-gold { color: var(--gold); }
   .border-gold { border-color: var(--gold); }
 
   .gold-accent {
-    color: var(--gold);
-    @apply uppercase tracking-[0.3em] text-[10px] font-black;
+    @apply text-gold uppercase tracking-[0.3em] text-xs font-black;
+  }
+
+  /* Anchor scroll padding for fixed navbar */
+  .scroll-mt-20 {
+    scroll-margin-top: 5rem; /* adjust based on your navbar height */
+  }
+
+  /* Dark mode specific overrides */
+  .dark .text-gold {
+    color: var(--gold); /* gold stays visible in dark */
+  }
+
+  .dark .bg-navy-blue {
+    background-color: color-mix(in srgb, var(--navy-blue) 80%, black);
   }
 }
 
-/* 8. PRINT TO PDF OPTIMIZATION */
+/* 8. PRINT STYLES */
 @media print {
-  nav, footer, .print\:hidden, button {
+  nav, footer, .print-hidden, button, .no-print {
     display: none !important;
   }
 
   body {
     background: white !important;
-    color: #000 !important;
+    color: black !important;
     font-size: 12pt;
   }
 
@@ -115,20 +162,47 @@
   .text-gold {
     color: #c5a059 !important;
     -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #001f3f !important;
   }
 }
 
 /* 9. SCROLLBAR STYLING */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--navy-blue);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--navy-blue);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--gold);
+  }
+
+  /* Hide scrollbar on mobile for clean look */
+  @media (max-width: 768px) {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

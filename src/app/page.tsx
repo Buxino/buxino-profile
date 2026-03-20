@@ -1,43 +1,40 @@
 "use client";
+
 import React from 'react';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar'; // Assuming you have the Navbar component
 import HeroSection from '@/components/HeroSection';
-import CompanyStatsSection from '@/components/CompanyStatsSection'; // Keep your existing stats section
+import CompanyStatsSection from '@/components/CompanyStatsSection';
 import OurStorySection from '@/components/OurStorySection';
 import ServicesAndPhilosophy from '@/components/ServicesAndPhilosophy';
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen font-sans">
+    <main className="bg-white min-h-screen font-sans scroll-smooth scroll-pt-20 md:scroll-pt-24">
       
-      {/* 1. Navbar (Overlay) */}
-      <Navbar />
+      {/* NO NAVBAR HERE – it's already in RootLayout */}
 
-      {/* 2. Hero (The Hook) */}
-      <HeroSection
-        title="Welcome to Buxino Consulting"
-        backgroundImage="BuxinoConsultingBanner.png"
-        buttonText="Our Business"
-        buttonLink="/business"
-        height="h-[80vh]" 
-      />
+      {/* Hero – padded to clear fixed Navbar */}
+      <div className="pt-20 md:pt-24">
+        <HeroSection
+          title="Welcome to Buxino Consulting"
+          backgroundImage="BuxinoConsultingBanner.png"
+          buttonText="Our Business"
+          buttonLink="/business"
+          height="h-[80vh]"
+        />
+      </div>
 
-      {/* 3. The Main Content Flow */}
+      {/* Main Content Flow */}
       <div className="relative z-10 bg-white">
         
-        {/* Step A: Credibility */}
         <CompanyStatsSection />
         
-        {/* Step B: Separator */}
         <div className="container mx-auto px-10">
           <div className="h-[1px] w-full bg-gray-100/60"></div>
         </div>
 
-        {/* Step C: Context (Founder/Story) */}
         <OurStorySection />
 
-        {/* Step D: Execution (Services & Philosophy) */}
         <ServicesAndPhilosophy />
 
       </div>
