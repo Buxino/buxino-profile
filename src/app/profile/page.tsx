@@ -11,7 +11,6 @@ export default function ProfilePage() {
       <div className="pt-32 pb-20"> 
         <CompanyProfile />
       </div>
-      <Footer />
     </main>
   );
 }
