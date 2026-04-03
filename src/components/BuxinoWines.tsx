@@ -112,14 +112,23 @@ const pillars = [
 ];
 
 /* ─────────────────────────────────────────────
-   STAT BAR (wine profile)
+   STAT BAR COMPONENT
 ───────────────────────────────────────────── */
-function StatBar({ label, value }) {
+interface StatBarProps {
+  label: string;
+  value: number;
+}
+
+function StatBar({ label, value }: StatBarProps) {
   return (
     <div className="space-y-1">
       <div className="flex justify-between items-center">
-        <span className="text-[9px] uppercase tracking-[0.2em] text-white/30 font-medium">{label}</span>
-        <span className="text-[9px] text-[#c5a059]/70 font-bold">{value}/100</span>
+        <span className="text-[9px] uppercase tracking-[0.2em] text-white/30 font-medium">
+          {label}
+        </span>
+        <span className="text-[9px] text-[#c5a059]/70 font-bold">
+          {value}/100
+        </span>
       </div>
       <div className="h-[2px] bg-white/5 rounded-full overflow-hidden">
         <div
@@ -132,11 +141,19 @@ function StatBar({ label, value }) {
 }
 
 /* ─────────────────────────────────────────────
-   SECTION LABEL
+   SECTION LABEL COMPONENT
 ───────────────────────────────────────────── */
-function SectionLabel({ children, light = false }) {
+interface SectionLabelProps {
+  children: React.ReactNode;
+  light?: boolean;
+}
+
+function SectionLabel({ children, light = false }: SectionLabelProps) {
   return (
-    <p className={`text-[10px] uppercase tracking-[0.55em] font-black mb-4 ${light ? 'text-[#c5a059]/60' : 'text-[#c5a059]'}`}>
+    <p 
+      className={`text-[10px] uppercase tracking-[0.55em] font-black mb-4 
+        ${light ? 'text-[#c5a059]/60' : 'text-[#c5a059]'}`}
+    >
       {children}
     </p>
   );
@@ -589,7 +606,7 @@ const BuxinoWinesPage = () => {
                         <p className="text-[11px] text-white/25 font-light">{f.label}</p>
                       </div>
                       <div className="text-right">
-                        <span className="text-xl font-light text-white" style={{ fontFamily: "'Georgia', serif" }}>{f.revenue}</span>
+                        <span className="text-xl font-light text-white" style={{ fontFamily: "'Georgia', serif" }}></span>
                         <p className="text-[10px] text-[#c5a059]/50">{f.margin} margin</p>
                       </div>
                     </div>
